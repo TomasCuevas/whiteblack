@@ -18,7 +18,13 @@ interface UIProviderProps {
 export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
 
-  const toggleSidebar = () => setIsSidebarOpen((prev) => !prev);
+  const toggleSidebar = () => {
+    isSidebarOpen
+      ? document.body.classList.remove("body__fix")
+      : document.body.classList.add("body__fix");
+
+    setIsSidebarOpen((prev) => !prev);
+  };
 
   return (
     <UIContext.Provider
