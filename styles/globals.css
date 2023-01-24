@@ -2,10 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  overflow-x: hidden;
+}
+
 .body__fix {
   overflow-y: hidden;
 }
 
 body {
   overflow-x: hidden;
+}
+
+/* ===== Scrollbar CSS ===== */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #e86d33 #060609;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #060609;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #e86d33;
+  border-radius: 50px;
+  border: 0px solid #060609;
 }

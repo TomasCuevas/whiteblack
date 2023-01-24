@@ -1,0 +1,125 @@
+#article p {
+  color: #fff;
+  font-size: 18px;
+  line-height: 28px;
+  margin-bottom: 30px;
+  font-weight: 300;
+}
+
+#article strong {
+  font-weight: 600;
+}
+
+#article h2 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #fff;
+  margin: 40px 0 30px 0;
+}
+
+#article h3 {
+  font-size: 22px;
+  font-weight: 600;
+  color: #fff;
+  margin: 40px 0 30px 0;
+}
+
+#article code {
+  background-color: #fff;
+  color: #111;
+  padding: 0 4px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+#article pre code {
+  background-color: #110f18;
+  color: #979daa;
+  padding: 1rem;
+  margin-bottom: 20px;
+}
+
+#article p + ul {
+  margin-top: -16px;
+}
+
+#article ul {
+  padding: 0 0 16px 16px;
+}
+
+#article ul li {
+  position: relative;
+  font-size: 18px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+#article ul li:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #e86d33;
+}
+
+#article ol {
+  padding: 0 0 16px 16px;
+}
+
+#article ol li {
+  position: relative;
+  font-size: 18px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+#article ol li:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #e86d33;
+}
+
+#article pre {
+  position: relative;
+}
+
+#article pre code:before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: -18px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+.language-javascript::before {
+  background-image: url("/images/categories/javascript.svg");
+}
+
+.language-typescript::before {
+  background-image: url("/images/categories/typescript.svg");
+}
+
+.language-css::before {
+  background-image: url("/images/categories/css.svg");
+}
+
+.language-sh::before {
+  background-image: url("/images/categories/terminal.svg");
+}
+
+.language-shell::before {
+  background-image: url("/images/categories/terminal.svg");
+}
