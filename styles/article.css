@@ -6,6 +6,12 @@
   font-weight: 300;
 }
 
+#article a {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #fff;
+  font-weight: 500;
+}
+
 #article strong {
   font-weight: 600;
 }

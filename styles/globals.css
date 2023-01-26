@@ -6,6 +6,10 @@ body {
   overflow-x: hidden;
 }
 
+*::selection {
+  background-color: #e86d3333;
+}
+
 .body__fix {
   overflow-y: hidden;
 }
