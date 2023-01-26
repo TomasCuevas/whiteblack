@@ -1,4 +1,5 @@
 export interface IArticleMetadata {
+  author: string;
   category: string;
   date: string;
   description: string;
