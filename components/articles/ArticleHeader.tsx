@@ -12,11 +12,14 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         <img
           src={`/images/categories/${metadata.category}.svg`}
           alt={`${metadata.category} logo`}
-          className="absolute right-0 -z-10 h-[200px] w-[200px] opacity-5"
+          className="absolute right-0 -z-10 h-[200px] w-[200px] opacity-20"
         />
       </picture>
       <div className="flex flex-col gap-1">
         <h1 className="text-4xl font-semibold text-white">{metadata.title}</h1>
+        <div className="mt-3">
+          <h4 className="text-orange underline">{metadata.author}</h4>
+        </div>
         <time className="text-sm font-light text-orange">
           {new Date(metadata.date).toLocaleString("es-ES", {
             day: "numeric",
