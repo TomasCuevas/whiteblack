@@ -1,9 +1,11 @@
-import { createContext, useState } from "react";
+import { createContext, useState, Dispatch, SetStateAction } from "react";
 
 //* CONTEXT *//
 //* CONTEXT *//
 interface UIContextProps {
+  feedPage: number;
   isSidebarOpen: boolean;
+  setFeedPage: Dispatch<SetStateAction<number>>;
   toggleSidebar(): void;
 }
 
@@ -17,6 +19,7 @@ interface UIProviderProps {
 
 export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(false);
+  const [feedPage, setFeedPage] = useState(1);
 
   const toggleSidebar = () => {
     isSidebarOpen
@@ -30,9 +33,11 @@ export const UIProvider: React.FC<UIProviderProps> = ({ children }) => {
     <UIContext.Provider
       value={{
         // getters
+        feedPage,
         isSidebarOpen,
 
         // methods
+        setFeedPage,
         toggleSidebar,
       }}
     >
