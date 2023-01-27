@@ -2,10 +2,10 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
 //* helpers *//
-import { getFileBySlug, getAllArticlesFiles } from "../utils";
+import { getArticleFileBySlug, getAllArticleFiles } from "../utils";
 
 //* components *//
-import { ArticleHeader } from "../components/articles";
+import { ArticleHeader } from "../components/article";
 
 //* layout *//
 import { MainLayout } from "../components/layout";
@@ -35,7 +35,7 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
-  const posts = await getAllArticlesFiles();
+  const posts = await getAllArticleFiles();
   const paths = posts.map((post) => ({
     params: {
       slug: post.replace(".mdx", ""),
@@ -49,7 +49,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
-  const { metadata, source } = await getFileBySlug((params as any).slug);
+  const { metadata, source } = await getArticleFileBySlug((params as any).slug);
 
   return {
     props: {
