@@ -10,6 +10,12 @@ body {
   background-color: #e86d3333;
 }
 
+#__next {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 .body__fix {
   overflow-y: hidden;
 }
@@ -25,7 +31,7 @@ body {
 }
 
 *::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
   height: 5px;
 }
 
