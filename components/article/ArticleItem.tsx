@@ -1,5 +1,6 @@
-//* interface
 import Link from "next/link";
+
+//* interface
 import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
 
 interface Props {
@@ -11,9 +12,9 @@ export const ArticleItem: React.FC<Props> = ({ articleMetadata }) => {
     <article>
       <Link
         href={`/${articleMetadata.slug}`}
-        className="flex w-full gap-2 rounded-md bg-white/10 p-3"
+        className="hover: flex w-full gap-2 rounded-md bg-white/5 p-3 duration-300 hover:bg-white/10"
       >
-        <div className="flex w-2/12 items-center">
+        <div className="flex max-h-[50px] w-2/12 max-w-[50px] items-center">
           <img
             src={`/images/categories/${articleMetadata.category}.svg`}
             alt={`${articleMetadata.category} logo`}
