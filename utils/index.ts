@@ -1,1 +1,2 @@
-export * from "./mdxTransform";
+export * from "./mdxArticlesTransform";
+export * from "./mdxCategoriesTransform";
