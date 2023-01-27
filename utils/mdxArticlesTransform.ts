@@ -9,11 +9,11 @@ import { IArticleMetadata } from "../interfaces/IArticleMetadata";
 
 const root = process.cwd();
 
-export const getAllArticlesFiles = () => {
+export const getAllArticleFiles = () => {
   return fs.readdirSync(path.join(root, "content", "articles"));
 };
 
-export const getFileBySlug = async (slug: string) => {
+export const getArticleFileBySlug = async (slug: string) => {
   const mdxFile = fs.readFileSync(
     path.join(root, "content", "articles", `${slug}.mdx`),
     "utf-8"
@@ -36,8 +36,8 @@ export const getFileBySlug = async (slug: string) => {
   };
 };
 
-export const getAllFilesMetadata = (): IArticleMetadata[] => {
-  const files: string[] = getAllArticlesFiles();
+export const getAllArticleFilesMetadata = (): IArticleMetadata[] => {
+  const files: string[] = getAllArticleFiles();
 
   return files
     .reduce((allPosts: any, postSlug: string) => {
