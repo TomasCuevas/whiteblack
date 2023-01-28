@@ -4,6 +4,7 @@ import { useContext } from "react";
 //* components *//
 import { Header } from "../header";
 import { MobileSidebar } from "../sidebar";
+import { Footer } from "../footer";
 
 //* context *//
 import { UIContext } from "../../context";
@@ -28,15 +29,13 @@ export const MainLayout: React.FC<Props> = ({
         <title>{title}</title>
         <meta name="description" content={description} />
       </Head>
-      <div className="absolute top-0 left-0 -z-10 h-screen w-screen bg-[url('/images/backgrounds/background_mobile.svg')] bg-cover bg-no-repeat lg:bg-[url('/images/backgrounds/background.svg')]"></div>
       <div className="fixed top-0 left-0 -z-20 h-screen w-screen bg-dark"></div>
       <Header />
       {isSidebarOpen ? <MobileSidebar /> : null}
-      <div className="min-w-screen flex min-h-screen justify-center bg-black/30 backdrop-blur-sm">
-        <main className="h-[3000px mt-20 h-[2000px] w-full max-w-[1200px]">
-          {children}
-        </main>
-      </div>
+      <main className="mx-auto mt-16 mb-8 w-full max-w-[1200px] px-4 pt-4 sm:px-6 md:mt-20 xl:px-0">
+        {children}
+      </main>
+      <Footer />
     </>
   );
 };
