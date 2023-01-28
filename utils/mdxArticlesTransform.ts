@@ -51,3 +51,28 @@ export const getAllArticleFilesMetadata = (): IArticleMetadata[] => {
     }, [])
     .sort((a, b) => b.date.localeCompare(a.date));
 };
+
+export const getAllArticleFilesMetadataByCategory = (
+  category: string
+): IArticleMetadata[] => {
+  const files: string[] = getAllArticleFiles();
+
+  return files
+    .reduce((allPosts: any, postSlug: string) => {
+      const mdxFile = fs.readFileSync(
+        path.join(root, "content", "articles", postSlug),
+        "utf-8"
+      );
+      const { data } = matter(mdxFile);
+
+      if (
+        (data as IArticleMetadata).category.toLowerCase() !==
+        category.toLowerCase()
+      ) {
+        return [...allPosts];
+      }
+
+      return [{ ...data, slug: postSlug.replace(".mdx", "") }, ...allPosts];
+    }, [])
+    .sort((a, b) => b.date.localeCompare(a.date));
+};
