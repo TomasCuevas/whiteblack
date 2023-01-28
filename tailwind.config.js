@@ -13,6 +13,10 @@ module.exports = {
         light: "#fbf8fc",
         orange: "#e86d33",
       },
+      screens: {
+        xs: "500px",
+        mdx: "900px",
+      },
     },
   },
   plugins: [],
