@@ -24,7 +24,7 @@ export const CategoryItem: React.FC<Props> = ({ categoryMetadata }) => {
           <h2 className="font-medium text-white">
             {categoryMetadata.category}
           </h2>
-          <h6 className="text-sm text-gray-400">{categoryMetadata.subtitle}</h6>
+          <h6 className="text-light] text-sm">{categoryMetadata.subtitle}</h6>
         </div>
       </Link>
     </article>
