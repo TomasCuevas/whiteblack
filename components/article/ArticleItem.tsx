@@ -22,7 +22,7 @@ export const ArticleItem: React.FC<Props> = ({ articleMetadata }) => {
           />
         </div>
         <div className="flex w-10/12 flex-col gap-2">
-          <h2 className="font-medium text-white">{articleMetadata.title}</h2>
+          <h3 className="font-medium text-white">{articleMetadata.title}</h3>
           <time className="font-light text-gray-200">
             {articleMetadata.date}
           </time>
