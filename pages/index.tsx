@@ -19,7 +19,7 @@ interface Props {
 const Home: NextPage<Props> = ({ allArticleFilesMetadata }) => {
   return (
     <MainLayout
-      title="whiteblack | Blog"
+      title="whiteblack"
       description="Pagina principal del blog sobre programacion whiteblack"
     >
       <MainArticlesFeed allArticleFilesMetadata={allArticleFilesMetadata} />
@@ -28,8 +28,8 @@ const Home: NextPage<Props> = ({ allArticleFilesMetadata }) => {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  let allArticleFilesMetadata: any[] = await getAllArticleFilesMetadata().map(
-    (article) => {
+  let allArticleFilesMetadata: IArticleMetadata[] =
+    await getAllArticleFilesMetadata().map((article) => {
       article.date = new Date(article.date).toLocaleDateString("es-ES", {
         year: "numeric",
         month: "long",
@@ -38,8 +38,7 @@ export const getStaticProps: GetStaticProps = async () => {
       });
 
       return article;
-    }
-  );
+    });
 
   return {
     props: {

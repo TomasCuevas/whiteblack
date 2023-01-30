@@ -32,7 +32,7 @@ export const MainLayout: React.FC<Props> = ({
       <div className="fixed top-0 left-0 -z-20 h-screen w-screen bg-dark"></div>
       <Header />
       {isSidebarOpen ? <MobileSidebar /> : null}
-      <main className="mx-auto mt-16 mb-8 w-full max-w-[1200px] px-4 pt-4 sm:px-6 md:mt-20 xl:px-0">
+      <main className="mx-auto mt-20 mb-8 w-full max-w-[1200px] px-4 pt-4 sm:px-6 xl:px-0">
         {children}
       </main>
       <Footer />

@@ -32,7 +32,7 @@ export const SidebarLink: React.FC<Props> = ({ link, text }) => {
           } duration-300 group-hover:text-orange`}
         />
         <span
-          className={`text-xl ${
+          className={`text-xl font-light ${
             pathname === link ? "text-white" : "text-white/70"
           } duration-300 group-hover:text-white`}
         >
