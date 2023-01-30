@@ -1,8 +1,9 @@
 import type { AppProps } from "next/app";
 
 //* styles *//
-import "../styles/globals.css";
 import "../styles/article.css";
+import "../styles/globals.css";
+import "../styles/header.css";
 
 //* providers *//
 import { UIProvider } from "../context";
