@@ -11,7 +11,7 @@ export const CategoryItem: React.FC<Props> = ({ categoryMetadata }) => {
     <article>
       <Link
         href={`/categoria/${categoryMetadata.category.toLowerCase()}`}
-        className="group flex h-full items-center gap-2 rounded-md bg-white/5 p-4 duration-300 hover:bg-white/10"
+        className="group flex h-full items-center gap-2 rounded-md bg-light/50 p-4 duration-300 hover:bg-light"
       >
         <div className="flex max-h-[50px] w-2/12 max-w-[50px] items-center">
           <img
@@ -24,7 +24,9 @@ export const CategoryItem: React.FC<Props> = ({ categoryMetadata }) => {
           <h2 className="font-medium text-white">
             {categoryMetadata.category}
           </h2>
-          <h6 className="text-light] text-sm">{categoryMetadata.subtitle}</h6>
+          <h6 className="text-light] text-sm text-gray-300">
+            {categoryMetadata.subtitle}
+          </h6>
         </div>
       </Link>
     </article>

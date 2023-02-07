@@ -17,7 +17,7 @@ export const MobileSidebar: React.FC = () => {
         <div className="flex h-14 w-full items-center">
           <MdClose
             onClick={toggleSidebar}
-            className="ml-auto h-10 w-10 text-orange"
+            className="ml-auto h-10 w-10 text-purple"
           />
         </div>
       </div>

@@ -17,9 +17,6 @@ export const CategoryFeedHeader: React.FC<Props> = ({ categoryMetadata }) => {
       style={{
         backgroundColor:
           categoryColors[category as keyof typeof categoryColors],
-        boxShadow: `0px 0px 20px ${
-          categoryColors[category as keyof typeof categoryColors]
-        }`,
       }}
     >
       <div className="flex max-w-[500px] flex-col gap-4">
@@ -31,16 +28,16 @@ export const CategoryFeedHeader: React.FC<Props> = ({ categoryMetadata }) => {
             />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white md:text-xl">
+            <h1 className="text-lg font-bold text-white md:text-2xl">
               {categoryMetadata.category}
             </h1>
-            <h2 className="text-sm text-[#9ca3af]">
+            <h2 className="text-sm text-gray-300">
               {categoryMetadata.subtitle}
             </h2>
           </div>
         </div>
         <div>
-          <p className="text-sm text-[#9ca3af]">
+          <p className="text-sm text-gray-300">
             {categoryMetadata.description}
           </p>
         </div>

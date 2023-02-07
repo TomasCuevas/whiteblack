@@ -12,8 +12,8 @@ export const NavLink: React.FC<Props> = ({ link, text }) => {
 
   return (
     <li
-      className={`group flex items-center border-b-2 duration-300 hover:border-white ${
-        pathname === link ? "border-white/20" : "border-dark"
+      className={`group flex items-center border-b-2 duration-300 ${
+        pathname === link ? "border-white" : "border-dark"
       }`}
     >
       <Link

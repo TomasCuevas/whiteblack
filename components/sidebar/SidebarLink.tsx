@@ -28,8 +28,8 @@ export const SidebarLink: React.FC<Props> = ({ link, text }) => {
       >
         <MdArrowRight
           className={`text-4xl ${
-            pathname === link ? "text-orange" : "text-orange/70"
-          } duration-300 group-hover:text-orange`}
+            pathname === link ? "text-purple" : "text-purple/70"
+          } duration-300 group-hover:text-purple`}
         />
         <span
           className={`text-xl font-light ${

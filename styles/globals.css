@@ -7,7 +7,7 @@ body {
 }
 
 *::selection {
-  background-color: #e86d3333;
+  background-color: #7c53bd33;
 }
 
 #__next {
@@ -27,7 +27,7 @@ body {
 /* ===== Scrollbar CSS ===== */
 * {
   scrollbar-width: auto;
-  scrollbar-color: #e86d33 #060609;
+  scrollbar-color: #7c53bd #07060e;
 }
 
 *::-webkit-scrollbar {
@@ -36,11 +36,11 @@ body {
 }
 
 *::-webkit-scrollbar-track {
-  background: #060609;
+  background: #07060e;
 }
 
 *::-webkit-scrollbar-thumb {
-  background-color: #e86d33;
+  background-color: #7c53bd;
   border-radius: 50px;
-  border: 0px solid #060609;
+  border: 0px solid #07060e;
 }

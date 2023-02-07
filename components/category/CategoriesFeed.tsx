@@ -14,7 +14,7 @@ export const CategoriesFeed: React.FC<Props> = ({
   return (
     <>
       <section>
-        <h3 className="fo/nt-medium text-xl text-orange">
+        <h3 className="fo/nt-medium text-xl text-purple">
           Todas las categorías
         </h3>
       </section>

@@ -12,7 +12,7 @@ export const ArticleItem: React.FC<Props> = ({ articleMetadata }) => {
     <article>
       <Link
         href={`/${articleMetadata.slug}`}
-        className="hover: flex w-full gap-2 rounded-md bg-white/5 p-3 duration-300 hover:bg-white/10"
+        className="flex w-full gap-2 rounded-md bg-light/50 p-3 duration-300 hover:bg-light"
       >
         <div className="flex max-h-[50px] w-2/12 max-w-[50px] items-center">
           <img
@@ -23,7 +23,7 @@ export const ArticleItem: React.FC<Props> = ({ articleMetadata }) => {
         </div>
         <div className="flex w-10/12 flex-col gap-2">
           <h3 className="font-medium text-white">{articleMetadata.title}</h3>
-          <time className="font-light text-gray-200">
+          <time className="font-light text-gray-300">
             {articleMetadata.date}
           </time>
         </div>

@@ -9,9 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        dark: "#060609",
-        light: "#9ca3af",
-        orange: "#e86d33",
+        dark: "#07060e",
+        light: "#1d1839",
+        purple: "#7c53bd",
       },
       screens: {
         xs: "500px",

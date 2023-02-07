@@ -24,7 +24,7 @@ export const MainArticlesFeed: React.FC<Props> = ({
   return (
     <>
       <section>
-        <h3 className="fo/nt-medium text-xl text-orange">Últimos artículos</h3>
+        <h3 className="text-xl font-medium text-purple">Últimos artículos</h3>
       </section>
       <section className="mt-5 flex flex-col gap-1">
         {allArticleFilesMetadata
@@ -38,8 +38,8 @@ export const MainArticlesFeed: React.FC<Props> = ({
               onClick={() => setFeedPage((prev) => prev - 1)}
               className="group mr-auto flex items-center"
             >
-              <MdOutlineNavigateBefore className="text-5xl text-orange/70 duration-300 group-hover:text-orange" />
-              <span className="text-xs text-orange/70 duration-300 group-hover:text-orange xs:text-sm">
+              <MdOutlineNavigateBefore className="text-5xl text-purple/70 duration-300 group-hover:text-purple" />
+              <span className="text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
                 artículos más recientes
               </span>
             </button>
@@ -49,10 +49,10 @@ export const MainArticlesFeed: React.FC<Props> = ({
               onClick={() => setFeedPage((prev) => prev + 1)}
               className="group ml-auto flex items-center"
             >
-              <span className="text-xs text-orange/70 duration-300 group-hover:text-orange xs:text-sm">
+              <span className="text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
                 artículos anteriores
               </span>
-              <MdOutlineNavigateNext className="text-5xl text-orange/70 duration-300 group-hover:text-orange" />
+              <MdOutlineNavigateNext className="text-5xl text-purple/70 duration-300 group-hover:text-purple" />
             </button>
           ) : null}
         </div>
