@@ -1,7 +1,10 @@
 import { GetServerSideProps, NextPage } from "next";
 
 //* utils *//
-import { getAllCategoryFilesMetadata } from "../utils";
+import {
+  getAllCategoryFilesMetadata,
+  getAllArticleFilesMetadataByCategory,
+} from "../utils";
 
 //* components *//
 import { CategoriesFeed } from "../components/category";
@@ -13,26 +16,34 @@ import { MainLayout } from "../components/layout";
 import { ICategoryMetadata } from "../interfaces/ICategoryMetadata";
 
 interface Props {
-  allCategoryFilesMetadata: ICategoryMetadata[];
+  categoriesMetadata: ICategoryMetadata[];
 }
 
-const Categorias: NextPage<Props> = ({ allCategoryFilesMetadata }) => {
+const Categorias: NextPage<Props> = ({ categoriesMetadata }) => {
   return (
     <MainLayout
       title="Categorías | whiteblack"
       description="Página donde se listan todas las categorías existentes en el blog"
     >
-      <CategoriesFeed allCategoryFilesMetadata={allCategoryFilesMetadata} />
+      <CategoriesFeed allCategoryFilesMetadata={categoriesMetadata} />
     </MainLayout>
   );
 };
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
-  const allCategoryFilesMetadata = await getAllCategoryFilesMetadata();
+  let allCategoryFilesMetadata = await getAllCategoryFilesMetadata();
+
+  const categoriesMetadata = allCategoryFilesMetadata.filter((category) => {
+    const articles = getAllArticleFilesMetadataByCategory(category.category);
+
+    if (articles.length > 0) return category;
+  });
+
+  console.log(categoriesMetadata);
 
   return {
     props: {
-      allCategoryFilesMetadata,
+      categoriesMetadata,
     },
   };
 };
