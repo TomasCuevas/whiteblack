@@ -40,16 +40,14 @@ export const Header: React.FC = () => {
   return (
     <header
       id="header"
-      className="fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center shadow-lg shadow-orange/5 backdrop-blur-sm md:h-[70px]"
+      className="fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/50 bg-light/10 backdrop-blur-sm md:h-[70px]"
     >
       <div className="flex h-full w-full max-w-[1200px] items-center px-4 sm:px-6 xl:px-0">
         <Link href="/">
-          <h1 className="text-lg font-semibold tracking-[2px] text-white">
-            whiteblack
-          </h1>
+          <img src="/wb.svg" alt="whiteblack logo" className="h-10" />
         </Link>
         <button className="ml-auto sm:hidden">
-          <MdMenu onClick={toggleSidebar} className=" h-10 w-10 text-orange" />
+          <MdMenu onClick={toggleSidebar} className=" h-10 w-10 text-purple" />
         </button>
         <nav className="ml-auto hidden h-full sm:flex">
           <ul className="flex">
