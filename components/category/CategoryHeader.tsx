@@ -8,7 +8,7 @@ interface Props {
   categoryMetadata: ICategoryMetadata;
 }
 
-export const CategoryFeedHeader: React.FC<Props> = ({ categoryMetadata }) => {
+export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
   const category = categoryMetadata.category.toLowerCase();
 
   return (
@@ -28,16 +28,16 @@ export const CategoryFeedHeader: React.FC<Props> = ({ categoryMetadata }) => {
             />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-white md:text-2xl">
+            <h1 className="font-roboto text-lg font-bold text-white md:text-2xl">
               {categoryMetadata.category}
             </h1>
-            <h2 className="text-sm text-gray-300">
+            <h2 className="font-merriweather text-sm text-gray-300">
               {categoryMetadata.subtitle}
             </h2>
           </div>
         </div>
         <div>
-          <p className="text-sm text-gray-300">
+          <p className="font-merriweather text-sm text-gray-300">
             {categoryMetadata.description}
           </p>
         </div>
