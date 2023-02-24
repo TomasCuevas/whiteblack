@@ -1,8 +1,8 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import Link from "next/link";
 
 //* icons *//
-import { MdMenu } from "react-icons/md";
+import { RiMenu3Line } from "react-icons/ri";
 
 //* components *//
 import { NavLink } from "./NavLink";
@@ -10,44 +10,23 @@ import { NavLink } from "./NavLink";
 //* context *//
 import { UIContext } from "../../context";
 
-const useEffectClient = typeof window === undefined ? null : useEffect;
-
 export const Header: React.FC = () => {
   const { toggleSidebar } = useContext(UIContext);
-  let lastScroll = 100;
-
-  useEffectClient!(() => {
-    const header = document.getElementById("header");
-
-    window.addEventListener("scroll", () => {
-      const currentScroll = window.scrollY;
-
-      if (currentScroll < 100) return;
-
-      if (currentScroll > lastScroll) {
-        header?.classList.add("scrollDown");
-        lastScroll = window.screenY;
-      } else {
-        header?.classList.remove("scrollDown");
-      }
-
-      lastScroll = currentScroll;
-    });
-
-    return removeEventListener("scroll", () => {});
-  }, []);
 
   return (
     <header
       id="header"
-      className="fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/50 bg-light/10 backdrop-blur-sm md:h-[70px]"
+      className="fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/20 bg-light/20  backdrop-blur-md md:h-[70px]"
     >
       <div className="flex h-full w-full max-w-[1200px] items-center px-4 sm:px-6 xl:px-0">
         <Link href="/">
           <img src="/wb.svg" alt="whiteblack logo" className="h-10" />
         </Link>
         <button className="ml-auto sm:hidden">
-          <MdMenu onClick={toggleSidebar} className=" h-10 w-10 text-purple" />
+          <RiMenu3Line
+            onClick={toggleSidebar}
+            className=" h-10 w-10 text-purple"
+          />
         </button>
         <nav className="ml-auto hidden h-full sm:flex">
           <ul className="flex">
