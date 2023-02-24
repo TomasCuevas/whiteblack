@@ -36,28 +36,12 @@ export const getArticleFileBySlug = async (slug: string) => {
   };
 };
 
-export const getAllArticleFilesMetadata = (): IArticleMetadata[] => {
+export const getAllArticleFilesMetadata = async (
+  category?: string
+): Promise<IArticleMetadata[]> => {
   const files: string[] = getAllArticleFiles();
 
-  return files
-    .reduce((allPosts: any, postSlug: string) => {
-      const mdxFile = fs.readFileSync(
-        path.join(root, "content", "articles", postSlug),
-        "utf-8"
-      );
-      const { data } = matter(mdxFile);
-
-      return [{ ...data, slug: postSlug.replace(".mdx", "") }, ...allPosts];
-    }, [])
-    .sort((a, b) => b.date.localeCompare(a.date));
-};
-
-export const getAllArticleFilesMetadataByCategory = (
-  category: string
-): IArticleMetadata[] => {
-  const files: string[] = getAllArticleFiles();
-
-  return files
+  const filesWithMetadata: IArticleMetadata[] = files
     .reduce((allPosts: any, postSlug: string) => {
       const mdxFile = fs.readFileSync(
         path.join(root, "content", "articles", postSlug),
@@ -66,13 +50,32 @@ export const getAllArticleFilesMetadataByCategory = (
       const { data } = matter(mdxFile);
 
       if (
+        category &&
         (data as IArticleMetadata).category.toLowerCase() !==
-        category.toLowerCase()
+          category.toLowerCase()
       ) {
         return [...allPosts];
       }
 
-      return [{ ...data, slug: postSlug.replace(".mdx", "") }, ...allPosts];
+      return [
+        {
+          ...data,
+          slug: postSlug.replace(".mdx", ""),
+        },
+        ...allPosts,
+      ];
     }, [])
     .sort((a, b) => b.date.localeCompare(a.date));
+
+  for await (const iterator of filesWithMetadata) {
+    const source = await serialize(iterator.cardDescription, {
+      mdxOptions: {
+        rehypePlugins: [rehypeHighlight],
+      },
+    });
+
+    iterator.cardDescription = source as unknown as string;
+  }
+
+  return filesWithMetadata;
 };
