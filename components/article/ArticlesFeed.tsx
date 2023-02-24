@@ -1,10 +1,11 @@
 import { useContext } from "react";
 
 //* icons *//
-import { MdOutlineNavigateNext, MdOutlineNavigateBefore } from "react-icons/md";
+import { RiArrowDropLeftFill, RiArrowDropRightFill } from "react-icons/ri";
 
 //* components *//
-import { ArticleItem } from ".";
+import { ArticleCard } from "./";
+import { SectionTitle } from "../ui";
 
 //* context *//
 import { UIContext } from "../../context";
@@ -14,23 +15,23 @@ import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
 
 interface Props {
   allArticleFilesMetadata: IArticleMetadata[];
+  title: string;
 }
 
-export const MainArticlesFeed: React.FC<Props> = ({
+export const ArticlesFeed: React.FC<Props> = ({
   allArticleFilesMetadata,
+  title,
 }) => {
   const { feedPage, setFeedPage } = useContext(UIContext);
 
   return (
-    <>
-      <section>
-        <h3 className="text-xl font-medium text-purple">Últimos artículos</h3>
-      </section>
-      <section className="mt-5 flex flex-col gap-1">
+    <div>
+      <SectionTitle title={title} />
+      <section className="mt-3 flex w-full flex-col gap-2">
         {allArticleFilesMetadata
-          .slice(feedPage === 1 ? 0 : (feedPage - 1) * 5, feedPage * 5)
+          .slice(feedPage === 1 ? 0 : (feedPage - 1) * 4, feedPage * 4)
           .map((article) => (
-            <ArticleItem articleMetadata={article} key={article.slug} />
+            <ArticleCard articleMetadata={article} key={article.slug} />
           ))}
         <div className="flex gap-3">
           {feedPage > 1 ? (
@@ -38,25 +39,25 @@ export const MainArticlesFeed: React.FC<Props> = ({
               onClick={() => setFeedPage((prev) => prev - 1)}
               className="group mr-auto flex items-center"
             >
-              <MdOutlineNavigateBefore className="text-5xl text-purple/70 duration-300 group-hover:text-purple" />
-              <span className="text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
+              <RiArrowDropLeftFill className="text-4xl text-purple/70 duration-300 group-hover:text-purple" />
+              <span className="font-merriweather text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
                 artículos más recientes
               </span>
             </button>
           ) : null}
-          {feedPage * 5 < allArticleFilesMetadata.length ? (
+          {feedPage * 4 < allArticleFilesMetadata.length ? (
             <button
               onClick={() => setFeedPage((prev) => prev + 1)}
               className="group ml-auto flex items-center"
             >
-              <span className="text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
+              <span className="font-merriweather text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
                 artículos anteriores
               </span>
-              <MdOutlineNavigateNext className="text-5xl text-purple/70 duration-300 group-hover:text-purple" />
+              <RiArrowDropRightFill className="text-4xl text-purple/70 duration-300 group-hover:text-purple" />
             </button>
           ) : null}
         </div>
       </section>
-    </>
+    </div>
   );
 };
