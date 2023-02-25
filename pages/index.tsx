@@ -4,7 +4,8 @@ import { NextPage, GetStaticProps } from "next";
 import { getAllArticleFilesMetadata } from "../utils";
 
 //* components *//
-import { MainArticlesFeed } from "../components/article";
+import { ArticlesFeed } from "../components/article";
+import { MeCard } from "../components/ui";
 
 //* layout *//
 import { MainLayout } from "../components/layout";
@@ -19,26 +20,23 @@ interface Props {
 const Home: NextPage<Props> = ({ allArticleFilesMetadata }) => {
   return (
     <MainLayout
-      title="whiteblack"
+      title="Whiteblack"
       description="Pagina principal del blog sobre programacion whiteblack"
     >
-      <MainArticlesFeed allArticleFilesMetadata={allArticleFilesMetadata} />
+      <div className="flex gap-8">
+        <ArticlesFeed
+          allArticleFilesMetadata={allArticleFilesMetadata}
+          title="Últimos artículos"
+        />
+        <MeCard />
+      </div>
     </MainLayout>
   );
 };
 
 export const getStaticProps: GetStaticProps = async () => {
   let allArticleFilesMetadata: IArticleMetadata[] =
-    await getAllArticleFilesMetadata().map((article) => {
-      article.date = new Date(article.date).toLocaleDateString("es-ES", {
-        year: "numeric",
-        month: "long",
-        day: "numeric",
-        timeZone: "UTC",
-      });
-
-      return article;
-    });
+    await getAllArticleFilesMetadata();
 
   return {
     props: {
