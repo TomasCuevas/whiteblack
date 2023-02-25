@@ -1,14 +1,9 @@
-import { useContext } from "react";
-
-//* icons *//
-import { RiArrowDropLeftFill, RiArrowDropRightFill } from "react-icons/ri";
-
 //* components *//
 import { ArticleCard } from "./";
-import { SectionTitle } from "../ui";
+import { PaginationButtons, SectionTitle } from "../ui";
 
-//* context *//
-import { UIContext } from "../../context";
+//* hooks *//
+import { usePagination } from "../../hooks";
 
 //* interfaces *//
 import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
@@ -22,41 +17,24 @@ export const ArticlesFeed: React.FC<Props> = ({
   allArticleFilesMetadata,
   title,
 }) => {
-  const { feedPage, setFeedPage } = useContext(UIContext);
+  const { pagination, increment, decrement } = usePagination();
 
   return (
     <div>
       <SectionTitle title={title} />
       <section className="mt-3 flex w-full flex-col gap-2">
         {allArticleFilesMetadata
-          .slice(feedPage === 1 ? 0 : (feedPage - 1) * 4, feedPage * 4)
+          .slice(pagination === 1 ? 0 : (pagination - 1) * 4, pagination * 4)
           .map((article) => (
             <ArticleCard articleMetadata={article} key={article.slug} />
           ))}
-        <div className="flex gap-3">
-          {feedPage > 1 ? (
-            <button
-              onClick={() => setFeedPage((prev) => prev - 1)}
-              className="group mr-auto flex items-center"
-            >
-              <RiArrowDropLeftFill className="text-4xl text-purple/70 duration-300 group-hover:text-purple" />
-              <span className="font-merriweather text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
-                artículos más recientes
-              </span>
-            </button>
-          ) : null}
-          {feedPage * 4 < allArticleFilesMetadata.length ? (
-            <button
-              onClick={() => setFeedPage((prev) => prev + 1)}
-              className="group ml-auto flex items-center"
-            >
-              <span className="font-merriweather text-xs text-purple/70 duration-300 group-hover:text-purple xs:text-sm">
-                artículos anteriores
-              </span>
-              <RiArrowDropRightFill className="text-4xl text-purple/70 duration-300 group-hover:text-purple" />
-            </button>
-          ) : null}
-        </div>
+        <PaginationButtons
+          decrement={decrement}
+          increment={increment}
+          itemsLength={allArticleFilesMetadata.length}
+          itemsPerPage={4}
+          pagination={pagination}
+        />
       </section>
     </div>
   );
