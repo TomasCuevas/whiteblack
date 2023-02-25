@@ -3,7 +3,7 @@ import { GetServerSideProps, NextPage } from "next";
 //* utils *//
 import {
   getAllCategoryFilesMetadata,
-  getAllArticleFilesMetadataByCategory,
+  getAllArticleFilesMetadata,
 } from "../utils";
 
 //* components *//
@@ -22,7 +22,7 @@ interface Props {
 const Categorias: NextPage<Props> = ({ categoriesMetadata }) => {
   return (
     <MainLayout
-      title="Categorías | whiteblack"
+      title="Categorías | Whiteblack"
       description="Página donde se listan todas las categorías existentes en el blog"
     >
       <CategoriesFeed allCategoryFilesMetadata={categoriesMetadata} />
@@ -32,14 +32,16 @@ const Categorias: NextPage<Props> = ({ categoriesMetadata }) => {
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
   let allCategoryFilesMetadata = await getAllCategoryFilesMetadata();
+  const allArticles = await getAllArticleFilesMetadata();
 
   const categoriesMetadata = allCategoryFilesMetadata.filter((category) => {
-    const articles = getAllArticleFilesMetadataByCategory(category.category);
+    const articles = allArticles.filter(
+      (article) =>
+        article.category.toLowerCase() === category.category.toLowerCase()
+    );
 
-    if (articles.length > 0) return category;
+    return articles.length > 0 ? category : null;
   });
-
-  console.log(categoriesMetadata);
 
   return {
     props: {
