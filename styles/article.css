@@ -114,8 +114,16 @@
   background-image: url("/images/categories/javascript.svg");
 }
 
+.language-jsx::before {
+  background-image: url("/images/categories/react.svg");
+}
+
 .language-typescript::before {
   background-image: url("/images/categories/typescript.svg");
+}
+
+.language-tsx::before {
+  background-image: url("/images/categories/react.svg");
 }
 
 .language-css::before {
