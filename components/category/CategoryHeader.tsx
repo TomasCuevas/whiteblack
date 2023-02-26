@@ -13,14 +13,14 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
 
   return (
     <section
-      className="flex justify-center rounded-md p-4 shadow-lg  sm:justify-start sm:pl-12 md:py-8 md:pl-20 mdx:pl-32"
+      className="flex justify-center rounded-md p-4 shadow-lg  sm:justify-start sm:pl-12 md:py-8 md:px-20 mdx:px-32"
       style={{
         backgroundColor:
           categoryColors[category as keyof typeof categoryColors],
       }}
     >
       <div className="flex max-w-[500px] flex-col gap-4">
-        <div className="flex gap-4">
+        <div className="flex w-full gap-4 border-b border-white/10 pb-4">
           <div className="w-14 md:w-[72px]">
             <img
               src={`/images/categories/${categoryMetadata.category.toLowerCase()}.svg`}
