@@ -2,14 +2,14 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 
 //* helpers *//
 import {
-  getAllArticleFilesMetadataByCategory,
+  getAllArticleFilesMetadata,
   getAllCategoryFiles,
   getCategoryFileBySlug,
 } from "../../utils";
 
 //* components *//
-import { ArticleItem } from "../../components/article";
-import { CategoryFeedHeader } from "../../components/category";
+import { ArticlesFeed } from "../../components/article";
+import { CategoryHeader } from "../../components/category";
 
 //* layout *//
 import { MainLayout } from "../../components/layout";
@@ -32,12 +32,11 @@ const ArticlePage: NextPage<Props> = ({
 }) => {
   return (
     <MainLayout description={metadata.description} title={metadata.title}>
-      <CategoryFeedHeader categoryMetadata={metadata} />
-      <section className="mt-5 flex flex-col gap-1">
-        {allArticleFilesMetadata.map((article) => (
-          <ArticleItem key={article.title} articleMetadata={article} />
-        ))}
-      </section>
+      <CategoryHeader categoryMetadata={metadata} />
+      <ArticlesFeed
+        allArticleFilesMetadata={allArticleFilesMetadata}
+        title={`Articulos sobre ${metadata.category}`}
+      />
     </MainLayout>
   );
 };
@@ -61,18 +60,9 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     (params as any).category
   );
 
-  const allArticleFilesMetadata = await getAllArticleFilesMetadataByCategory(
+  const allArticleFilesMetadata = await getAllArticleFilesMetadata(
     categoryMetadata.category
-  ).map((article) => {
-    article.date = new Date(article.date).toLocaleDateString("es-ES", {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
-      timeZone: "UTC",
-    });
-
-    return article;
-  });
+  );
 
   return {
     props: {
