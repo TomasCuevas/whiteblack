@@ -1,36 +1,74 @@
-#article p {
+.article p {
   color: #fff;
   font-size: 18px;
   line-height: 28px;
   margin-bottom: 30px;
-  font-weight: 300;
+  font-weight: 300 !important;
 }
 
-#article a {
+.article a {
   padding-bottom: 1px;
   border-bottom: 2px solid #fff;
   font-weight: 500;
 }
 
-#article strong {
-  font-weight: 600;
+.article strong {
+  font-weight: 900;
 }
 
-#article h2 {
+.article h2 {
+  position: relative;
   font-size: 24px;
   font-weight: 600;
   color: #fff;
-  margin: 40px 0 30px 0;
+  margin: 60px 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #fff;
 }
 
-#article h3 {
+.article h2:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 10px;
+  height: 20px;
+  border-bottom: 10px solid #0000;
+  border-right: 10px solid #0000;
+  border-left: 10px solid #fff;
+  border-top: 10px solid #0000;
+}
+
+.article h3 {
+  position: relative;
   font-size: 22px;
   font-weight: 600;
   color: #fff;
-  margin: 40px 0 30px 0;
+  margin: 40px 0 15px 0;
 }
 
-#article code {
+.article h3:before {
+  position: absolute;
+  content: "";
+  width: 100px;
+  height: 1px;
+  background-color: #fff;
+  left: 0;
+  bottom: 0px;
+}
+
+.article h3:after {
+  position: absolute;
+  content: "";
+  border-bottom: 5px solid #0000;
+  border-right: 5px solid #0000;
+  border-left: 5px solid #fff;
+  border-top: 5px solid #0000;
+  left: 0;
+  bottom: -5px;
+}
+
+.article code {
   background-color: #fff;
   color: #111;
   padding: 0 4px;
@@ -38,22 +76,22 @@
   font-size: 16px;
 }
 
-#article pre code {
+.article pre code {
   background-color: #110f18;
   color: #979daa;
   padding: 1rem;
   margin-bottom: 20px;
 }
 
-#article p + ul {
+.article p + ul {
   margin-top: -16px;
 }
 
-#article ul {
+.article ul {
   padding: 0 0 16px 16px;
 }
 
-#article ul li {
+.article ul li {
   position: relative;
   font-size: 18px;
   line-height: 28px;
@@ -61,7 +99,7 @@
   margin-bottom: 3px;
 }
 
-#article ul li:before {
+.article ul li:before {
   content: "";
   position: absolute;
   left: -10px;
@@ -72,11 +110,11 @@
   background-color: #e86d33;
 }
 
-#article ol {
+.article ol {
   padding: 0 0 16px 16px;
 }
 
-#article ol li {
+.article ol li {
   position: relative;
   font-size: 18px;
   line-height: 28px;
@@ -84,7 +122,7 @@
   margin-bottom: 3px;
 }
 
-#article ol li:before {
+.article ol li:before {
   content: "";
   position: absolute;
   left: -10px;
@@ -95,11 +133,11 @@
   background-color: #e86d33;
 }
 
-#article pre {
+.article pre {
   position: relative;
 }
 
-#article pre code:before {
+.article pre code:before {
   content: "";
   position: absolute;
   right: 10px;
@@ -114,11 +152,19 @@
   background-image: url("/images/categories/javascript.svg");
 }
 
+.language-js::before {
+  background-image: url("/images/categories/javascript.svg");
+}
+
 .language-jsx::before {
   background-image: url("/images/categories/react.svg");
 }
 
 .language-typescript::before {
+  background-image: url("/images/categories/typescript.svg");
+}
+
+.language-ts::before {
   background-image: url("/images/categories/typescript.svg");
 }
 
@@ -136,4 +182,8 @@
 
 .language-shell::before {
   background-image: url("/images/categories/terminal.svg");
+}
+
+.language-json::before {
+  background-image: url("/images/categories/json.svg");
 }
