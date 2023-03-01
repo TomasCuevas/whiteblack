@@ -25,18 +25,24 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
                 day: "2-digit",
                 month: "short",
                 year: "numeric",
+                timeZone: "UTC",
               })}
             </time>
             <h3 className="font-roboto text-sm font-black text-white xs:text-base sm:text-lg md:text-xl">
               {articleMetadata.title}
             </h3>
-            <div className="hidden max-h-20 overflow-hidden font-merriweather text-sm font-light text-gray-400 group-hover:text-gray-300 sm:block">
+            <div className="articleCard hidden max-h-20 overflow-hidden text-ellipsis font-merriweather text-sm font-light text-gray-400 group-hover:text-gray-300 sm:block">
               <MDXRemote {...(articleMetadata.cardDescription as any)} />
             </div>
-            <div>
-              <span className="rounded-md bg-purple/10 px-4 py-1 font-merriweather text-xs font-light text-white duration-100 group-hover:bg-purple/30">
-                {articleMetadata.category}
-              </span>
+            <div className="flex flex-wrap gap-2">
+              {articleMetadata.tags.map((tag) => (
+                <span
+                  key={`${articleMetadata.slug} ${tag}`}
+                  className="rounded-md bg-purple/10 px-4 py-1 font-merriweather text-xs font-light text-white duration-100 group-hover:bg-purple/30"
+                >
+                  {tag}
+                </span>
+              ))}
             </div>
           </div>
         </div>

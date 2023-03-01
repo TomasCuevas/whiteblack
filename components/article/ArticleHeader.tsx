@@ -32,6 +32,7 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
               day: "numeric",
               month: "long",
               year: "numeric",
+              timeZone: "UTC",
             })}
           </time>
         </div>
