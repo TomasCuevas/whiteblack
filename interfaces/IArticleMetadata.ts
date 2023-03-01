@@ -4,6 +4,7 @@ export interface IArticleMetadata {
   category: string;
   date: string;
   description: string;
+  cardDescription: string;
   keywords: string[];
   slug: string;
   tags: string[];
