@@ -3,6 +3,7 @@ import Head from "next/head";
 
 //* styles *//
 import "../styles/article.css";
+import "../styles/articleCard.css";
 import "../styles/globals.css";
 import "../styles/header.css";
 

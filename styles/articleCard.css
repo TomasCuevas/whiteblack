@@ -1,0 +1,97 @@
+.articleCard p {
+  color: #fff;
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: rgb(156 163 175);
+  font-size: 14px;
+}
+
+.articleCard a {
+  padding-bottom: 1px;
+  border-bottom: 2px solid #fff;
+  font-weight: 500;
+}
+
+.articleCard strong {
+  font-weight: 900;
+}
+
+.articleCard code {
+  background-color: #fff;
+  color: #111;
+  padding: 0 4px;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.articleCard pre code {
+  background-color: #110f18;
+  color: #979daa;
+  padding: 1rem;
+  margin-bottom: 20px;
+}
+
+.articleCard p + ul {
+  margin-top: -16px;
+}
+
+.articleCard ul {
+  padding: 0 0 16px 16px;
+}
+
+.articleCard ul li {
+  position: relative;
+  font-size: 18px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.articleCard ul li:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #e86d33;
+}
+
+.articleCard ol {
+  padding: 0 0 16px 16px;
+}
+
+.articleCard ol li {
+  position: relative;
+  font-size: 18px;
+  line-height: 28px;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.articleCard ol li:before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 12px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #e86d33;
+}
+
+.articleCard pre {
+  position: relative;
+}
+
+.articleCard pre code:before {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: -18px;
+  width: 30px;
+  height: 30px;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
