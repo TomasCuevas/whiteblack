@@ -24,9 +24,9 @@ interface Props {
 const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
   return (
     <MainLayout description={metadata.description} title={metadata.title}>
-      <article id="article" className="mx-auto max-w-[800px]">
+      <article className="article mx-auto max-w-[800px]">
         <ArticleHeader metadata={metadata} />
-        <div>
+        <div className="font-merriweather">
           <MDXRemote {...source} />
         </div>
       </article>
