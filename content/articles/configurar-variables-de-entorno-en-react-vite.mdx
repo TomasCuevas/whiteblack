@@ -1,0 +1,123 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Configurar variables de entorno en React utilizando Vite"
+date: "2023-03-03"
+description: "En este artículo, aprenderemos cómo configurar variables de entorno en React cuando utilizamos Vite de una forma sencilla y rápida."
+cardDescription: "En ocasiones, requerimos él uso de variables de entorno en nuestras aplicaciones, para centralizar algún valor y poder evitar escribir este valor en bruto en nuestro código, promoviéndonos un fácil acceso y una sencilla forma de modificar este valor sin tener que hacerlo en todos los lugares donde se use tal valor."
+category: "react"
+tags:
+  - "react"
+  - "vite"
+  - "variables de entorno"
+keywords:
+  - "react"
+  - "vite"
+  - "enviroments"
+  - "variables de entorno"
+---
+
+En ocasiones, requerimos él uso de `variables de entorno` en nuestras aplicaciones, para centralizar algún valor y poder `evitar` escribir este valor en bruto en nuestro código, promoviéndonos un fácil acceso y una sencilla forma de modificar este valor sin tener que hacerlo en todos los lugares donde se use tal valor.
+
+## Archivo .env
+
+Vite, por detrás, utiliza `dotenv` para él manejo de las variables de entornos, por lo cual, estas deben estar escritas en él archivo `.env` para que puedan ser servidas.
+
+## Utilizar las variables de entorno
+
+Para poder utilizar las variables de entorno en él cliente, debemos hacer uso del objeto `import.meta.env` seguido de la variable que pretendamos utilizar.
+
+Solo las variables con él prefijo `VITE_` pueden ser utilizadas en él código procesado por vite que llega al `cliente`:
+
+```text
+VITE_NAME=Tomás
+NAME=Tomás
+```
+
+Únicamente `VITE_NAME` podrá ser usado en él código fuente del cliente.
+
+```js
+console.log(import.meta.env.VITE_NAME); // Tomás
+console.log(import.meta.env.NAME); // undefined
+```
+
+## Optimizar la forma de obtener nuestras variables
+
+En la hipotética situación donde debamos utilizar `múltiples variables de entorno` o inclusive, la misma, en un `mismo archivo`, se puede tornar `molesto` tener que instanciar múltiples veces `import.meta.env`, como en él siguiente ejemplo:
+
+```text
+VITE_NAME=Tomás
+VITE_LASTNAME=Cuevas
+VITE_SECRET_PASSWORD=ABC123
+```
+
+```jsx
+export const App = () => {
+  return (
+    <div>
+      <p>
+        user: {import.meta.env.VITE_NAME} {import.meta.env.VITE_LASTNAME}
+      </p>
+      <p>password: {import.meta.env.VITE_SECRET_PASSWORD}</p>
+    </div>
+  );
+};
+```
+
+Para ello, podríamos crear una `función` que nos retorne todas las variables de entorno que vayamos configurando allí, está no sólo nos `ahorrará` tener que ir escribiendo `import.meta.env` por toda nuestra aplicación, tan solo, tendremos que llamar la función y obtener la variable que nos interese.
+
+La función, sería la siguiente:
+
+```js
+export const getEnvironments = () => {
+  return {
+    name: import.meta.env.VITE_NAME,
+    lastname: import.meta.env.VITE_LASTNAME,
+    secret_password: import.meta.env.SECRET_PASSWORD,
+  };
+};
+```
+
+Y en nuestro componente, podríamos obtener las variables de las siguientes formas:
+
+### Primera forma
+
+```jsx
+import { getEnvironments } from "./helpers/getEnvironments";
+
+export const App = () => {
+  return (
+    <div>
+      <p>
+        user: {getEnvironments().name} {getEnvironments().lastname}
+      </p>
+      <p>password: {getEnvironments().secret_password}</p>
+    </div>
+  );
+};
+```
+
+Aquí, importamos la función `getEnvironments` en él archivo donde tengamos nuestro componente, luego, llamamos está función y hacemos uso de la “dot notation” o `notación de punto` para obtener la variable que queramos utilizar.
+
+Si te das cuenta, está forma `no` es tan `óptima`, ya que simplemente reemplazamos `import.meta.env` por `getEnvironments`. Por ello, veamos la siguiente forma qué es, en mi opinión, la más óptima:
+
+### Segunda forma
+
+```jsx
+import { getEnvironments } from "./helpers/getEnvironments";
+
+const { lastname, name, secret_password } = getEnvironments();
+
+export const App = () => {
+  return (
+    <div>
+      <p>
+        user: {name} {lastname}
+      </p>
+      <p>password: {secret_password}</p>
+    </div>
+  );
+};
+```
+
+En está forma, importamos la función y luego aplicamos `desestructuración` para obtener las variables que queramos utilizar. y de está forma, no tenemos que llamar la función cada vez que queramos obtener una variable o escribir import.meta.env en múltiples ocasiones.
