@@ -5,10 +5,10 @@ import Link from "next/link";
 import { RiMenu3Line } from "react-icons/ri";
 
 //* components *//
-import { NavLink } from "./NavLink";
+import { NavLink } from "@/components/header/NavLink";
 
 //* context *//
-import { UIContext } from "../../context";
+import { UIContext } from "@/context";
 
 export const Header: React.FC = () => {
   const { toggleSidebar } = useContext(UIContext);

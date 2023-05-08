@@ -6,7 +6,7 @@ import Link from "next/link";
 import { RiArrowDropRightFill } from "react-icons/ri";
 
 //* context *//
-import { UIContext } from "../../context";
+import { UIContext } from "@/context";
 
 //* interface *//
 interface Props {

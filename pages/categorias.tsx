@@ -4,16 +4,16 @@ import { GetServerSideProps, NextPage } from "next";
 import {
   getAllCategoryFilesMetadata,
   getAllArticleFilesMetadata,
-} from "../utils";
+} from "@/utils";
 
 //* components *//
-import { CategoriesFeed } from "../components/category";
+import { CategoriesFeed } from "@/components/category";
 
 //* layout *//
-import { MainLayout } from "../components/layout";
+import { MainLayout } from "@/layout";
 
 //* interfaces *//
-import { ICategoryMetadata } from "../interfaces/ICategoryMetadata";
+import { ICategoryMetadata } from "@/interfaces/ICategoryMetadata";
 
 interface Props {
   categoriesMetadata: ICategoryMetadata[];

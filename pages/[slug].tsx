@@ -2,19 +2,19 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
 //* helpers *//
-import { getArticleFileBySlug, getAllArticleFiles } from "../utils";
+import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
 
 //* components *//
-import { ArticleHeader } from "../components/article";
+import { ArticleHeader } from "@/components/article";
 
 //* layout *//
-import { MainLayout } from "../components/layout";
+import { MainLayout } from "@/layout";
 
 //* styles *//
 import "highlight.js/styles/atom-one-dark.css";
 
 //* interfaces *//
-import { IArticleMetadata } from "../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
 
 interface Props {
   source: any;

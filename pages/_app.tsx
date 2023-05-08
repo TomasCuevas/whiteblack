@@ -2,13 +2,13 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 
 //* styles *//
-import "../styles/article.css";
-import "../styles/articleCard.css";
-import "../styles/globals.css";
-import "../styles/header.css";
+import "@/styles/article.css";
+import "@/styles/articleCard.css";
+import "@/styles/globals.css";
+import "@/styles/header.css";
 
 //* providers *//
-import { UIProvider } from "../context";
+import { UIProvider } from "@/context";
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

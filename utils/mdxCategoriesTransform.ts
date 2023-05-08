@@ -3,7 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 
 //* interface *//
-import { ICategoryMetadata } from "../interfaces/ICategoryMetadata";
+import { ICategoryMetadata } from "@/interfaces";
 
 const root = process.cwd();
 

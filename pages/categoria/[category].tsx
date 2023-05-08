@@ -5,21 +5,20 @@ import {
   getAllArticleFilesMetadata,
   getAllCategoryFiles,
   getCategoryFileBySlug,
-} from "../../utils";
+} from "@/utils";
 
 //* components *//
-import { ArticlesFeed } from "../../components/article";
-import { CategoryHeader } from "../../components/category";
+import { ArticlesFeed } from "@/components/article";
+import { CategoryHeader } from "@/components/category";
 
 //* layout *//
-import { MainLayout } from "../../components/layout";
+import { MainLayout } from "@/layout";
 
 //* styles *//
 import "highlight.js/styles/atom-one-dark.css";
 
 //* interfaces *//
-import { ICategoryMetadata } from "../../interfaces/ICategoryMetadata";
-import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
+import { ICategoryMetadata, IArticleMetadata } from "@/interfaces";
 
 interface Props {
   metadata: ICategoryMetadata;

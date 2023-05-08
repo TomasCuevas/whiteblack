@@ -5,7 +5,7 @@ import { serialize } from "next-mdx-remote/serialize";
 import rehypeHighlight from "rehype-highlight";
 
 //* interface *//
-import { IArticleMetadata } from "../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 const root = process.cwd();
 

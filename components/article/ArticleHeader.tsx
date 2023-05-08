@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 //* interface *//
-import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
 
 interface Props {
   metadata: IArticleMetadata;

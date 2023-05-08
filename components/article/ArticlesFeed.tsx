@@ -1,12 +1,12 @@
 //* components *//
-import { ArticleCard } from "./";
-import { PaginationButtons, SectionTitle } from "../ui";
+import { ArticleCard } from "@/components/article";
+import { PaginationButtons, SectionTitle } from "@/components/ui";
 
 //* hooks *//
-import { usePagination } from "../../hooks";
+import { usePagination } from "@/hooks";
 
 //* interfaces *//
-import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
   allArticleFilesMetadata: IArticleMetadata[];

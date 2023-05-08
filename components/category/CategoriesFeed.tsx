@@ -1,9 +1,9 @@
 //* components *//
-import { CategoryCard } from "./";
-import { SectionTitle } from "../ui";
+import { CategoryCard } from "@/components/category";
+import { SectionTitle } from "@/components/ui";
 
 //* interfaces *//
-import { ICategoryMetadata } from "../../interfaces/ICategoryMetadata";
+import { ICategoryMetadata } from "@/interfaces";
 
 interface Props {
   allCategoryFilesMetadata: ICategoryMetadata[];

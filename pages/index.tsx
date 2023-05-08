@@ -1,17 +1,17 @@
 import { NextPage, GetStaticProps } from "next";
 
 //* utils *//
-import { getAllArticleFilesMetadata } from "../utils";
+import { getAllArticleFilesMetadata } from "@/utils";
 
 //* components *//
-import { ArticlesFeed } from "../components/article";
-import { MeCard } from "../components/ui";
+import { ArticlesFeed } from "@/components/article";
+import { MeCard } from "@/components/ui";
 
 //* layout *//
-import { MainLayout } from "../components/layout";
+import { MainLayout } from "@/layout";
 
 //* interfaces *//
-import { IArticleMetadata } from "../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
 
 interface Props {
   allArticleFilesMetadata: IArticleMetadata[];

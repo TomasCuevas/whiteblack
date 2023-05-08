@@ -1,8 +1,8 @@
 //* data *//
-import { categoryColors } from "../../data";
+import { categoryColors } from "@/data";
 
 //* interfaces *//
-import { ICategoryMetadata } from "../../interfaces/ICategoryMetadata";
+import { ICategoryMetadata } from "@/interfaces";
 
 interface Props {
   categoryMetadata: ICategoryMetadata;

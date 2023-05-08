@@ -1,4 +1,4 @@
-export const MeCard = () => {
+export const MeCard: React.FC = () => {
   return (
     <div className="mt-10 hidden lg:block">
       <div className="flex max-w-xs flex-col gap-4 border-l border-light py-4 px-4">

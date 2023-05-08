@@ -4,10 +4,10 @@ import { useContext } from "react";
 import { RiCloseFill } from "react-icons/ri";
 
 //* components *//
-import { SidebarLink } from "./SidebarLink";
+import { SidebarLink } from "@/components/sidebar";
 
 //* context *//
-import { UIContext } from "../../context";
+import { UIContext } from "@/context";
 
 export const MobileSidebar: React.FC = () => {
   const { toggleSidebar } = useContext(UIContext);

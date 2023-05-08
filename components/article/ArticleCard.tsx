@@ -5,7 +5,7 @@ import { MDXRemote } from "next-mdx-remote";
 import "highlight.js/styles/atom-one-dark.css";
 
 //* interface
-import { IArticleMetadata } from "../../interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
   articleMetadata: IArticleMetadata;
