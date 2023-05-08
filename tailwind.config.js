@@ -3,6 +3,7 @@ module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx}",
     "./components/**/*.{js,ts,jsx,tsx}",
+    "./layout/**/*.{js,ts,jsx,tsx}",
     // Or if using `src` directory:
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
@@ -32,8 +33,8 @@ module.exports = {
           "-apple-system",
           "BlinkMacSystemFont",
         ],
-        gloock: [
-          "Gloock",
+        inter: [
+          "Inter",
           "ui-sans-serif",
           "ui-sans-serif, system-ui",
           "-apple-system",

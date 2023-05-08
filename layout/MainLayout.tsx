@@ -2,12 +2,12 @@ import Head from "next/head";
 import { useContext } from "react";
 
 //* components *//
-import { Header } from "../header";
-import { MobileSidebar } from "../sidebar";
-import { Footer } from "../footer";
+import { Header } from "@/components/header";
+import { MobileSidebar } from "@/components/sidebar";
+import { Footer } from "@/components/footer";
 
 //* context *//
-import { UIContext } from "../../context";
+import { UIContext } from "@/context";
 
 //* interface *//
 interface Props {
