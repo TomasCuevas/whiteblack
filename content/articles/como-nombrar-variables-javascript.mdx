@@ -1,0 +1,100 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Cómo nombrar nuestras variables en JavaScript correctamente"
+date: "2023-05-09"
+description: "El artículo sobre cómo nombrar las variables en JavaScript es una guía detallada y completa que ofrece las mejores prácticas y reglas para nombrar las variables de manera efectiva y consistente en el lenguaje de programación JavaScript."
+cardDescription: "Nombrar **variables** en **JavaScript y TypeScript** puede parecer una tarea sencilla, pero en realidad es una habilidad muy importante para cualquier programador. Los **nombres de las variables** no solo deben ser descriptivos y precisos, sino que también deben seguir una convención de nomenclatura adecuada para garantizar la **legibilidad del código** y **evitar errores**."
+category: "javascript"
+tags:
+  - "javascript"
+  - "typescript"
+  - "variables"
+keywords:
+  - "javascript"
+  - "typescript"
+  - "variables"
+---
+
+Nombrar **variables** en **JavaScript y TypeScript** puede parecer una tarea sencilla, pero en realidad es una habilidad muy importante para cualquier programador. Los **nombres de las variables** no solo deben ser descriptivos y precisos, sino que también deben seguir una convención de nomenclatura adecuada para garantizar la **legibilidad del código** y **evitar errores**.
+
+En este artículo, exploraremos algunas **mejores prácticas** para nombrar variables en JavaScript y TypeScript que ayudarán a mejorar la calidad del código y a hacerlo más fácil de mantener y comprender.
+
+## Reglas generales
+
+Antes de comenzar con las reglas más puntuales, destinadas a diferentes tipos de variables, te nombraré y explicaré algunas **reglas generales** que son relevantes para todos los tipos de variables.
+
+- **Utilizar nombres descriptivos**: Los nombres de variables deben ser **descriptivos** y reflejar el propósito o uso de la variable en el código. Un **buen nombre** de variable debe dar una **idea clara** de lo que hace la variable.
+- **Evitar nombres genéricos**: Los nombres de variables como "x", “n1”, "temp" no son descriptivos y pueden **dificultar la lectura y comprensión** del código.
+- **Utiliza nombres en inglés**: Es un estándar, que las variables que escriban en **inglés**, ya que la comunidad de programadores es global, y él inglés es él idioma que se terminó estandarizando.
+- **Evitar nombres confusos**: No utilices nombres de variables que sean **similares a otras variables ya existentes** en el mismo ámbito, ya que esto puede generar errores en el código.
+- **Utiliza nombres cortos y concisos**: Los nombres de variables deben ser lo más **cortos y concisos** posible, pero aún así **descriptivos**.
+
+## Variables comunes
+
+Las variables "comunes" son aquellas que utilizamos con mayor frecuencia. Se pueden **utilizar** para asignar **valores**, **arrays**, **objetos literales** o "diccionarios", y **funciones**.
+
+- **Utilizar "camelCase"**: Es recomendable utilizar la convención de nomenclatura **"camelCase"**, que consiste en escribir la **primera palabra** completamente en **minúscula** y las **siguientes palabras** empezando con **mayúsculas** y en minúsculas en el medio. No se utiliza ningún tipo de separación entre las palabras.
+- **Sustantivos con adjetivos**: Para nombrar las variables, es recomendable utilizar **sustantivos con adjetivos** para representar los datos que se están almacenando. Por ejemplo, si estamos almacenando la edad del usuario, la variable podría llamarse "userAge".
+- **Utiliza un prefijo que indique que la variable es un booleano**: Es recomendable utilizar un prefijo que indique si la variable es un booleano, como **"is"** o **"has"**. Por ejemplo, si la variable indica si un usuario está registrado o no, podrías nombrarla "isLogged".
+
+### Algunos ejemplos:
+
+```js
+let isLogged = false; // uso de prefijo
+const userAge = getUser().age; // sustantivo con adjetivo
+let listOfCars = ["Toyota Corolla", "Honda Civic", "Ford Mustang"]; // sustantivo con adjetivo
+```
+
+## Variables de sólo lectura
+
+Una **variable de solo lectura** es una variable cuyo **valor no se puede modificar** una vez que se le ha **asignado un valor inicial**. El valor de esta variable se **define en el código fuente**, por lo que conocemos su valor antes de la ejecución del programa.
+
+- **Utilizar "SNAKE_CASE"**: La convención de nomenclatura a la que se hace referencia **implica escribir todas las palabras en mayúsculas** y **separarlas** mediante un guión bajo **"\_"**.
+
+### Algunos ejemplos:
+
+```js
+const MAX_NAME_LENGTH = 40;
+const DATABASE_PASSWORD = "MySecretPassword";
+const LIGHT_SPEED = 299.792.458;
+```
+
+## Métodos y funciones
+
+Las reglas para estos son muy similares a las **“variables comunes”**, pero tomando en cuenta algunas pautas extras.
+
+- **Verbos en infinitivo**: Es recomendable utilizar verbos para **indicar** la **acción** que realiza una **función o método**. Por ejemplo, si la función devuelve un número aleatorio, sería adecuado llamarla "getRandomNumber" en lugar de simplemente "randomNumber". De esta manera, se **hace más claro el propósito** de la función y se mejora la **legibilidad** del código.
+- **Utilizar “camelCase”**: Se trata de una convención de nomenclatura que consiste en **escribir** la primera palabra en **minúsculas** y las siguientes palabras con la primera letra en **mayúscula** y el resto en minúscula. Además, **no debe haber separación** entre las palabras.
+
+### Algunos ejemplos:
+
+```js
+const getRandomNumber = () => Math.random();
+const getUserById = (id) => users.find((user) => user.id === id);
+const setDarkMode = () => (darkmode = true);
+```
+
+## Clases
+
+Una **clase** es un modelo que define las **características y comportamientos** de un tipo de **objeto** en particular, el cual puede ser utilizado para crear múltiples instancias o ejemplares de ese objeto
+
+- **Utilizar “UpperCamelCase”**: Esto significa que el **nombre** de la clase debe **comenzar** con una letra **mayúscula** y cada palabra adicional del nombre también debe comenzar con una letra mayúscula."
+- **Usa sustantivos para nombres de clases**: Para **nombrar adecuadamente** las **clases** en tu código, es recomendable **utilizar sustantivos** que representen de manera clara el **objeto** que la clase está modelando. Las clases son una **representación de un objeto en la vida real**, por lo que se recomienda utilizar sustantivos como **"Animal"**, **"Auto"**, **"Estudiante"** y otros similares para nombrarlas.
+
+### Algunos ejemplos:
+
+```js
+class Animal {}
+class Persona {}
+class Color {}
+```
+
+## Interfaces y Types
+
+En TypeScript, las **interfaces se utilizan para definir la estructura de un objeto** y sus propiedades y métodos. Nombrar adecuadamente las interfaces es importante para tener un **código claro y fácil de entender**.
+
+- **Utiliza "I" como prefijo opcional**: En TypeScript, es común utilizar **"I"** como prefijo opcional para **nombrar las interfaces**. Esto **ayuda** a distinguir las **interfaces** de las **clases** y otras estructuras de datos. Por ejemplo, una interfaz para un objeto **"Perro"** podría llamarse **"IDog"**.
+- **Utiliza un nombre descriptivo**: Es importante que el nombre de la interfaz **describa de manera clara** su **propósito** y **funcionalidad**. Por ejemplo, si estamos definiendo una interfaz para un objeto "Coche", el nombre **"ICar"** sería más descriptivo que simplemente **"Ic"**.
+- **Utiliza "UpperCamelCase"**: Es buena práctica utilizar **UpperCamelCase** para nombrar las interfaces en TypeScript. Es decir, la **primera letra** de cada palabra en el nombre de la interfaz debe ser una letra **mayúscula**. Por ejemplo, una interfaz para un objeto **"Gato y Perro"** podría llamarse **"ICatAndDog"**.
+- **Utiliza nombres singulares para objetos individuales y plurales para colecciones**: Cuando se trata de objetos **individuales**, utiliza nombres **singulares** para las interfaces. Por ejemplo, una interfaz para un objeto **"Persona"** se llamaría **"IPerson"**. Sin embargo, cuando se trata de **colecciones de objetos**, es recomendable utilizar nombres **plurales**. Por ejemplo, una interfaz para una **colección de objetos "Persona"** podría llamarse **"IPersons"**.
