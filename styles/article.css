@@ -1,6 +1,6 @@
 .article p {
-  color: #fff;
-  font-size: 18px;
+  color: #ccc;
+  font-size: 19px;
   line-height: 28px;
   margin-bottom: 30px;
   font-weight: 300 !important;
@@ -9,34 +9,48 @@
 .article a {
   padding-bottom: 1px;
   border-bottom: 2px solid #fff;
-  font-weight: 500;
+  font-size: 20px;
+  font-weight: 700;
+  color: #fff;
+  font-family: Inter;
+}
+
+.article a:hover {
+  color: #eee;
+}
+
+.article a::after {
+  content: "↗️";
+  margin-left: 5px;
 }
 
 .article strong {
   font-weight: 900;
+  font-size: 20px;
   color: #fff;
+  font-family: Inter;
 }
 
 .article h2 {
   position: relative;
-  font-size: 24px;
+  font-size: 26px;
   font-weight: 600;
   color: #fff;
   margin: 60px 0 20px 0;
   padding-bottom: 10px;
-  border-bottom: 1px solid #fff;
+  border-bottom: 5px solid #fff;
 }
 
 .article h2:before {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 0;
   width: 10px;
   height: 20px;
   border-bottom: 10px solid #0000;
   border-right: 10px solid #0000;
-  border-left: 10px solid #fff;
+  border-left: 10px solid #7c53bd;
   border-top: 10px solid #0000;
 }
 
@@ -45,28 +59,11 @@
   font-size: 22px;
   font-weight: 600;
   color: #fff;
-  margin: 40px 0 15px 0;
-}
-
-.article h3:before {
-  position: absolute;
-  content: "";
-  width: 100px;
-  height: 1px;
-  background-color: #fff;
-  left: 0;
-  bottom: 0px;
-}
-
-.article h3:after {
-  position: absolute;
-  content: "";
-  border-bottom: 5px solid #0000;
-  border-right: 5px solid #0000;
-  border-left: 5px solid #fff;
-  border-top: 5px solid #0000;
-  left: 0;
-  bottom: -5px;
+  margin: 40px 0 20px 0;
+  padding-left: 10px;
+  border-left: 2px solid #7c53bd;
+  border-bottom: 5px solid #7c53bd;
+  border-bottom-left-radius: 15px;
 }
 
 .article code {
@@ -94,14 +91,14 @@
 
 .article ul li {
   position: relative;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 25px;
-  color: #eee;
-  margin-bottom: 5px;
-  padding-left: 5px;
-  padding-bottom: 5px;
-  border-left: 1px solid #e86d3366;
-  border-bottom-left-radius: 10px;
+  color: #ccc;
+  margin-bottom: 15px;
+  padding-left: 8px;
+  padding-bottom: 8px;
+  border-left: 3px solid #7c53bd;
+  border-bottom-left-radius: 15px;
 }
 
 .article ul li:before {
@@ -112,7 +109,7 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #e86d33;
+  background-color: #7c53bd;
 }
 
 .article ol {
@@ -121,13 +118,13 @@
 
 .article ol li {
   position: relative;
-  font-size: 18px;
+  font-size: 19px;
   line-height: 25px;
-  color: #eee;
+  color: #ccc;
   margin-bottom: 5px;
   padding-left: 5px;
   padding-bottom: 5px;
-  border-left: 1px solid #e86d3366;
+  border-left: 1px solid #7c53bd;
   margin-bottom: 5px;
 }
 
@@ -139,7 +136,13 @@
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background-color: #e86d33;
+  background-color: #7c53bd;
+}
+
+.article li strong:first-of-type {
+  text-decoration: underline;
+  color: #7c53bd;
+  font-weight: 700;
 }
 
 .article pre {
