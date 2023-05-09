@@ -1,4 +1,4 @@
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage, GetStaticProps } from "next";
 
 //* utils *//
 import {
@@ -30,7 +30,7 @@ const Categorias: NextPage<Props> = ({ categoriesMetadata }) => {
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (ctx) => {
   let allCategoryFilesMetadata = await getAllCategoryFilesMetadata();
   const allArticles = await getAllArticleFilesMetadata();
 
