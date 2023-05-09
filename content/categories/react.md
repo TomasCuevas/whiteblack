@@ -2,5 +2,5 @@
 title: Artículos sobre ReactJs
 category: React
 subtitle: Biblioteca de creación de interfaces de usuario
-description: ReactJs es una biblioteca JavaScript de código abierto. Se utiliza para construir interfaces de usuario (UI) y aplicaciones web de una sola página (SPA). React se centra en la construcción de componentes de interfaz de usuario reutilizables y modularizados que pueden ser utilizados ​​en varias partes de una aplicación.
+description: ReactJS es una biblioteca de código abierto para construir interfaces de usuario y aplicaciones web de una sola página. Su enfoque se centra en la creación de componentes de interfaz de usuario reutilizables y modularizados para ser utilizados en diferentes partes de la aplicación.
 ---
