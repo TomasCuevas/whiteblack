@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-//* interface *//
+//* interfaces *//
 import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
 
 interface Props {
@@ -21,14 +21,14 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         <h1 className="font-merriweather text-4xl font-semibold text-white">
           {metadata.title}
         </h1>
-        <div className="mt-3 mb-1 flex items-end gap-4">
+        <div className="mt-3 mb-1 flex items-center gap-4">
           <Link href={metadata.link} target="_blank" style={{ border: "none" }}>
-            <h4 className="border-purple font-merriweather text-base text-purple underline underline-offset-2 hover:underline md:text-lg">
+            <h4 className="border-purple font-inter text-base font-bold text-purple underline underline-offset-2 hover:underline md:text-xl">
               {metadata.author}
             </h4>
           </Link>
-          <time className="font-roboto text-base font-light text-purple/80">
-            {new Date(metadata.date).toLocaleString("es-ES", {
+          <time className="font-inter text-base font-normal text-purple/80">
+            {new Date(metadata.date).toLocaleString(undefined, {
               day: "numeric",
               month: "long",
               year: "numeric",

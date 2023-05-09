@@ -4,7 +4,7 @@ import { MDXRemote } from "next-mdx-remote";
 //* styles *//
 import "highlight.js/styles/atom-one-dark.css";
 
-//* interface
+//* interfaces *//
 import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
@@ -28,17 +28,17 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
                 timeZone: "UTC",
               })}
             </time>
-            <h3 className="font-roboto text-sm font-black text-white xs:text-base sm:text-lg md:text-xl">
+            <h3 className="font-merriweather text-sm font-black text-white xs:text-base sm:text-lg md:text-xl">
               {articleMetadata.title}
             </h3>
-            <div className="articleCard hidden max-h-20 overflow-hidden text-ellipsis font-merriweather text-sm font-light text-gray-400 group-hover:text-gray-300 sm:block">
+            <div className="articleCard hidden max-h-20 overflow-hidden text-ellipsis font-inter text-base font-light leading-tight text-gray-400 group-hover:text-gray-300 sm:block">
               <MDXRemote {...(articleMetadata.cardDescription as any)} />
             </div>
-            <div className="flex flex-wrap gap-2">
+            <div className="mt-2 flex flex-wrap gap-2">
               {articleMetadata.tags.map((tag) => (
                 <span
                   key={`${articleMetadata.slug} ${tag}`}
-                  className="rounded-md bg-purple/10 px-4 py-1 font-merriweather text-xs font-light text-white duration-100 group-hover:bg-purple/30"
+                  className="rounded-md bg-purple/10 px-4 py-1 font-inter text-xs font-light text-white duration-100 group-hover:bg-purple/30 sm:text-sm"
                 >
                   {tag}
                 </span>

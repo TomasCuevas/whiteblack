@@ -21,11 +21,11 @@ export const CategoryCard: React.FC<Props> = ({ categoryMetadata }) => {
             className="w-3/4"
           />
         </div>
-        <div className="flex flex-col gap-1">
-          <h2 className="font-roboto text-sm font-black text-white xs:text-base sm:text-lg">
+        <div className="flex h-full flex-col justify-center">
+          <h2 className="font-merriweather text-sm font-black text-white xs:text-base sm:text-lg">
             {categoryMetadata.category}
           </h2>
-          <h3 className="font-merriweather text-xs font-light text-gray-400 group-hover:text-gray-300">
+          <h3 className="font-inter text-[13px] font-light text-gray-400 group-hover:text-gray-300">
             {categoryMetadata.subtitle}
           </h3>
         </div>
