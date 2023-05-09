@@ -21,7 +21,7 @@ export const NavLink: React.FC<Props> = ({ link, text }) => {
         className="flex h-full items-center justify-center px-5"
       >
         <span
-          className={`font-inter text-xl font-extralight ${
+          className={`font-inter text-lg font-extralight ${
             pathname === link ? "text-white" : "text-white/50"
           } duration-300 group-hover:text-white`}
         >

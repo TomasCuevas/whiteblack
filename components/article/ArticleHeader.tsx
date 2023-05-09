@@ -23,7 +23,7 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         </h1>
         <div className="mt-3 mb-1 flex items-center gap-4">
           <Link href={metadata.link} target="_blank" style={{ border: "none" }}>
-            <h4 className="border-purple font-inter text-base font-bold text-purple underline underline-offset-2 hover:underline md:text-xl">
+            <h4 className="border-purple font-merriweather text-base font-bold text-purple underline underline-offset-2 hover:underline md:text-lg">
               {metadata.author}
             </h4>
           </Link>
