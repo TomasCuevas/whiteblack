@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 //* interfaces *//
-import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
   metadata: IArticleMetadata;
@@ -14,7 +14,7 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         <img
           src={`/images/categories/${metadata.category}.svg`}
           alt={`${metadata.category} logo`}
-          className="absolute right-0 -z-10 h-[200px] w-[200px] opacity-20"
+          className="absolute right-0 -z-10 w-[220px] opacity-20"
         />
       </picture>
       <div className="flex flex-col gap-1">
