@@ -14,7 +14,7 @@ import { MainLayout } from "@/layout";
 import "highlight.js/styles/atom-one-dark.css";
 
 //* interfaces *//
-import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
   source: any;
@@ -23,7 +23,10 @@ interface Props {
 
 const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
   return (
-    <MainLayout description={metadata.description} title={metadata.title}>
+    <MainLayout
+      description={metadata.description}
+      title={`${metadata.title} | Whiteblack`}
+    >
       <article className="mx-auto max-w-[800px]">
         <ArticleHeader metadata={metadata} />
         <div className="article font-merriweather">

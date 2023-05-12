@@ -11,7 +11,7 @@ import { MeCard } from "@/components/ui";
 import { MainLayout } from "@/layout";
 
 //* interfaces *//
-import { IArticleMetadata } from "@/interfaces/IArticleMetadata";
+import { IArticleMetadata } from "@/interfaces";
 
 interface Props {
   allArticleFilesMetadata: IArticleMetadata[];

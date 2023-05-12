@@ -1,6 +1,6 @@
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 
-//* helpers *//
+//* utils *//
 import {
   getAllArticleFilesMetadata,
   getAllCategoryFiles,
@@ -30,7 +30,10 @@ const ArticlePage: NextPage<Props> = ({
   allArticleFilesMetadata,
 }) => {
   return (
-    <MainLayout description={metadata.description} title={metadata.title}>
+    <MainLayout
+      description={metadata.description}
+      title={`${metadata.title} | Whiteblack`}
+    >
       <CategoryHeader categoryMetadata={metadata} />
       <ArticlesFeed
         allArticleFilesMetadata={allArticleFilesMetadata}
@@ -40,6 +43,7 @@ const ArticlePage: NextPage<Props> = ({
   );
 };
 
+//! get static paths
 export const getStaticPaths: GetStaticPaths = async (ctx) => {
   const categories = await getAllCategoryFiles();
   const paths = categories.map((category) => ({
@@ -54,6 +58,7 @@ export const getStaticPaths: GetStaticPaths = async (ctx) => {
   };
 };
 
+//! get static props
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   const categoryMetadata = await getCategoryFileBySlug(
     (params as any).category

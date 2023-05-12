@@ -13,7 +13,7 @@ import { CategoriesFeed } from "@/components/category";
 import { MainLayout } from "@/layout";
 
 //* interfaces *//
-import { ICategoryMetadata } from "@/interfaces/ICategoryMetadata";
+import { ICategoryMetadata } from "@/interfaces";
 
 interface Props {
   categoriesMetadata: ICategoryMetadata[];
