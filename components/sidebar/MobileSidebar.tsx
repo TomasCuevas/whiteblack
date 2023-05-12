@@ -10,7 +10,9 @@ import { SidebarLink } from "@/components/sidebar";
 import { UIContext } from "@/context";
 
 export const MobileSidebar: React.FC = () => {
-  const { toggleSidebar } = useContext(UIContext);
+  const { isSidebarOpen, toggleSidebar } = useContext(UIContext);
+
+  if (!isSidebarOpen) return <></>;
 
   return (
     <aside className="fixed top-0 left-0 z-50 h-screen w-screen bg-dark/90 backdrop-blur-sm sm:hidden">
