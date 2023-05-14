@@ -7,21 +7,26 @@
 }
 
 .article a {
-  padding-bottom: 1px;
-  border-bottom: 2px solid #fff;
+  border-bottom: 1px solid #4285f4;
   font-size: 20px;
   font-weight: 700;
-  color: #fff;
+  color: #4285f4;
   font-family: Inter;
 }
 
 .article a:hover {
-  color: #eee;
+  color: #62a5f4;
+  border-bottom: 1px solid #62a5f4;
 }
 
-.article a::after {
-  content: "↗️";
-  margin-left: 5px;
+.article a::before {
+  content: "📌";
+}
+
+.article img {
+  padding: 12px;
+  border-radius: 30px;
+  background-color: #29292977;
 }
 
 .article strong {
@@ -60,9 +65,10 @@
   font-weight: 600;
   color: #fff;
   margin: 40px 0 20px 0;
-  padding-left: 10px;
-  border-left: 2px solid #7c53bd;
-  border-bottom: 5px solid #7c53bd;
+  padding-left: 20px;
+  padding-bottom: 4px;
+  border-left: 2px double #7c53bd;
+  border-bottom: 4px double #7c53bd;
   border-bottom-left-radius: 15px;
 }
 
