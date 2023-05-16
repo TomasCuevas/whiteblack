@@ -1,19 +1,19 @@
-.articleCard p {
+#article__card p {
   color: #9ca3af;
 }
 
-.articleCard a {
+#article__card a {
   padding-bottom: 1px;
   border-bottom: 2px solid #fff;
   font-weight: 500;
 }
 
-.articleCard strong {
+#article__card strong {
   font-weight: 900;
   color: #fff;
 }
 
-.articleCard code {
+#article__card code {
   background-color: #fff;
   color: #111;
   padding: 0 4px;
@@ -21,22 +21,22 @@
   font-size: 16px;
 }
 
-.articleCard pre code {
+#article__card pre code {
   background-color: #110f18;
   color: #979daa;
   padding: 1rem;
   margin-bottom: 20px;
 }
 
-.articleCard p + ul {
+#article__card p + ul {
   margin-top: -16px;
 }
 
-.articleCard ul {
+#article__card ul {
   padding: 0 0 16px 16px;
 }
 
-.articleCard ul li {
+#article__card ul li {
   position: relative;
   font-size: 18px;
   line-height: 28px;
@@ -44,7 +44,7 @@
   margin-bottom: 3px;
 }
 
-.articleCard ul li:before {
+#article__card ul li:before {
   content: "";
   position: absolute;
   left: -10px;
@@ -55,11 +55,11 @@
   background-color: #e86d33;
 }
 
-.articleCard ol {
+#article__card ol {
   padding: 0 0 16px 16px;
 }
 
-.articleCard ol li {
+#article__card ol li {
   position: relative;
   font-size: 18px;
   line-height: 28px;
@@ -67,7 +67,7 @@
   margin-bottom: 3px;
 }
 
-.articleCard ol li:before {
+#article__card ol li:before {
   content: "";
   position: absolute;
   left: -10px;
@@ -78,11 +78,11 @@
   background-color: #e86d33;
 }
 
-.articleCard pre {
+#article__card pre {
   position: relative;
 }
 
-.articleCard pre code:before {
+#article__card pre code:before {
   content: "";
   position: absolute;
   right: 10px;
