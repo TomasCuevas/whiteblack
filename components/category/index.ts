@@ -1,3 +1,3 @@
-export * from "./CategoriesFeed";
-export * from "./CategoryHeader";
-export * from "./CategoryCard";
+export * from "./categoriesFeed/CategoriesFeed";
+export * from "./categoryHeader/CategoryHeader";
+export * from "./categoryCard/CategoryCard";
