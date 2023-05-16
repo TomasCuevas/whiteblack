@@ -4,7 +4,7 @@ import { useContext } from "react";
 import { RiCloseFill } from "react-icons/ri";
 
 //* components *//
-import { SidebarLink } from "@/components/sidebar";
+import { SidebarLink } from "@/components/layout";
 
 //* context *//
 import { UIContext } from "@/context";

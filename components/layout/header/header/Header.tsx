@@ -5,7 +5,7 @@ import Link from "next/link";
 import { RiMenu3Line } from "react-icons/ri";
 
 //* components *//
-import { NavLink } from "@/components/header/NavLink";
+import { NavLink } from "@/components/layout";
 
 //* context *//
 import { UIContext } from "@/context";
@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
           <img
             src="/wb.svg"
             alt="whiteblack logo"
-            className="h-10 duration-300 hover:opacity-50"
+            className="h-10 duration-300 hover:opacity-80"
           />
         </Link>
         <button className="ml-auto sm:hidden">
