@@ -1,11 +1,13 @@
+import { useEffect, useState } from "react";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
-//* helpers *//
+//* utils *//
 import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
+import { getAllH2andH3 } from "@/utils/getAllH2andH3/getAllH2andH3";
 
 //* components *//
-import { ArticleHeader } from "@/components/article";
+import { ArticleHeader, ArticleSidebarContent } from "@/components/article";
 
 //* layout *//
 import { MainLayout } from "@/layout";
@@ -22,6 +24,15 @@ interface Props {
 }
 
 const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
+  const [h2, setH2] = useState<any[]>([]);
+  const [h3, setH3] = useState<any[][]>([[]]);
+
+  useEffect(() => {
+    const { allH2, allH3 } = getAllH2andH3();
+    setH2(allH2);
+    setH3(allH3);
+  }, []);
+
   return (
     <MainLayout
       description={metadata.description}
@@ -29,10 +40,12 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
     >
       <article className="mx-auto max-w-[800px]">
         <ArticleHeader metadata={metadata} />
-        <div className="article font-merriweather">
+        <div id="article" className="font-merriweather">
           <MDXRemote {...source} />
         </div>
       </article>
+
+      <ArticleSidebarContent allH2={h2} allH3={h3} />
     </MainLayout>
   );
 };

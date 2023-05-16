@@ -1,2 +1,3 @@
-export * from "./mdxArticlesTransform";
-export * from "./mdxCategoriesTransform";
+export * from "./mdxArticlesTransform/mdxArticlesTransform";
+export * from "./mdxCategoriesTransform/mdxCategoriesTransform";
+export * from "./getAllH2andH3/getAllH2andH3";
