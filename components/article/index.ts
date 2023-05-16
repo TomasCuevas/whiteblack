@@ -1,3 +1,4 @@
-export * from "./ArticleHeader";
-export * from "./ArticleCard";
-export * from "./ArticlesFeed";
+export * from "./articleCard/ArticleCard";
+export * from "./articleHeader/ArticleHeader";
+export * from "./articlesFeed/ArticlesFeed";
+export * from "./articleSidebarContent/ArticleSidebarContent";

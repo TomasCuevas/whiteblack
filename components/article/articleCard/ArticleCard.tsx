@@ -31,7 +31,10 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
             <h3 className="font-merriweather text-sm font-black text-white xs:text-base sm:text-lg md:text-xl">
               {articleMetadata.title}
             </h3>
-            <div className="articleCard hidden max-h-20 overflow-hidden text-ellipsis font-inter text-[15px] font-light leading-tight text-gray-400 group-hover:text-gray-300 sm:block">
+            <div
+              id="article__card"
+              className="hidden max-h-20 overflow-hidden text-ellipsis font-inter text-[15px] font-light leading-tight text-gray-400 group-hover:text-gray-300 sm:block"
+            >
               <MDXRemote {...(articleMetadata.cardDescription as any)} />
             </div>
             <div className="mt-2 flex flex-wrap gap-2">
