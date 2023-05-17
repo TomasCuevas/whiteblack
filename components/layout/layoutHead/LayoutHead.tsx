@@ -2,12 +2,18 @@ import Head from "next/head";
 
 //* interface *//
 interface Props {
-  title: string;
   description: string;
   image?: string;
+  keywords?: string;
+  title: string;
 }
 
-export const LayoutHead: React.FC<Props> = ({ description, title, image }) => {
+export const LayoutHead: React.FC<Props> = ({
+  description,
+  image,
+  keywords = "",
+  title,
+}) => {
   const IMAGE_DEFAULT =
     "https://user-images.githubusercontent.com/79057608/238053378-cecb816d-22db-4f9e-ac2c-fff7771fd3cd.png";
   const DOMAIN = "https://whiteblack.vercel.app";
@@ -16,6 +22,7 @@ export const LayoutHead: React.FC<Props> = ({ description, title, image }) => {
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
       <meta property="og:url" content={DOMAIN} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />

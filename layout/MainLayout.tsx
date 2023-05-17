@@ -6,16 +6,18 @@ interface Props {
   children: React.ReactNode;
   title: string;
   description: string;
+  keywords?: string;
 }
 
 export const MainLayout: React.FC<Props> = ({
   children,
   description,
   title,
+  keywords,
 }) => {
   return (
     <>
-      <LayoutHead title={title} description={description} />
+      <LayoutHead title={title} description={description} keywords={keywords} />
 
       <Header />
       <MobileSidebar />

@@ -37,6 +37,7 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
     <MainLayout
       description={metadata.description}
       title={`${metadata.title} | Whiteblack`}
+      keywords={metadata.keywords}
     >
       <article className="mx-auto max-w-[800px]">
         <ArticleHeader metadata={metadata} />
