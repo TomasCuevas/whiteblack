@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //* interface *//
 interface Return {
@@ -12,6 +12,10 @@ export const usePagination = (): Return => {
 
   const increment = () => setPagination((prev) => prev + 1);
   const decrement = () => setPagination((prev) => (prev === 1 ? 1 : prev - 1));
+
+  useEffect(() => {
+    setPagination(1);
+  }, []);
 
   return {
     // getters
