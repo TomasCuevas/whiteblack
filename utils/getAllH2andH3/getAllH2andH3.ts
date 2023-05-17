@@ -1,3 +1,5 @@
+import { v4 as uuid } from "uuid";
+
 export const getAllH2andH3 = () => {
   const allH2 = [...(document?.querySelectorAll("#article h2") as any)];
 
@@ -6,7 +8,7 @@ export const getAllH2andH3 = () => {
 
   // Itera sobre los elementos <h2>
   for (let i = 0; i < allH2.length; i++) {
-    allH2[i].setAttribute("id", `${allH2[i].textContent}${Math.random()}`); // agregar ID al h2 correspondiente
+    allH2[i].setAttribute("id", `${uuid()}`); // agregar ID al h2 correspondiente
     const h2 = allH2[i];
     // Obtiene el siguiente elemento después del <h2>
     let nextElement = h2.nextElementSibling;
@@ -15,10 +17,7 @@ export const getAllH2andH3 = () => {
     while (nextElement && nextElement.tagName !== "H2") {
       // Si el elemento es un <h3>, agrégalo al array
       if (nextElement.tagName === "H3") {
-        nextElement.setAttribute(
-          "id",
-          `${nextElement.textContent}${Math.random()}`
-        ); // agregar ID al h3 correspondiente
+        nextElement.setAttribute("id", `${uuid()}`); // agregar ID al h3 correspondiente
         h3BetweenH2.push(nextElement);
       }
 
