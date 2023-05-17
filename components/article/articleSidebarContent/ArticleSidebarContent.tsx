@@ -38,7 +38,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
   return (
     <div
       style={{ left: leftPosition }}
-      className="2xl fixed top-[120px] left-[84.5px] hidden h-[calc(100vh_-_140px)] max-w-[200px] overflow-auto xl:block 2xl:max-w-[260px]"
+      className="fixed top-[120px] left-[84.5px] hidden h-[calc(100vh_-_140px)] max-w-[200px] overflow-auto xl:block 2xl:max-w-[260px]"
     >
       <ul>
         {allH2.map((h2, index) => {
@@ -48,28 +48,30 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
             <>
               <li
                 key={h2.getAttribute("id")}
-                className="my-2 rounded-md px-2 text-sm text-white duration-300"
+                className="my-2 rounded-md text-sm text-white"
               >
                 <span
                   onClick={() => navigate(h2.getAttribute("id"))}
-                  className="cursor-pointer duration-300 hover:pl-1 hover:underline"
+                  className="cursor-pointer rounded-sm pt-[2px] font-medium hover:bg-gray-400/10 hover:underline"
                 >
-                  - {h2.textContent}
+                  {h2.textContent}
                 </span>
-                <ul className="ml-5">
+                <ul className="border-l border-purple/20 pl-5">
                   {h3s.map((h3) => (
                     <li
-                      className="item my-[6px] cursor-pointer text-gray-300 duration-300 hover:pl-1 hover:text-white"
                       key={h3.getAttribute("id")}
+                      className="item my-2 cursor-pointer text-gray-300 "
                       onClick={() => navigate(h3.getAttribute("id"))}
                     >
-                      <span>- {h3.textContent}</span>
+                      <span className="rounded-sm pt-[2px] hover:bg-gray-400/10 hover:underline">
+                        {h3.textContent}
+                      </span>
                     </li>
                   ))}
                 </ul>
               </li>
               {allH2.length === index + 1 ? null : (
-                <hr className="m-0 border-[1px] border-purple/20 p-0" />
+                <div className="border-b border-purple/20" />
               )}
             </>
           );
