@@ -65,12 +65,11 @@
   font-size: 22px;
   font-weight: 500;
   color: #fff;
-  margin-top: 40px;
+  padding-top: 40px;
   padding-left: 20px;
-  padding-bottom: 10px;
+  padding-bottom: 5px;
   margin-bottom: 20px;
-  border-left: 2px double #7c53bd;
-  border-bottom: 4px double #7c53bd;
+  border-bottom: 6px double #7c53bd;
   border-bottom-left-radius: 15px;
 }
 
