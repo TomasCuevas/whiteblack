@@ -28,7 +28,7 @@ export const LayoutHead: React.FC<Props> = ({
       <meta property="og:title" content={title} />
       <meta
         property="og:image"
-        content={image ? `${DOMAIN}/${image}` : IMAGE_DEFAULT}
+        content={image ? `${DOMAIN}${image}` : IMAGE_DEFAULT}
       />
       <meta
         property="og:image:secure_url"
