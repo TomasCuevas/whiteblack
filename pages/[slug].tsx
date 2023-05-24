@@ -3,8 +3,9 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
 //* utils *//
-import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
 import { getAllH2andH3 } from "@/utils/getAllH2andH3/getAllH2andH3";
+import { PTagPreviousH2 } from "@/utils/PTagPreviousH2/PTagPreviousH2";
+import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
 
 //* components *//
 import { ArticleHeader, ArticleSidebarContent } from "@/components/article";
@@ -28,9 +29,12 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
   const [h3, setH3] = useState<any[][]>([[]]);
 
   useEffect(() => {
-    const { allH2, allH3 } = getAllH2andH3();
-    setH2(allH2);
-    setH3(allH3);
+    setH2(getAllH2andH3().allH2);
+    setH3(getAllH2andH3().allH3);
+  }, []);
+
+  useEffect(() => {
+    PTagPreviousH2();
   }, []);
 
   return (
