@@ -19,12 +19,13 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
           categoryColors[category as keyof typeof categoryColors],
       }}
     >
-      <div className="flex max-w-[500px] flex-col gap-4">
+      <div className="flex max-w-[450px] flex-col gap-4">
         <div className="flex w-full gap-4 border-b border-white/10 pb-4">
           <div className="w-14 md:w-[72px]">
             <img
               src={`/images/categories/${categoryMetadata.category.toLowerCase()}.svg`}
               alt={`${categoryMetadata.title} logo`}
+              className="w-[72px]"
             />
           </div>
           <div>

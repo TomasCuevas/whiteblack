@@ -41,7 +41,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
               {articleMetadata.tags.map((tag) => (
                 <span
                   key={`${articleMetadata.slug} ${tag}`}
-                  className="rounded-md bg-purple/10 px-4 py-1 font-inter text-xs font-light text-white transition-all group-hover:bg-purple/30 group-hover:shadow-none sm:bg-transparent sm:text-sm sm:shadow-inner sm:shadow-black/40"
+                  className="rounded-md bg-purple/10 px-2 py-2 font-inter text-xs font-light text-white transition-all group-hover:bg-purple/30 group-hover:shadow-none sm:bg-transparent sm:py-1 sm:text-sm sm:shadow-inner"
                 >
                   {tag}
                 </span>
@@ -53,7 +53,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
           <img
             src={`/images/categories/${articleMetadata.category}.svg`}
             alt={`${articleMetadata.category} logo`}
-            className="w-full"
+            className="w-full object-cover"
           />
         </div>
       </Link>

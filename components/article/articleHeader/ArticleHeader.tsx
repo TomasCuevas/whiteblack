@@ -1,5 +1,8 @@
 import Link from "next/link";
 
+//* icon *//
+import { RiTimeLine } from "react-icons/ri";
+
 //* interfaces *//
 import { IArticleMetadata } from "@/interfaces";
 
@@ -18,9 +21,17 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         />
       </picture>
       <div className="flex flex-col gap-1">
-        <h1 className="font-merriweather text-4xl font-semibold text-white">
-          {metadata.title}
-        </h1>
+        <div className="flex flex-col gap-4">
+          <h1 className="font-merriweather text-4xl font-semibold text-white">
+            {metadata.title}
+          </h1>
+          <time className="flex items-center gap-1 font-roboto text-white">
+            <RiTimeLine className="mb-[2px]" />
+            <span className="text-sm font-light">
+              {metadata.readingTime.minutes.toFixed(0)} minutos de lectura
+            </span>
+          </time>
+        </div>
         <div className="mt-3 mb-1 flex items-center gap-4">
           <Link href={metadata.link} target="_blank" style={{ border: "none" }}>
             <h4 className="border-purple font-merriweather text-base font-bold text-purple underline underline-offset-2 hover:underline md:text-lg">
