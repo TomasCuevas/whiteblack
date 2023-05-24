@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeHighlight from "rehype-highlight";
+import readingTime from "reading-time";
 
 //* interface *//
 import { IArticleMetadata } from "@/interfaces";
@@ -30,6 +31,7 @@ export const getArticleFileBySlug = async (slug: string) => {
   return {
     source,
     metadata: {
+      readingTime: readingTime(content),
       slug,
       ...data,
     },
@@ -47,7 +49,7 @@ export const getAllArticleFilesMetadata = async (
         path.join(root, "content", "articles", postSlug),
         "utf-8"
       );
-      const { data } = matter(mdxFile);
+      const { data, content } = matter(mdxFile);
 
       if (
         category &&
@@ -60,6 +62,7 @@ export const getAllArticleFilesMetadata = async (
       return [
         {
           ...data,
+          readingTime: readingTime(content),
           slug: postSlug.replace(".mdx", ""),
         },
         ...allPosts,
