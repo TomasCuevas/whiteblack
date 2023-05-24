@@ -8,7 +8,7 @@ import {
 } from "@/utils";
 
 //* components *//
-import { ArticlesFeed } from "@/components/article";
+import { ArticlesFeedByCategory } from "@/components/article";
 import { CategoryHeader } from "@/components/category";
 
 //* layout *//
@@ -35,7 +35,7 @@ const ArticlePage: NextPage<Props> = ({
       title={`${metadata.title} | Whiteblack`}
     >
       <CategoryHeader categoryMetadata={metadata} />
-      <ArticlesFeed
+      <ArticlesFeedByCategory
         allArticleFilesMetadata={allArticleFilesMetadata}
         title={`Articulos sobre ${metadata.category}`}
       />
