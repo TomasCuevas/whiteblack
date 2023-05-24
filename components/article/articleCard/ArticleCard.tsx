@@ -16,7 +16,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
     <article className="group w-full">
       <Link
         href={`/${articleMetadata.slug}`}
-        className="flex items-center gap-4 rounded-md bg-light/50 p-4 duration-100 hover:bg-light"
+        className="flex items-center gap-4 rounded-md bg-light/50 p-4 hover:bg-light"
       >
         <div className="flex w-full">
           <div className="flex w-full flex-col gap-1">
@@ -41,7 +41,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
               {articleMetadata.tags.map((tag) => (
                 <span
                   key={`${articleMetadata.slug} ${tag}`}
-                  className="rounded-md bg-purple/10 px-4 py-1 font-inter text-xs font-light text-white transition-all duration-500 group-hover:bg-purple/30 group-hover:shadow-none sm:bg-transparent sm:text-sm sm:shadow-inner sm:shadow-black/40"
+                  className="rounded-md bg-purple/10 px-4 py-1 font-inter text-xs font-light text-white transition-all group-hover:bg-purple/30 group-hover:shadow-none sm:bg-transparent sm:text-sm sm:shadow-inner sm:shadow-black/40"
                 >
                   {tag}
                 </span>

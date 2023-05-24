@@ -15,14 +15,14 @@ export const Footer: React.FC = () => {
           target="_blank"
           className="group flex w-5 items-center"
         >
-          <FaGithub className="h-full w-full text-purple/60 duration-300 hover:text-purple" />
+          <FaGithub className="h-full w-full text-purple/60 hover:text-purple" />
         </Link>
         <Link
           href="https://www.linkedin.com/in/tom%C3%A1s-cuevas-dev/"
           target="_blank"
           className="flex w-5 items-center"
         >
-          <FaLinkedinIn className="h-full w-full text-purple/60 duration-300 hover:text-purple" />
+          <FaLinkedinIn className="h-full w-full text-purple/60 hover:text-purple" />
         </Link>
       </div>
     </footer>
