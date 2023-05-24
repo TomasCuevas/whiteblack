@@ -7,17 +7,24 @@ interface Props {
   title: string;
   description: string;
   keywords?: string;
+  image?: string;
 }
 
 export const MainLayout: React.FC<Props> = ({
   children,
   description,
-  title,
+  image,
   keywords,
+  title,
 }) => {
   return (
     <>
-      <LayoutHead title={title} description={description} keywords={keywords} />
+      <LayoutHead
+        title={title}
+        description={description}
+        keywords={keywords}
+        image={image}
+      />
 
       <Header />
       <MobileSidebar />
