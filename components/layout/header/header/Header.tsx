@@ -4,6 +4,9 @@ import Link from "next/link";
 //* icons *//
 import { RiMenu3Line } from "react-icons/ri";
 
+//* services *//
+import { handleScroll } from "@/utils/handleScroll/handleScroll";
+
 //* components *//
 import { NavLink } from "@/components/layout";
 
@@ -20,34 +23,22 @@ export const Header: React.FC = () => {
   const scrollPosRef = useRef<number>(0);
   const timeoutRef = useRef<any>(null);
 
-  const handleScroll = () => {
-    const currentScrollPos = window.pageYOffset;
-
-    setIsVisible(
-      currentScrollPos === 0 ? true : currentScrollPos < scrollPosRef.current
+  useEffect(() => {
+    window.addEventListener("scroll", () =>
+      handleScroll(setIsVisible, scrollPosRef, timeoutRef)
     );
 
-    if (currentScrollPos > scrollPosRef.current) {
-      clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        setIsVisible(true);
-      }, 1000);
-    }
-
-    scrollPosRef.current = currentScrollPos;
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("scroll", () =>
+        handleScroll(setIsVisible, scrollPosRef, timeoutRef)
+      );
     };
   }, []);
 
   return (
     <header
       id="header"
-      className={`fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/20 bg-light/20  backdrop-blur-[6px] md:h-[70px] ${
+      className={`fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/20 bg-light/20  backdrop-blur-[6px] ${
         isVisible ? Styles.visible : Styles.scrolled
       }`}
     >
