@@ -1,4 +1,4 @@
-export const h2Observers = (h2: HTMLHeadingElement[]) => {
+export const h2Observers = (h2: HTMLElement[]) => {
   h2.forEach((element) => {
     // Obtenemos el elemento correspondiente en el sidebar de contenido
     const h2Sidebar = document.getElementById(
@@ -6,7 +6,8 @@ export const h2Observers = (h2: HTMLHeadingElement[]) => {
     )!;
 
     const options = {
-      threshold: 1, // Valor de intersección requerido para activar la función de devolución de llamada.
+      rootMargin: "0px 0px -400px 0px",
+      threshold: 0.1, // Valor de intersección requerido para activar la función de devolución de llamada.
     };
 
     // Observador de intersección para detectar cuando el elemento h2 es visible en la pantalla
@@ -24,7 +25,7 @@ export const h2Observers = (h2: HTMLHeadingElement[]) => {
   });
 };
 
-export const H3Observers = (h3: HTMLHeadingElement[][]) => {
+export const H3Observers = (h3: HTMLElement[][]) => {
   h3.flat().forEach((element) => {
     // Obtenemos el elemento correspondiente en el sidebar de contenido
     const h3Sidebar = document.getElementById(
@@ -33,7 +34,7 @@ export const H3Observers = (h3: HTMLHeadingElement[][]) => {
 
     const options = {
       rootMargin: "0px 0px -400px 0px",
-      threshold: 0, // Valor de intersección requerido para activar la función de devolución de llamada.
+      threshold: 0.1, // Valor de intersección requerido para activar la función de devolución de llamada.
     };
 
     // Observador de intersección para detectar cuando el elemento h2 es visible en la pantalla
