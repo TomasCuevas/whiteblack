@@ -37,7 +37,7 @@ const ArticlePage: NextPage<Props> = ({
       <CategoryHeader categoryMetadata={metadata} />
       <ArticlesFeedByCategory
         allArticleFilesMetadata={allArticleFilesMetadata}
-        title={`Articulos sobre ${metadata.category}`}
+        title={metadata.title}
       />
     </MainLayout>
   );

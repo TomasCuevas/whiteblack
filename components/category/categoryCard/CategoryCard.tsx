@@ -22,7 +22,7 @@ export const CategoryCard: React.FC<Props> = ({ categoryMetadata }) => {
           />
         </div>
         <div className="flex h-full flex-col justify-center">
-          <h2 className="font-merriweather text-sm font-black text-white xs:text-base sm:text-lg">
+          <h2 className="font-merriweather text-sm font-black capitalize text-white xs:text-base sm:text-lg">
             {categoryMetadata.category}
           </h2>
           <h3 className="font-inter text-[13px] font-light text-gray-400 group-hover:text-gray-300">

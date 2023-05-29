@@ -9,14 +9,13 @@ interface Props {
 }
 
 export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
-  const category = categoryMetadata.category.toLowerCase();
+  const category = categoryMetadata.category;
 
   return (
     <section
       className="flex justify-center rounded-md p-4 shadow-lg  sm:justify-start sm:pl-12 md:py-8 md:px-20 mdx:px-32"
       style={{
-        backgroundColor:
-          categoryColors[category as keyof typeof categoryColors],
+        backgroundColor: categoryColors[category],
       }}
     >
       <div className="flex max-w-[450px] flex-col gap-4">
@@ -29,7 +28,7 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
             />
           </div>
           <div>
-            <h1 className="font-merriweather text-lg font-bold text-white md:text-2xl">
+            <h1 className="font-merriweather text-lg font-bold capitalize text-white md:text-2xl">
               {categoryMetadata.category}
             </h1>
             <h2 className="font-inter text-sm text-gray-300">

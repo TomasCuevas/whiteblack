@@ -20,7 +20,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
       ?.getBoundingClientRect().left!;
 
     left.current = firstValue;
-    setLeftPosition(firstValue >= 364 ? firstValue - 340 : firstValue - 220);
+    setLeftPosition(firstValue >= 364 ? firstValue - 360 : firstValue - 220);
 
     const responsive = () => {
       const newValue = document
@@ -28,7 +28,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
         ?.getBoundingClientRect().left!;
 
       left.current = newValue;
-      setLeftPosition(newValue >= 364 ? newValue - 340 : newValue - 220);
+      setLeftPosition(newValue >= 364 ? newValue - 360 : newValue - 220);
     };
     window.addEventListener("resize", responsive);
 

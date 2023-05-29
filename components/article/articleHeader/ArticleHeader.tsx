@@ -32,15 +32,15 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
             </span>
           </time>
         </div>
-        <div className="mt-3 mb-1 flex items-center gap-4">
+        <div className="mt-3 mb-1 flex items-center gap-5">
           <Link href={metadata.link} target="_blank" style={{ border: "none" }}>
             <h4 className="border-purple font-merriweather text-base font-bold text-purple underline underline-offset-2 hover:underline md:text-lg">
               {metadata.author}
             </h4>
           </Link>
-          <time className="font-inter text-base font-normal text-purple/80">
+          <time className="font-inter text-base font-light text-white">
             {new Date(metadata.date).toLocaleString(undefined, {
-              day: "numeric",
+              day: "2-digit",
               month: "long",
               year: "numeric",
               timeZone: "UTC",
