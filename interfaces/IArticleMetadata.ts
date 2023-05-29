@@ -1,7 +1,10 @@
+//* interface *//
+import { ICategories } from "@/interfaces";
+
 export interface IArticleMetadata {
   author: string;
   cardDescription: string;
-  category: string;
+  category: ICategories;
   date: string;
   description: string;
   image?: string;
