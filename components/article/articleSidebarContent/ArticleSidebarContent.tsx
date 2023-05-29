@@ -2,8 +2,8 @@ import { useEffect, useState, useRef } from "react";
 
 //* interface *//
 interface Props {
-  allH2: any[];
-  allH3: any[][];
+  allH2: HTMLElement[];
+  allH3: HTMLElement[][];
 }
 
 export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
@@ -36,7 +36,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
   }, [left]);
 
   return (
-    <div
+    <aside
       style={{ left: leftPosition }}
       className="fixed top-[120px] left-[84.5px] hidden h-[calc(100vh_-_140px)] max-w-[200px] overflow-auto xl:block 2xl:max-w-[260px]"
     >
@@ -51,32 +51,34 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
                 className="my-2 rounded-md text-sm text-white"
               >
                 <span
-                  onClick={() => navigate(h2.getAttribute("id"))}
-                  className="cursor-pointer rounded-sm pt-[2px] font-medium hover:bg-gray-400/10 hover:underline"
+                  id={`${h2.getAttribute("id")}-sidebar`}
+                  onClick={() => navigate(h2.getAttribute("id")!)}
+                  className="cursor-pointer rounded-sm font-medium hover:bg-gray-400/10"
                 >
-                  {h2.textContent}
+                  {h2.getAttribute("content")}
                 </span>
-                <ul className="border-l border-purple/20 pl-5">
-                  {h3s.map((h3) => (
+                <ul>
+                  {h3s?.map((h3) => (
                     <li
+                      id={`${h3.getAttribute("id")}-sidebar`}
                       key={h3.getAttribute("id")}
-                      className="item my-2 cursor-pointer text-gray-300 "
-                      onClick={() => navigate(h3.getAttribute("id"))}
+                      className="item group cursor-pointer border-l border-purple/20 py-1 pl-5 text-gray-300"
+                      onClick={() => navigate(h3.getAttribute("id")!)}
                     >
-                      <span className="rounded-sm pt-[2px] hover:bg-gray-400/10 hover:underline">
-                        {h3.textContent}
+                      <span className="rounded-sm hover:bg-gray-400/10">
+                        {h3.getAttribute("content")}
                       </span>
                     </li>
                   ))}
                 </ul>
               </li>
               {allH2.length === index + 1 ? null : (
-                <div className="border-b border-purple/20" />
+                <div className="border-b border-purple/30" />
               )}
             </>
           );
         })}
       </ul>
-    </div>
+    </aside>
   );
 };
