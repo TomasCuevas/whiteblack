@@ -9,7 +9,11 @@ import { h2Observers, H3Observers } from "@/utils/observers/observers";
 import { PTagPreviousH2 } from "@/utils/PTagPreviousH2/PTagPreviousH2";
 
 //* components *//
-import { ArticleHeader, ArticleSidebarContent } from "@/components/article";
+import {
+  ArticleFooter,
+  ArticleHeader,
+  ArticleSidebarContent,
+} from "@/components/article";
 import { MDXComponents } from "@/components/mdx";
 
 //* layout *//
@@ -59,6 +63,7 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
         <div id="article" className="font-merriweather">
           <MDXRemote {...source} components={MDXComponents} />
         </div>
+        <ArticleFooter metadata={metadata} />
       </article>
 
       <ArticleSidebarContent allH2={h2Sections} allH3={h3Sections} />
