@@ -12,10 +12,7 @@ export const handleScroll = (
   );
 
   if (currentScrollPos > scrollPosition.current) {
-    clearTimeout(timeoutRef.current);
-    timeoutRef.current = setTimeout(() => {
-      handleVisible(true);
-    }, 1000);
+    handleVisible(false);
   }
 
   scrollPosition.current = currentScrollPos;

@@ -10,19 +10,18 @@ export const getAllSectionsToSidebar = () => {
   const allH3Sections: HTMLElement[][] = [];
 
   // Numero del indice del ultimo elemento h2 dentro del bucle
-  let h2index = 0;
+  let h2Length = 0;
 
   // Iterar sobre todas las secciones
   for (let i = 0; i < allSections.length; i++) {
     const firstElementOfSection = allSections[i].firstElementChild;
 
     if (firstElementOfSection?.tagName === "H2") {
-      h2index = i;
-
       const h2section = allSections[i];
       h2section.setAttribute("id", `${uuid()}`);
       h2section.setAttribute("content", firstElementOfSection.innerHTML);
       allH2Sections.push(h2section);
+      h2Length = allH2Sections.length - 1;
     }
 
     if (firstElementOfSection?.tagName === "H3") {
@@ -30,8 +29,8 @@ export const getAllSectionsToSidebar = () => {
       h3section.setAttribute("id", `${uuid()}`);
       h3section.setAttribute("content", firstElementOfSection.innerHTML);
 
-      allH3Sections[h2index] = allH3Sections[h2index]
-        ? [...allH3Sections[h2index], h3section]
+      allH3Sections[h2Length] = allH3Sections[h2Length]
+        ? [...allH3Sections[h2Length], h3section]
         : [h3section];
     }
   }
