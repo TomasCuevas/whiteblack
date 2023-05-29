@@ -1,4 +1,4 @@
-export * from "./getAllH2andH3/getAllH2andH3";
+export * from "./getAllSectionsToSidebar/getAllSectionsToSidebar";
 export * from "./handleScroll/handleScroll";
 export * from "./mdxArticlesTransform/mdxArticlesTransform";
 export * from "./mdxCategoriesTransform/mdxCategoriesTransform";
