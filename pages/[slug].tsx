@@ -3,12 +3,14 @@ import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
 
 //* utils *//
-import { getAllH2andH3 } from "@/utils/getAllH2andH3/getAllH2andH3";
-import { PTagPreviousH2 } from "@/utils/PTagPreviousH2/PTagPreviousH2";
 import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
+import { getAllSectionsToSidebar } from "@/utils/getAllSectionsToSidebar/getAllSectionsToSidebar";
+import { h2Observers, H3Observers } from "@/utils/observers/observers";
+import { PTagPreviousH2 } from "@/utils/PTagPreviousH2/PTagPreviousH2";
 
 //* components *//
 import { ArticleHeader, ArticleSidebarContent } from "@/components/article";
+import { MDXComponents } from "@/components/mdx";
 
 //* layout *//
 import { MainLayout } from "@/layout";
@@ -25,17 +27,25 @@ interface Props {
 }
 
 const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
-  const [h2, setH2] = useState<any[]>([]);
-  const [h3, setH3] = useState<any[][]>([[]]);
+  const [h2Sections, setH2Sections] = useState<HTMLElement[]>([]);
+  const [h3Sections, setH3Sections] = useState<HTMLElement[][]>([[]]);
 
   useEffect(() => {
-    setH2(getAllH2andH3().allH2);
-    setH3(getAllH2andH3().allH3);
+    setH2Sections(getAllSectionsToSidebar().allH2Sections);
+    setH3Sections(getAllSectionsToSidebar().allH3Sections);
   }, []);
 
   useEffect(() => {
     PTagPreviousH2();
   }, []);
+
+  useEffect(() => {
+    if (h2Sections) h2Observers(h2Sections);
+  }, [h2Sections]);
+
+  useEffect(() => {
+    if (h3Sections) H3Observers(h3Sections);
+  }, [h3Sections]);
 
   return (
     <MainLayout
@@ -47,11 +57,11 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
       <article className="mx-auto max-w-[800px]">
         <ArticleHeader metadata={metadata} />
         <div id="article" className="font-merriweather">
-          <MDXRemote {...source} />
+          <MDXRemote {...source} components={MDXComponents} />
         </div>
       </article>
 
-      <ArticleSidebarContent allH2={h2} allH3={h3} />
+      <ArticleSidebarContent allH2={h2Sections} allH3={h3Sections} />
     </MainLayout>
   );
 };
