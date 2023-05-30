@@ -1,7 +1,11 @@
 .h2__observer {
   background-color: #7c53bdaf;
   color: white;
-  font-weight: 700;
+}
+
+.h2__observer:hover {
+  background-color: #7c53bdaf !important;
+  color: white;
 }
 
 .h3__observer {
@@ -12,5 +16,12 @@
   text-decoration: none;
   background-color: #7c53bd8f;
   color: white;
-  font-weight: 700;
+  font-weight: 500;
+}
+
+.h3__observer > span:hover {
+  text-decoration: none;
+  background-color: #7c53bd8f;
+  color: white;
+  font-weight: 500;
 }
