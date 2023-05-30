@@ -11,28 +11,26 @@ interface Props {
 }
 
 export const ArticleFooter: React.FC<Props> = ({ metadata }) => {
-  const color = categoryColors[metadata.category].slice(0, -2);
+  const color = categoryColors[metadata.category].slice(0, -2).concat("cc");
 
   return (
     <footer
       style={{ borderColor: color }}
-      className="group mt-10 overflow-hidden rounded-xl border duration-200 hover:scale-[103%]"
+      className="group mt-10 overflow-hidden rounded-xl border duration-200 hover:scale-[102%]"
     >
       <Link
         href={`/categoria/${metadata.category}`}
-        className="flex w-full items-center gap-4 p-4 md:gap-6 md:px-10 md:py-5"
+        className="flex w-full items-center gap-4 p-4 md:gap-6 md:px-10"
       >
         <>
           <img
             src={`/images/categories/${metadata.category.toLowerCase()}.svg`}
             alt={`${metadata.category} logo`}
-            className="w-[60px] md:w-[70px]"
+            className="w-[50px] opacity-90"
           />
           <p
             style={{
-              color: `${
-                categoryColors[metadata.category as keyof typeof categoryColors]
-              }`.slice(0, -2),
+              color: color,
             }}
             className="text-lg font-medium text-white md:text-xl md:font-bold lg:text-2xl"
           >

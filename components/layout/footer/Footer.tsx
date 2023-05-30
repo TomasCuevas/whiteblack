@@ -6,7 +6,7 @@ import { FaLinkedinIn, FaGithub } from "react-icons/fa";
 export const Footer: React.FC = () => {
   return (
     <footer className="mt-auto flex w-full items-center justify-center bg-light/50 px-4 py-6 sm:px-6">
-      <p className="whitespace-nowrap font-inter text-[13px] text-gray-300">
+      <p className="whitespace-nowrap font-inter text-[14px] text-gray-300">
         © Copyright Tomás Cuevas 2023
       </p>
       <div className="flex w-full max-w-[1000px] justify-end gap-10">

@@ -1,5 +1,8 @@
 import { useEffect, useState, useRef } from "react";
 
+//* style *//
+import Style from "./articleSidebarContent.module.css";
+
 //* interface *//
 interface Props {
   allH2: HTMLElement[];
@@ -17,18 +20,18 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
   useEffect(() => {
     const firstValue = document
       .getElementById("article")
-      ?.getBoundingClientRect().left!;
+      ?.getBoundingClientRect().right!;
 
     left.current = firstValue;
-    setLeftPosition(firstValue >= 364 ? firstValue - 360 : firstValue - 220);
+    setLeftPosition(firstValue >= 900 ? firstValue - -100 : firstValue - -50);
 
     const responsive = () => {
       const newValue = document
         .getElementById("article")
-        ?.getBoundingClientRect().left!;
+        ?.getBoundingClientRect().right!;
 
       left.current = newValue;
-      setLeftPosition(newValue >= 364 ? newValue - 360 : newValue - 220);
+      setLeftPosition(newValue >= 900 ? newValue - -100 : newValue - -50);
     };
     window.addEventListener("resize", responsive);
 
@@ -38,9 +41,9 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
   return (
     <aside
       style={{ left: leftPosition }}
-      className="fixed top-[120px] left-[84.5px] hidden h-[calc(100vh_-_140px)] max-w-[200px] overflow-auto xl:block 2xl:max-w-[260px]"
+      className={`fixed top-[100px] hidden h-[calc(100vh_-_200px)] w-[200px] overflow-auto lg:block xl:w-[300px] ${Style.aside}`}
     >
-      <ul>
+      <ul className="rounded-lg bg-light/20 p-4">
         {allH2.map((h2, index) => {
           const h3s = allH3[index];
 

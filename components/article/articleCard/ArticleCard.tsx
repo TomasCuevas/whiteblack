@@ -37,11 +37,11 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
             >
               <MDXRemote {...(articleMetadata.cardDescription as any)} />
             </div>
-            <div className="mt-2 flex flex-wrap gap-2">
-              {articleMetadata.tags.map((tag) => (
+            <div className="mt-2 flex flex-wrap gap-[2px]">
+              {articleMetadata.tags?.map((tag) => (
                 <span
                   key={`${articleMetadata.slug} ${tag}`}
-                  className="rounded-md bg-purple/10 px-2 py-2 font-inter text-xs font-light text-white transition-all group-hover:bg-purple/30 group-hover:shadow-none sm:bg-transparent sm:py-1 sm:text-sm sm:shadow-inner"
+                  className="rounded-md bg-purple/10 px-2 py-2 font-roboto text-[14px] font-light text-gray-200 transition-all group-hover:bg-purple/20 group-hover:shadow-none sm:bg-transparent sm:py-1 sm:shadow-inner"
                 >
                   {tag}
                 </span>

@@ -22,7 +22,7 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
       </picture>
       <div className="flex flex-col gap-1">
         <div className="flex flex-col gap-4">
-          <h1 className="font-merriweather text-4xl font-semibold text-white">
+          <h1 className="font-merriweather text-3xl font-semibold text-white md:text-5xl">
             {metadata.title}
           </h1>
           <time className="flex items-center gap-1 font-roboto text-white">
