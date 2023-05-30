@@ -5,7 +5,7 @@ title: "Configurar variables de entorno en React utilizando Vite"
 date: "2023-03-03"
 image: "/images/og/configurar-variables-entorno-react-vite.jpg"
 description: "En este artículo, te enseñaremos cómo configurar variables de entorno en React de manera sencilla y rápida cuando utilizamos Vite. Además, descubrirás cómo acceder a ellas de una forma más óptima y eficiente. ¡No te pierdas esta guía completa sobre variables de entorno en React con Vite!"
-cardDescription: "En algunas ocasiones, necesitamos utilizar **variables de entorno** en nuestras aplicaciones para **centralizar valores** y **evitar escribir** esos valores directamente en nuestro código. Esto nos proporciona un acceso sencillo y una forma fácil de modificar esos valores sin tener que hacerlo en todos los lugares donde se usan."
+cardDescription: "En algunas ocasiones, necesitamos utilizar __variables de entorno__ en nuestras aplicaciones para centralizar valores y evitar escribir esos valores directamente en nuestro código. Esto nos proporciona un acceso sencillo y una forma fácil de modificar esos valores sin tener que hacerlo en todos los lugares donde se usan."
 category: "react"
 tags:
   - "react"
@@ -14,31 +14,45 @@ tags:
 keywords: "react, vite, variables de entorno, configuración, ambiente de desarrollo, ambiente de producción, entorno local, entorno remoto, .env, .env.local, .env.production, .env.development, seguridad, autenticación, autorización, gestión de secretos, deployment, librerías, rendimiento, optimización."
 ---
 
-En algunas ocasiones, necesitamos utilizar **variables de entorno** en nuestras aplicaciones para **centralizar valores** y **evitar escribir** esos valores directamente en nuestro código. Esto nos proporciona un acceso sencillo y una forma fácil de modificar esos valores sin tener que hacerlo en todos los lugares donde se usan.
+<Section>
+## Introducción
 
+En algunas ocasiones, necesitamos utilizar `variables de entorno` en nuestras aplicaciones para centralizar valores y evitar escribir esos valores directamente en nuestro código. Esto nos proporciona un acceso sencillo y una forma fácil de modificar esos valores sin tener que hacerlo en todos los lugares donde se usan.
+
+<Repository url="https://github.com/TomasCuevas/Articulos-Proyectos/tree/main/configurar-variables-de-entorno-en-react-utilizando-vite" />
+
+</Section>
+
+<Section>
 ## Archivo .env
 
-Vite utiliza **dotenv** en segundo plano para el manejo de las variables de entorno. Por lo tanto, es necesario escribirlas en el archivo **.env** para que puedan ser servidas.
+Vite utiliza `dotenv` en segundo plano para el manejo de las variables de entorno. Por lo tanto, es necesario escribirlas en el archivo `.env` para que puedan ser servidas.
 
+</Section>
+
+<Section>
 ## Utilizar las variables de entorno
 
-Para usar las **variables de entorno** en el cliente, es necesario utilizar el objeto **import.meta.env** seguido de la variable que se desea utilizar. Es importante tener en cuenta que solo se pueden utilizar las variables que tengan el prefijo **VITE\_** en el código procesado por Vite que llega al cliente.
+Para utilizar las variables de entorno en el cliente, es necesario utilizar el objeto `import.meta.env` seguido de la variable que se desea utilizar. Es importante tener en cuenta que solo se pueden utilizar las variables que tengan el prefijo `VITE_` en el código procesado por Vite que llega al cliente.
 
 ```text
 VITE_NAME=Tomás
 NAME=Tomás
 ```
 
-Únicamente **VITE_NAME** podrá ser usado en él código fuente del cliente.
+Únicamente `VITE_NAME` podrá ser usado en él código fuente del cliente.
 
 ```js
 console.log(import.meta.env.VITE_NAME); // Tomás
 console.log(import.meta.env.NAME); // undefined
 ```
 
+</Section>
+
+<Section>
 ## Optimizar la forma de obtener nuestras variables
 
-En la hipotética situación en la que sea necesario utilizar **varias variables de entorno**, o incluso la misma variable, **en un mismo archivo**, puede **resultar molesto** tener que instanciar **import.meta.env** varias veces, como en el siguiente ejemplo:
+En la hipotética situación en la que sea necesario utilizar varias `variables de entorno`, o incluso la misma variable, en un mismo archivo, puede resultar molesto tener que instanciar `import.meta.env` varias veces, como en el siguiente ejemplo:
 
 ```text
 VITE_NAME=Tomás
@@ -59,7 +73,7 @@ export const App = () => {
 };
 ```
 
-Podríamos **crear una función** que nos devuelva todas las variables de entorno que configuremos en un solo lugar. Esto nos **ahorraría** tener que **escribir _import.meta.env_ repetidamente** en toda nuestra aplicación. En su lugar, simplemente llamaríamos a la función para obtener la variable que necesitamos.
+Podríamos crear una `función` que nos devuelva todas las variables de entorno que configuremos en un solo lugar. Esto nos ahorraría tener que escribir `import.meta.env` repetidamente en toda nuestra aplicación. En su lugar, simplemente llamaríamos a la `función` para obtener la variable que necesitamos.
 
 La función que cumpliría esta tarea podría tener el siguiente aspecto:
 
@@ -73,9 +87,12 @@ export const getEnvironments = () => {
 };
 ```
 
-Y en nuestro componente, **podríamos obtener** las variables de las **siguientes formas**:
+Y en nuestro componente, podríamos obtener las variables que esta exporte de las siguientes formas:
 
-### Primera forma
+</Section>
+
+<Section>
+### Ejecutando la funcion donde queramos utilizar una variable de entorno
 
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
@@ -92,11 +109,14 @@ export const App = () => {
 };
 ```
 
-En este caso, se importa la función **getEnvironments** en el archivo donde se encuentra nuestro componente y luego se llama a esta función, utilizando la **"notación de punto"** para acceder a la variable que se desea utilizar.
+En este caso, se importa la función `getEnvironments` en el archivo donde se encuentra nuestro componente y luego se llama a esta función, utilizando la `notación de punto` para acceder a la variable que se desea utilizar.
 
-Es importante señalar que esta forma de importar **no es tan eficiente**, ya que simplemente **se está reemplazando import.meta.env por getEnvironments**. Por esta razón, se recomienda considerar la siguiente alternativa, que en mi opinión resulta más óptima.
+Es importante señalar que esta forma de importar no es tan eficiente, ya que simplemente se está reemplazando `import.meta.env` por `getEnvironments.` Por esta razón, se recomienda considerar la siguiente alternativa, que en mi opinión resulta más óptima.
 
-### Segunda forma
+</Section>
+
+<Section>
+### Desestructuración de variables de entorno
 
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
@@ -115,4 +135,6 @@ export const App = () => {
 };
 ```
 
-De esta manera, primero **importamos la función** y luego aplicamos la técnica de **desestructuración** para obtener únicamente las variables que necesitamos utilizar. De esta forma, **evitamos** tener que llamar la función cada vez que queremos obtener una variable, así como también **reducimos la cantidad** de veces que necesitamos escribir import.meta.env.
+Primero importamos la `función` y luego aplicamos la técnica de `desestructuración` para obtener únicamente las variables que necesitamos utilizar. De esta forma, evitamos tener que llamar la `función` cada vez que queremos obtener una variable, así como también reducimos la cantidad de veces que necesitamos escribir `import.meta.env.`
+
+</Section>

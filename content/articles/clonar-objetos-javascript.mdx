@@ -5,7 +5,9 @@ title: "StructuredClone: La solución para clonar objetos en JavaScript sin erro
 date: "2023-05-16"
 image: "/images/og/structured-clone-js.jpg"
 description: "Tanto si eres un principiante en JavaScript como un desarrollador experimentado, descubre por qué utilizar structuredClone es esencial para la manipulación eficiente de objetos en JavaScript. En nuestro artículo, exploramos en detalle cómo structuredClone se compara con otros métodos populares, como Object.assign(), JSON.parse(), JSON.stringify() y el operador spread. Obtén información valiosa sobre las ventajas y desventajas de cada enfoque, y descubre por qué structuredClone destaca como una poderosa opción para clonar objetos en JavaScript. ¡Mejora tu conocimiento en JavaScript y lleva tus habilidades de desarrollo web al siguiente nivel con nuestra guía completa sobre structuredClone y su uso eficiente en tu código!"
-cardDescription: "Cuando trabajas con objetos en JavaScript, a menudo necesitas clonarlos para realizar operaciones sin modificar el objeto original. **Hay varias formas de clonar objetos en JavaScript**, como el operador spread (**...object**), la asignación por objeto (**Object.assign(object)**) y la serialización/deserialización de JSON (**JSON.stringify()** y **JSON.parse()**). Sin embargo, la función **structuredClone()** ofrece algunas ventajas significativas en comparación con estas otras formas de clonar objetos."
+cardDescription: "Cuando trabajas con __objetos en JavaScript__, a menudo necesitas __clonarlos__ para realizar operaciones sin modificar el objeto original. Hay varias formas de clonar objetos en __JavaScript__, como el _operador spread_ __(...object)__, la _asignación por objeto_ __Object.assign(object)__ y la _serialización/deserialización_ de _JSON_ __JSON.stringify()__ y __JSON.parse()__.
+
+Sin embargo, la función structuredClone() ofrece algunas ventajas significativas en comparación con estas otras formas de clonar objetos."
 category: "javascript"
 tags:
   - "javascript"
@@ -15,18 +17,31 @@ tags:
 keywords: "javascript, typescript, clonar objetos, structuredClone, copia profunda, operador spread, Object.assign, JSON.stringify, JSON.parse, comparación, ventajas, desventajas, eficiencia, rendimiento, complejidad, referencia, memoria, hilos de trabajo, almacenamiento en caché, conexión de red, datos, propiedades, métodos."
 ---
 
-Cuando trabajas con objetos en JavaScript, a menudo necesitas clonarlos para realizar operaciones sin modificar el objeto original. **Hay varias formas de clonar objetos en JavaScript**, como el operador spread (**\{...object\}**), la asignación por objeto (**Object.assign(object)**) y la serialización/deserialización de JSON (**JSON.stringify()** y **JSON.parse()**). Sin embargo, la función **structuredClone()** ofrece algunas ventajas significativas en comparación con estas otras formas de clonar objetos.
+<Section>
+## Introducción
 
+Cuando trabajas con `objetos en JavaScript`, a menudo necesitas `clonarlos` para realizar operaciones sin modificar el objeto original. Hay varias formas de clonar objetos en `JavaScript`, como el _operador spread_ (`{...object}`), la _asignación por objeto_ (`Object.assign(object)`) y la _serialización/deserialización_ de _JSON_ (`JSON.stringify()` y `JSON.parse()`).
+
+Sin embargo, la función `structuredClone()` ofrece algunas ventajas significativas en comparación con estas otras formas de clonar objetos.
+
+</Section>
+
+<Section>
 ## ¿Qué es structuredClone?
 
-La función **structuredClone** en JavaScript es una función que **permite clonar objetos** con sus propiedades y métodos. A diferencia de otras formas de clonar objetos, como la copia por referencia o la serialización/deserialización, **structuredClone crea una copia profunda del objeto**, lo que significa que todas las propiedades y métodos del objeto original se copian en el objeto clonado.
+La función `structuredClone` en `JavaScript` es una función que permite `clonar objetos` con sus propiedades y métodos. A diferencia de otras formas de clonar objetos, como la _copia por referencia_ o la _serialización/deserialización_, `structuredClone` crea una copia `profunda` del objeto, lo que significa que todas las propiedades y métodos del objeto original se `copian` en el objeto clonado.
 
-La función **structuredClone es útil** cuando necesitas crear una copia de un objeto complejo para **realizar operaciones sin modificar el objeto original**. Además, esta función puede clonar objetos que no pueden ser serializados mediante JSON.stringify() o JSON.parse(), como objetos que contienen funciones.
+La función `structuredClone` es útil cuando necesitas crear una copia de un `objeto complejo` para realizar operaciones sin modificar el objeto original. Además, esta función puede clonar objetos que no pueden ser serializados mediante (`JSON.stringify()` o `JSON.parse()`), como objetos que contienen funciones.
 
+</Section>
+
+<Section>
 ## ¿Cuándo se debe utilizar structuredClone en lugar de otros métodos de clonación?
 
-En la mayoría de los casos, utilizar el operador spread (**\{...object\}**) es suficiente para clonar objetos en JavaScript. Sin embargo, **es importante tener en cuenta algunas limitaciones y desventajas**. Por ejemplo, el operador spread **no puede manejar correctamente objetos con referencias circulares**. En tales casos, el clon resultante tendrá una copia superficial de la referencia en lugar de una nueva instancia.
+En la mayoría de los casos, utilizar el _operador spread_ (`{...object}`) es suficiente para clonar objetos en `JavaScript`. Sin embargo, es importante tener en cuenta algunas _limitaciones y desventajas_. Por ejemplo, el _operador spread_ no puede manejar correctamente objetos con `referencias circulares`. En tales casos, el clon resultante tendrá una `copia superficial` de la referencia en lugar de una nueva instancia.
 
-Otro método común para clonar objetos en JavaScript es **Object.assign(object)**. Sin embargo, este método también presenta la misma limitación de referencia circular. Además, **no puede clonar objetos complejos** que contienen referencias a otros objetos.
+Otro método común para clonar objetos en JavaScript es (`Object.assign(object)`). Sin embargo, este método también presenta la misma limitación de `referencia circular`. Además, no puede clonar objetos complejos que contienen referencias a otros objetos.
 
-**Si necesitas clonar objetos complejos** que contienen _objetos DOM, objetos RegExp o objetos de fecha_, o si necesitas clonar objetos que contienen referencias a otros objetos, **structuredClone es el método recomendado**. A diferencia de las alternativas mencionadas anteriormente, structuredClone puede manejar objetos con propiedades no enumerables y objetos que contienen referencias circulares.
+Si necesitas clonar `objetos complejos` que contienen `objetos DOM`, `objetos RegExp` o `objetos de fecha`, o si necesitas clonar objetos que contienen referencias a otros objetos, `structuredClone` es el método recomendado. A diferencia de las alternativas mencionadas anteriormente, `structuredClone` puede manejar objetos con propiedades no enumerables y objetos que contienen `referencias circulares`.
+
+</Section>

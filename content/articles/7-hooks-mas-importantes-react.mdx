@@ -5,7 +5,7 @@ title: "Domina los Hooks de React: Los 7 más importantes que debes conocer"
 date: "2023-05-12"
 image: "/images/og/hook-en-react-importantes.jpg"
 description: "Los hooks son una de las mejores características de React para mejorar la reutilización y la organización de código. En este artículo, descubre los 7 hooks más importantes de React que todo desarrollador debería conocer. Desde useState hasta useContext, explora cómo puedes utilizar estos hooks para mejorar la eficiencia y la funcionalidad de tus aplicaciones de React. Si deseas llevar tus habilidades de programación en React al siguiente nivel, ¡no puedes perderte esta guía imprescindible sobre los hooks de React!"
-cardDescription: "Si estás construyendo aplicaciones **React**, los **Hooks** son el equivalente a tener en tus manos herramientas de construcción de alta calidad. Con ellos, _puedes crear aplicaciones duraderas y de alta calidad de manera_ **eficiente y sin esfuerzo**. Pero, **¿sabes cuáles son los 7 Hooks más importantes de React?**. En este artículo, **descubrirás** _cómo utilizarlos_, _para qué sirven_ y _por qué deberías incluirlos en tus proyectos_. Prepárate para llevar tus habilidades de desarrollo al siguiente nivel."
+cardDescription: "Si estás construyendo aplicaciones en __React__, los __Hooks__ son el equivalente a tener en tus manos herramientas de construcción de alta calidad. Con ellos, puedes crear aplicaciones duraderas y de alta calidad de manera eficiente y sin esfuerzo. Pero, __¿sabes cuáles son los 7 Hooks más importantes de React?__. En este artículo, descubrirás cómo utilizarlos, para qué sirven y por qué deberías incluirlos en tus __proyectos__. Prepárate para llevar tus habilidades de desarrollo al siguiente nivel."
 category: "react"
 tags:
   - "javascript"
@@ -14,39 +14,55 @@ tags:
 keywords: "react, programación web, hooks, useState, useEffect, useContext, useReducer, useMemo, useCallback, useRef, optimización, rendimiento, componentes, estado, ciclo de vida, manejo de datos, flujo de datos, manejo de eventos, arquitectura, javascript, typescript"
 ---
 
-Si estás construyendo aplicaciones **React**, los **Hooks** son el equivalente a tener en tus manos herramientas de construcción de alta calidad. Con ellos, _puedes crear aplicaciones duraderas y de alta calidad de manera_ **eficiente y sin esfuerzo**. Pero, **¿sabes cuáles son los 7 Hooks más importantes de React?**. En este artículo, **descubrirás** _cómo utilizarlos_, _para qué sirven_ y _por qué deberías incluirlos en tus proyectos_. Prepárate para llevar tus habilidades de desarrollo al siguiente nivel.
+<Section>
+## Introducción
 
+Si estás construyendo aplicaciones en `React`, los `Hooks` son el equivalente a tener en tus manos herramientas de construcción de alta calidad. Con ellos, puedes crear aplicaciones duraderas y de alta calidad de manera eficiente y sin esfuerzo. Pero, `¿sabes cuáles son los 7 Hooks más importantes de React?`. En este artículo, descubrirás cómo utilizarlos, para qué sirven y por qué deberías incluirlos en tus `proyectos`. Prepárate para llevar tus habilidades de desarrollo al siguiente nivel.
+
+</Section>
+
+<Section>
 ## ¿Qué son los Hooks?
 
-Los hooks son una **característica de React**, que permiten a los desarrolladores utilizar el estado y otras características de React en componentes. Con los hooks, los desarrolladores pueden **reutilizar** la lógica de estado y efectos secundarios en diferentes componentes, lo que hace que el código sea más **fácil de mantener** y menos propenso a errores.
+Los `hooks` son una característica de `React`, que permiten a los desarrolladores utilizar el `estado` y otras características de React en componentes. Con los hooks, los desarrolladores pueden reutilizar la lógica de estado y efectos secundarios en diferentes componentes, lo que hace que el código sea más fácil de mantener y menos propenso a errores.
 
-En este articulo **aprenderas sobre los siguientes hooks**:
+En este articulo aprenderas sobre los siguientes hooks:
 
-- **useState**: Este hook permite que un componente tenga un **estado interno** y que se actualice cada vez que se llama a la función setState.
-- **useEffect**: Este hook se utiliza para **manejar los efectos secundarios** de un componente, como actualizar el DOM o llamar a una API. Se llama después de que se renderice el componente y puede actualizar el estado o los props.
-- **useContext**: Este hook permite a un componente **acceder a un contexto** proporcionado por un componente padre.
-- **useReducer**: Este hook permite a un componente **manejar el estado** mediante la implementación de una **función reductora** que recibe el estado actual y una acción y devuelve un nuevo estado.
-- **useRef**: Este hook se utiliza para **crear una referencia mutable** que se puede mantener durante toda la vida útil del componente.
-- **useCallback**: Este hook permite a un componente **crear una función memorizada** que puede ser pasada como una prop sin necesidad de volver a renderizar el componente.
-- **useMemo**: Este hook permite a un componente **memorizar el resultado de una función costosa** y reutilizarlo en futuras renderizaciones.
+- **useState:** Este hook permite que un componente tenga un estado interno y que se actualice cada vez que se llama a la función `setState`.
+- **useEffect:** Este hook se utiliza para manejar los `efectos secundarios` de un componente, como actualizar el `DOM` o llamar a una `API`. Se llama después de que se renderice el componente y puede actualizar el estado o las props.
+- **useContext:** Este hook permite a un componente acceder a un `contexto` proporcionado por un componente padre.
+- **useReducer:** Este hook permite a un componente manejar el estado mediante la implementación de una `función reductora` que recibe el estado actual, una acción y devuelve un nuevo estado.
+- **useRef:** Este hook se utiliza para crear una `referencia mutable` que se puede mantener durante toda la vida útil del componente.
+- **useCallback:** Este hook permite a un componente crear una `función memorizada` que puede ser pasada como una prop sin necesidad de volver a renderizar el componente.
+- **useMemo:** Este hook permite a un componente `memorizar` el resultado de una función costosa y reutilizarlo en futuras renderizaciones.
 
+</Section>
+
+<Section>
 ## useState
 
-El hook "**useState**" es probablemente el más utilizado de todos los hooks de React. Permite a los desarrolladores **almacenar y actualizar el estado** dentro de un componente. En otras palabras, useState **permite que los componentes tengan una memoria interna** que pueden usar para almacenar y cambiar datos.
+El hook `useState` es probablemente el más utilizado de todos los hooks de `React`. Permite a los desarrolladores almacenar y actualizar el estado dentro de un componente. En otras palabras, useState permite que los componentes tengan una `memoria interna` que pueden usar para almacenar y cambiar datos.
 
-### Uso de useState
+</Section>
 
-**Para utilizar useState**, es necesario importarlo desde la biblioteca de React. Luego, se puede llamar dentro de un componente funcional de React y **proporcionar un valor inicial para el estado**. Este valor inicial puede ser cualquier tipo de dato válido en JavaScript.
+<Section>
+### ¿Comó utilizar useState?
 
-useState **devuelve un array con dos elementos**: el primero es el valor actual del estado y el segundo es una función para actualizar el estado. Esta función suele llamarse "setNombreDelEstado", comenzando con la palabra "set" seguida del nombre del estado.
+Para utilizar `useState`, es necesario importarlo desde la biblioteca de React. Luego, se puede llamar dentro de un `componente funcional` de React y proporcionar un valor inicial para el estado. Este valor inicial puede ser cualquier tipo de dato válido en `JavaScript`.
 
-### Ejemplo
+_useState devuelve un array con dos elementos:_ el primero es el `valor actual` del estado y el segundo es una `función` para actualizar el estado. Esta función suele llamarse _'setNombreDelEstado'_, comenzando con la palabra `set` seguida del nombre del estado.
+
+</Section>
+
+<Section>
+### Ejemplo de uso de useState
 
 ```jsx
 import { useState } from "react";
 
 const Counter = () => {
-  const [count, setCount] = useState(0); // inicializamos el estado con un valor de 0
+  // inicializamos el estado con un valor de 0
+  const [count, setCount] = useState(0);
 
   return (
     <div>
@@ -57,23 +73,37 @@ const Counter = () => {
 };
 ```
 
-En este ejemplo, "useState" se utiliza para almacenar el estado de "count" dentro del componente Counter. El valor inicial de "count" es 0, y **cada vez que el botón se presiona, el estado se actualiza** utilizando la función "setCount()". En este caso, estamos tomando el valor de "count" y luego le sumamos 1.
+En este ejemplo, `useState` se utiliza para almacenar el estado del contador dentro del componente Counter. El valor inicial de `count` es 0, y cada vez que el botón se presiona, el estado se actualiza utilizando la función `setCount()`. En este caso, estamos tomando el valor de `count` y luego le sumamos 1.
 
+</Section>
+
+<Section>
 ### ¿Por qué utilizar useState en React?
 
-**Deberías incluir useState** en tus componentes de React porque es la **forma más sencilla y efectiva** de agregar y administrar el estado local en un componente funcional.
+Deberías incluir `useState` en tus `componentes de React` porque es la forma más sencilla y efectiva de agregar y administrar el estado local en un `componente funcional`.
 
-En resumen, incluir useState en tus componentes **te permite agregar y administrar el estado local** de una **manera fácil y efectiva**, lo que te permite construir componentes interactivos y dinámicos en tus aplicaciones de React.
+En resumen, incluir `useState` en tus `componentes` te permite agregar y administrar el estado local de una manera fácil y efectiva, lo que te permite construir componentes interactivos y dinámicos en tus aplicaciones de React.
 
+</Section>
+
+<Section>
 ## useEffect
 
-El hook "**useEffect**" se utiliza para **realizar efectos secundarios dentro de un componente**. Esto puede incluir la actualización de un componente después de que cambie el estado, la ejecución de una función después de que se monte o desmonte un componente, o la recuperación de datos de una API.
+El hook `useEffect` se utiliza para realizar `efectos secundarios` dentro de un componente. Esto puede incluir la actualización de un componente después de que cambie el estado, la ejecución de una `función` después de que se monte o desmonte un componente, o la recuperación de datos de una `API`.
 
+</Section>
+
+<Section>
 ### Parametros necesarios en useEffect
 
-Dentro del hook useEffect, **es necesario establecer dos parámetros**. **El primero es una función** que contiene el efecto que se va a ejecutar. **El segundo es un array** de dependencias que determinará cuándo se volverá a ejecutar el efecto. En otras palabras, cuando alguno de los valores en el array cambie, el efecto se volverá a ejecutar. Si no se especifica el array, el efecto se volverá a ejecutar con cada cambio en el componente.
+Dentro del `hook useEffect`, es necesario establecer dos parámetros. El primero es una `función` que contiene el `efecto` que se va a ejecutar. El segundo es un `array de dependencias` que determinará cuándo se volverá a ejecutar el efecto.
 
-### Ejemplo
+Cuando alguno de los valores en el array cambie, el `efecto` se volverá a ejecutar. Si no se especifica el array, el efecto se volverá a ejecutar con cada cambio en el componente. Si se especifica un `array vacío`, este tan solo se ejecutará la primera vez que el componente se renderice.
+
+</Section>
+
+<Section>
+### Ejemplo de uso de useEffect
 
 ```jsx
 import { useEffect, useState } from "react";
@@ -82,7 +112,8 @@ const UserList = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users") // realizamos petición HTTP dentro del useEffect
+    // realizamos petición HTTP dentro del useEffect
+    fetch("https://jsonplaceholder.typicode.com/users")
       .then((response) => response.json())
       .then((data) => setUsers(data));
   }, []);
@@ -97,38 +128,52 @@ const UserList = () => {
 };
 ```
 
-En este ejemplo, "**useEffect**" se utiliza para **recuperar los datos** de una **API** y almacenarlos en el estado de "users". El segundo parámetro de useEffect es un array vacío, lo que significa que la función se ejecutará solo una vez cuando se monte el componente.
+En este ejemplo, `useEffect` se utiliza para recuperar los datos de una `API` y almacenarlos en el estado creado con `useState` llamado 'users'. El segundo parámetro de `useEffect` es un array vacío, lo que significa que la función se ejecutará solo una vez, cuando se monte el componente.
 
-### Conclusiones y precauciones a tomar en cuenta
+</Section>
 
-En general, **useEffect es un hook muy útil** que nos permite manejar efectos secundarios en nuestros componentes. Nos permite realizar operaciones de manera segura y efectiva, como _realizar solicitudes de red, actualizar el DOM o manejar la lógica de la aplicación_.
+<Section>
+### Conclusiones y precauciones a tomar en cuenta sobre el uso de useEffect
 
-Es **importante tener precauciones** al usar useEffect. **Debemos asegurarnos** de que los efectos secundarios no sean destructivos, depurarlos adecuadamente y considerar el rendimiento al usarlos. Además, debemos **tener en cuenta las dependencias y evitar bucles infinitos** al actualizar el estado dentro del efecto.
+En general, `useEffect` es un `hook` muy útil que nos permite manejar `efectos secundarios` en nuestros componentes. Nos permite realizar operaciones de manera segura y efectiva, como realizar `solicitudes de red`, actualizar el `DOM` o manejar la lógica de la aplicación.
 
+Es importante tener precauciones al usar `useEffect`. Debemos asegurarnos de que los efectos secundarios no sean destructivos, depurarlos adecuadamente y considerar el rendimiento al usarlos. Además, debemos tener en cuenta las dependencias y evitar `bucles infinitos` al actualizar el estado dentro del efecto.
+
+</Section>
+
+<Section>
 ## useContext
 
-El hook "**useContext**" se utiliza para **acceder al contexto** dentro de un componente. El contexto es una forma de pasar datos a través de la jerarquía de componentes **sin tener que pasar props manualmente** en cada nivel.
+El hook `useContext` se utiliza para acceder al `contexto` dentro de un componente. El contexto es una forma de pasar datos a través de la `jerarquía de componentes` sin tener que pasar `props` manualmente en cada nivel.
 
+</Section>
+
+<Section>
 ### Crear Context
 
-Para **utilizar useContext**, primero se debe crear un contexto utilizando el método "**createContext**". Este contexto **puede contener** cualquier tipo de datos, como un objeto, una cadena de texto, un número, etc.
+Para utilizar `useContext`, primero se debe crear un contexto utilizando el método `createContext`. Este contexto puede contener cualquier `tipo de datos`, como un `objeto`, una cadena de `texto`, un `número`, etc.
 
 ```jsx
 import { createContext } from "react";
 
-export const MyContext = createContext(); // creamos y exportamos el contexto
+// creamos y exportamos el contexto
+export const MyContext = createContext();
 ```
 
+</Section>
+
+<Section>
 ### Crear Provider
 
-El **"Provider" es un componente** que se utiliza para **proporcionar datos del contexto** a todos los componentes que los necesiten. Este componente **envuelve a todos los componentes** que necesitan acceder a los datos del contexto.
+El `Provider` es un `componente` que se utiliza para proporcionar datos del `contexto` a todos los componentes que los necesiten. Este componente envuelve a todos los componentes que necesitan acceder a los `datos del contexto`.
 
-El "Provider" **recibe la propiedad "children"**, que son los componentes que envolverá y a los que les dará acceso al contexto. Por último, **retorna el contexto previamente creado** y utiliza la propiedad "Provider" de ese contexto. Dentro del "Provider" se coloca el "children" recibido por props. Además, el "Provider" **recibe una propiedad "value"**, que son los valores que dará acceso a todos los componentes que envuelve.
+El `Provider` recibe la propiedad `children`, que son los componentes que envolverá y a los que les dará acceso al contexto. Por último, retorna el contexto previamente creado y utiliza la propiedad `Provider` de ese contexto. Dentro del 'Provider' se coloca el 'children' recibido por `props`. Además, el 'Provider' recibe una propiedad `value`, que son los valores que dará acceso a todos los componentes que envuelve.
 
 ```jsx
 import { createContext } from "react";
 
-export const MyContext = createContext(); // creamos y exportando el contexto
+// creamos y exportando el contexto
+export const MyContext = createContext();
 
 // componente que exportara el "Provider" del contexto
 export const MyContextProvider = ({ children }) => {
@@ -138,9 +183,12 @@ export const MyContextProvider = ({ children }) => {
 };
 ```
 
+</Section>
+
+<Section>
 ### Colocar Provider
 
-Es **común colocar** este "Provider" en el **punto de entrada** de nuestra aplicación, envolviendo todos los demás componentes. De esta manera, **todos los componentes** que formen parte de nuestra aplicación **tendrán acceso al contexto** proporcionado por el "Provider".
+Es común colocar este `Provider` en el `punto de entrada` de nuestra aplicación, envolviendo todos los demás componentes. De esta manera, todos los componentes que formen parte de nuestra aplicación tendrán acceso al `contexto` proporcionado por el `Provider`.
 
 ```jsx
 import ReactDOM from "react-dom/client";
@@ -158,17 +206,22 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 );
 ```
 
+</Section>
+
+<Section>
 ### Acceder al contexto mediande useContext
 
-Para **acceder a los datos** proporcionados **por el contexto** en un componente específico, debemos utilizar el hook **useContext**. A continuación, se muestra un ejemplo de cómo se utiliza este hook:
+Para acceder a los datos proporcionados por el `contexto` en un componente específico, debemos utilizar el `hook useContext`. A continuación, se muestra un ejemplo de cómo se utiliza este hook:
 
 ```jsx
 import { useContext } from "react";
 
-import { MyContext } from "./context/MyContext"; // contexto
+// importamos el contexto
+import { MyContext } from "./context/MyContext";
 
 export const MyComponent = () => {
-  const { users } = useContext(MyContext); // utilizamos useContext y mandamos como parametro el contexto que queramos usar
+  // utilizamos useContext y mandamos como parametro el contexto que queramos usar
+  const { users } = useContext(MyContext);
 
   return (
     <ul>
@@ -182,14 +235,20 @@ export const MyComponent = () => {
 };
 ```
 
-En este ejemplo, se **utiliza el hook useContext para acceder a los datos** proporcionados por el contexto llamado "MyContext". En particular, se obtiene el array de objetos llamado "users" que se encuentra dentro del contexto. Luego, en el componente, se renderiza el nombre de todos los usuarios del array.
+En este ejemplo, se utiliza el `hook useContext` para acceder a los datos proporcionados por el `contexto` llamado `MyContext`. En particular, se obtiene el `array de objetos` 'users' que se encuentra dentro del contexto. Luego, en el componente, se renderiza el nombre de todos los usuarios del array.
 
+</Section>
+
+<Section>
 ## useReducer
 
-"**UseReducer**" es un hook de React que se **utiliza para manejar el estado** de una aplicación en la que los cambios son complejos y **requieren una función separada** para su actualización. Esta función se llama "**reducer**" y se encarga de actualizar el estado de la aplicación en función de la acción realizada en la interfaz de usuario.
+`UseReducer` es un `hook` que se utiliza para manejar el `estado` de una aplicación en la que los cambios son complejos y requieren una `función separada` para su actualización. Esta función se llama `reducer` y se encarga de actualizar el estado de la aplicación en función de la `acción` realizada en la `interfaz de usuario`.
 
-Aunque useReducer se utiliza de manera **similar a useState, la diferencia principal** es que useReducer se basa en el **patrón de diseño "reducer"**, comúnmente utilizado en programación funcional.
+Aunque `useReducer` se utiliza de manera similar a `useState`, la diferencia principal es que useReducer se basa en el `patrón de diseño` `reducer`, comúnmente utilizado en programación funcional.
 
+</Section>
+
+<Section>
 ### Sintaxis de useReducer
 
 ```jsx
@@ -198,14 +257,17 @@ import { useReducer } from "react";
 const [state, dispatch] = useReducer(reducer, initialState);
 ```
 
-- **state**: Es el **estado actual** de la aplicación.
-- **dispatch**: Es una **función** que se utiliza para **actualizar el estado** de la aplicación.
-- **reducer**: Es una **función** que toma el **estado actual** y la **acción realizada** y devuelve un **nuevo estado actualizado**.
-- **initialState**: Es el **estado inicial** de la aplicación.
+- **state:** Es el `estado actual` de la aplicación.
+- **dispatch:** Es una `función` que se utiliza para `actualizar el estado` de la aplicación.
+- **reducer:** Es una `función` que toma el `estado actual`, la `acción realizada` y devuelve un `nuevo estado` actualizado.
+- **initialState:** Es el `estado inicial` de la aplicación.
 
+</Section>
+
+<Section>
 ### Función reducer
 
-La **función reducer** es una parte fundamental del hook useReducer. **Esta función recibe dos argumentos**: _el estado actual de la aplicación y una acción_. La función reducer procesa esta acción y **devuelve un nuevo estado** actualizado de la aplicación.
+La `función reducer` es una parte fundamental del `hook useReducer`. Esta función recibe dos argumentos: el `estado actual` de la aplicación y una `acción`. La función reducer procesa esta acción y devuelve un `nuevo estado` actualizado de la aplicación.
 
 ```jsx
 const reducer = (state, action) => {
@@ -220,20 +282,24 @@ const reducer = (state, action) => {
 };
 ```
 
-En este ejemplo, se **utiliza la función reducer** para procesar distintas acciones según su tipo, y se hace uso de una estructura switch para ello. **En cada caso de acción**, se lleva a cabo algún tipo de procesamiento en el estado actual y se devuelve un nuevo estado actualizado.
+En este ejemplo, se utiliza la `función reducer` para procesar distintas `acciones` según su tipo, y se hace uso de una estructura `switch` para ello. En cada caso de acción, se lleva a cabo algún tipo de `procesamiento` en el `estado actual` y se devuelve un `nuevo estado` actualizado.
 
-El **último caso** de la estructura switch es el "**default**", que se utiliza para manejar cualquier acción que no haya sido contemplada en los casos anteriores. En este caso, simplemente **se devuelve el estado actual sin cambios**.
+El último caso de la estructura switch es el `default`, que se utiliza para manejar cualquier acción que no haya sido contemplada en los casos anteriores. En este caso, simplemente se devuelve el `estado actual` sin cambios.
 
+</Section>
+
+<Section>
 ### Utilizando useReducer
 
-Entonces, para **utilizar useReducer**, se debe **establecer previamente el valor inicial** del estado. Luego, se debe **definir el reducer** _(función encargada de cambiar el estado)_ que se utilizará. Finalmente, se debe **llamar a la función dispatch** cada vez que se desee actualizar el estado.
+Entonces, para utilizar `useReducer`, se debe establecer previamente el valor inicial del estado. Luego, se debe definir el reducer _(función encargada de cambiar el estado)_ que se utilizará. Finalmente, se debe llamar a la `función dispatch` cada vez que se desee actualizar el estado.
 
 A continuación, se muestra un ejemplo de código para llevar a cabo todo esto:
 
 ```jsx
 import { useReducer } from "react";
 
-const initialState = { count: 0 }; // estado inicial
+// estado inicial del reducer
+const initialState = { count: 0 };
 
 // funcion reducer
 const reducer = (state, action) => {
@@ -260,26 +326,35 @@ export const Counter = () => {
 };
 ```
 
-En este ejemplo se presenta un componente llamado "Counter" que **utiliza la función useReducer** para gestionar su estado interno. Este componente implementa un contador, cuyo valor inicial se establece en cero mediante la constante **initialState**.
+En este ejemplo se presenta un componente llamado `Counter` que utiliza la `función useReducer` para gestionar su estado interno. Este componente implementa un 'contador', cuyo valor inicial se establece en cero mediante la constante `initialState`.
 
-La función **reducer** es responsable de actualizar el estado del contador en función de la acción realizada. En este caso, hay **dos acciones posibles**: la acción **"increment"**, que aumenta el contador en 1, y la acción **"decrement"**, que lo disminuye en 1.
+La `función reducer` es responsable de actualizar el estado del contador en función de la `acción` realizada. En este caso, hay dos acciones posibles: la acción `increment`, que aumenta el contador en 1, y la acción `decrement`, que lo disminuye en 1.
 
+</Section>
+
+<Section>
 ## useRef
 
-**"useRef"** es un hook que **permite crear una referencia mutable** que persiste durante el ciclo de vida de un componente. Esto puede ser útil para **acceder** directamente a **elementos del DOM**, **guardar valores** que no cambian pero que necesitan ser almacenados de alguna manera, o para **guardar referencias a valores** que se utilizan en efectos o en otras partes del componente.
+`useRef` es un hook que permite crear una `referencia mutable` que persiste durante el ciclo de vida de un componente. Esto puede ser útil para acceder directamente a `elementos del DOM`, guardar valores que no cambian pero que necesitan ser almacenados de alguna manera, o para guardar referencias a valores que se utilizan en efectos o en otras partes del componente.
 
+</Section>
+
+<Section>
 ### Ejemplo de uso real
 
-Uno de los usos más comunes de useRef es **acceder directamente a un elemento del DOM** y **realizar alguna operación en él**. Por ejemplo, si deseamos que un botón tenga el foco cuando un componente se renderiza, podemos usar useRef para almacenar una referencia al elemento del botón y luego usar current para asignarle el foco:
+Uno de los usos más comunes de `useRef` es para acceder directamente a un `elemento del DOM` y realizar alguna operación en él. Por ejemplo, si deseamos que un botón tenga el foco cuando un componente se renderiza, podemos usar useRef para almacenar una referencia al elemento del botón y luego usar `current` para asignarle el foco:
 
 ```jsx
 import { useRef, useEffect } from "react";
 
 export const MyComponent = () => {
-  const buttonRef = useRef(null); // creamos useRef con un valor inicial de "null"
+  // creamos useRef con un valor inicial de 'null'
+  const buttonRef = useRef(null);
 
   useEffect(() => {
-    buttonRef.current.focus(); // activamos el "focus" del botón
+    // activamos el "focus" del botón
+    // al renderizarseel componente
+    buttonRef.current.focus();
   }, []);
 
   return (
@@ -290,24 +365,34 @@ export const MyComponent = () => {
 };
 ```
 
-En este ejemplo, creamos una referencia mutable llamada **"buttonRef"** utilizando **useRef**, la cual se inicializa con el valor **"null"**. Luego, en el efecto, utilizamos **"buttonRef.current"** para acceder directamente al elemento de botón y llamar al método **"focus()"** en él. Finalmente, en la propiedad **"ref"** del elemento **"button"**, debemos asignarle el valor de **"buttonRef"**, lo que permite a React **asignar el elemento a la propiedad "current"** de nuestra referencia y así mantener su referencia actualizada.
+En este ejemplo, creamos una referencia mutable llamada `buttonRef` utilizando `useRef`, la cual se inicializa con el valor 'null'. Luego, en el efecto, utilizamos `buttonRef.current` para acceder directamente al elemento de botón y llamar al método `focus()` en él. Finalmente, en la propiedad `ref` del elemento `button`, debemos asignarle el valor de `buttonRef`, lo que permite a React asignar el elemento a la propiedad `current` de nuestra referencia y así mantener su referencia actualizada.
 
-Al utilizar useEffect con un array de dependencias vacío, éste solo se ejecutará la primera vez que se renderice el componente. Esto **permitirá que se aplique el "focus"** sobre el botón en ese momento.
+Al utilizar `useEffect` con un array de dependencias vacío, éste solo se ejecutará la primera vez que se renderice el componente. Esto permitirá que se aplique el 'focus' sobre el botón en ese momento.
 
+</Section>
+
+<Section>
 ## useCallback
 
-**"useCallback"** es un hook que **ayuda a mejorar el rendimiento** de los componentes que utilizan funciones como propiedades. Cuando creamos una nueva instancia de una función en cada renderizado de un componente, esto **puede generar una sobrecarga** innecesaria y **afectar el rendimiento del sitio web**. Utilizando useCallback, podemos crear una instancia de la función solo cuando cambia una de sus dependencias, lo que nos **ayuda a evitar esta sobrecarga y mejorar el rendimiento**.
+`useCallback` es un hook que ayuda a mejorar el rendimiento de los componentes que utilizan `funciones como propiedades`.
 
+Cuando creamos una nueva `instancia` de una función en cada renderizado de un componente, esto puede generar una sobrecarga innecesaria y afectar el `rendimiento` del `sitio web`. Utilizando `useCallback`, podemos crear una instancia de la función solo cuando cambia una de sus `dependencias`, lo que nos ayuda a evitar esta sobrecarga y mejorar el rendimiento.
+
+</Section>
+
+<Section>
 ### Utilizar useCallback
 
-Para utilizar useCallback, simplemente **envuelve la función que deseas optimizar con useCallback** y proporciona las **dependencias como un arreglo de dependencias**. La función solo se volverá a crear si alguna de sus dependencias cambia.
+Para utilizar `useCallback`, simplemente envuelve la `función` que deseas optimizar con useCallback y proporciona las dependencias como un `arreglo de dependencias`. La función solo se volverá a crear si alguna de sus dependencias cambia.
 
 ```jsx
 import { useState, useCallback } from "react";
 
 export const MyComponent = () => {
+  // inicializamos el estado en '0'
   const [count, setCount] = useState(0);
 
+  // memorizamos la función
   const handleClick = useCallback(() => {
     console.log(`El contador es ${count}`);
   }, [count]);
@@ -321,25 +406,32 @@ export const MyComponent = () => {
 };
 ```
 
-En este ejemplo, **utilizamos useCallback** para crear una instancia de la función **"handleClick"** solamente cuando la variable **"count" cambie**. Pasamos "count" como **la única dependencia del hook**, lo que significa que "handleClick" **solo se volverá a crear si "count" cambia**, evitando así re-renderizados innecesarios.
+En este ejemplo, utilizamos `useCallback` para crear una instancia de la función `handleClick` solamente cuando la variable `count` cambie. Pasamos 'count' como la única `dependencia del hook`, lo que significa que 'handleClick' solo se volverá a crear si 'count' cambia, evitando así `re-renderizados` innecesarios.
 
-Utilizando **useCallback, podemos mejorar significativamente el rendimiento de nuestros componentes** y garantizar que nuestro sitio web tenga una mejor experiencia de usuario.
+Utilizando `useCallback`, podemos mejorar significativamente el rendimiento de nuestros componentes y garantizar que nuestro sitio web tenga una mejor experiencia de usuario.
 
+</Section>
+
+<Section>
 ## useMemo
 
-Cuando utilizamos **"useMemo", podemos memorizar el resultado de una función** y almacenar su valor en una constante. De esta manera, **si el componente se vuelve a renderizar**, React comprueba si los valores de entrada de la función han cambiado. Si no hay cambios, useMemo devuelve el valor memorizado sin tener que ejecutar nuevamente la función, **lo que puede mejorar significativamente el rendimiento** de la aplicación.
+Cuando utilizamos `useMemo`, podemos `memorizar` el resultado de una `función` y almacenar su valor en una constante. De esta manera, si el componente se vuelve a renderizar, `React` comprueba si los valores de entrada de la función han cambiado. Si no hay cambios, `useMemo` devuelve el valor memorizado sin tener que ejecutar nuevamente la función, lo que puede mejorar significativamente el rendimiento de la aplicación.
 
+</Section>
+
+<Section>
 ### Caso de uso real
 
-Un **caso frecuente** en que se utiliza useMemo es cuando **se necesita ordenar una lista**. En lugar de ordenar la lista en cada renderizado, useMemo permite memorizar la lista ordenada y **evitar cálculos innecesarios**. A continuación, se muestra un ejemplo ilustrativo:
+Un caso frecuente en el cuál se utiliza `useMemo` es cuando se necesita ordenar una lista. En lugar de ordenar la lista en cada renderizado, `useMemo` permite `memorizar` la lista ordenada y evitar cálculos innecesarios. A continuación, se muestra un ejemplo ilustrativo:
 
 ```jsx
 import { useMemo } from "react";
 
 const UserList = ({ users }) => {
+  // solo se vuelve a ejecutar cuando la propiedad 'users' cambie
   const sortedUsers = useMemo(() => {
     return [...users].sort((a, b) => a.name.localeCompare(b.name));
-  }, [users]); // solo se vuelve a ejecutar cuando la propiedad "users" cambie
+  }, [users]);
 
   return (
     <ul>
@@ -351,6 +443,8 @@ const UserList = ({ users }) => {
 };
 ```
 
-En este ejemplo, hemos utilizado useMemo **para memorizar la lista de usuarios ordenada alfabéticamente** según el valor de la propiedad "name". La función que realiza esta operación **se ejecutará únicamente cuando el array de usuarios cambie**, y su resultado se almacenará en la constante "sortedUsers".
+En este ejemplo, hemos utilizado `useMemo` para memorizar la lista de usuarios ordenada alfabéticamente según el valor de la `propiedad name`. La función que realiza esta operación se ejecutará únicamente cuando el array de 'usuarios' cambie, y su resultado se almacenará en la constante `sortedUsers`.
 
-**Si el componente se renderiza de nuevo** por cualquier otra razón, **useMemo devolverá directamente la lista ordenada que se ha memorizado**, en lugar de ejecutar nuevamente la función, ahorrando así recursos y mejorando el rendimiento del componente.
+Si el componente se renderiza de nuevo por cualquier otra razón, `useMemo` devolverá directamente la lista ordenada que se ha memorizado, en lugar de ejecutar nuevamente la función, ahorrando así recursos y mejorando el rendimiento del componente.
+
+</Section>

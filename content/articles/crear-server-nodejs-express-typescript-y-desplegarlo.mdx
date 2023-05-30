@@ -5,9 +5,7 @@ title: "Crear un servidor de Nodejs con Express, Typescript y desplegarlo"
 date: "2023-02-28"
 image: "/images/og/create-nodejs-server-express-typescript.jpg"
 description: "¡Mira cómo puedes crear un servidor de Node.js con Express y Typescript y desplegarlo en menos de 5 minutos! Aprende con nuestro artículo que incluye código de ejemplo e imágenes para guiarte en todo el proceso. ¡No te lo pierdas!"
-cardDescription: "A veces puede resultar complicado crear un servidor en **Node.js utilizando Express y Typescript**, especialmente debido a la configuración de Typescript y los paquetes necesarios que contienen los archivos de definición.
-
-En este artículo, **te enseñaré** todo lo que necesitas saber para **crear un proyecto** de este tipo en cuestión de minutos, incluyendo un extra que te mostrará cómo **desplegar** el servidor de forma totalmente **gratuita**."
+cardDescription: "A veces puede resultar complicado crear un servidor en __Node.js__ utilizando __Express__ y __Typescript__, especialmente debido a la configuración de Typescript y los __paquetes necesarios__ que contienen los archivos de definición. En este artículo, te enseñaré todo lo que necesitas saber para crear un proyecto de este tipo en cuestión de minutos, incluyendo un extra que te mostrará cómo __desplegar__ el servidor de forma totalmente gratuita."
 category: "nodejs"
 tags:
   - "nodejs"
@@ -16,37 +14,46 @@ tags:
 keywords: "Node.js, Express, TypeScript, servidor, crear, desplegar, aplicaciones web, desarrollo web, API, endpoints, enrutamiento, middleware, controladores, modelos, autenticación, autorización, JWT, seguridad, gestión de errores, registro, servidor de producción, escalabilidad, rendimiento."
 ---
 
-A veces puede resultar complicado crear un servidor en **Node.js utilizando Express y Typescript**, especialmente debido a la configuración de Typescript y los paquetes necesarios que contienen los archivos de definición.
+<Section>
+## Introducción
 
-En este artículo, **te enseñaré** todo lo que necesitas saber para **crear un proyecto** de este tipo en cuestión de minutos, incluyendo un extra que te mostrará cómo **desplegar** el servidor de forma totalmente **gratuita**. Aquí les dejo el [repositorio](https://github.com/TomasCuevas/Articulos-Proyectos/tree/main/crear-servidor-nodejs-express-typescript-y-desplegarlo) del proyecto correspondiente a este artículo.
+A veces puede resultar complicado crear un servidor en `Node.js` utilizando `Express` y `Typescript`, especialmente debido a la configuración de Typescript y los `paquetes necesarios` que contienen los archivos de definición.
+
+En este artículo, te enseñaré todo lo que necesitas saber para crear un proyecto de este tipo en cuestión de minutos, incluyendo un extra que te mostrará cómo `desplegar` el servidor de forma totalmente gratuita.
+
+<Repository url="https://github.com/TomasCuevas/Articulos-Proyectos/tree/main/crear-servidor-nodejs-express-typescript-y-desplegarlo" />
+
+</Section>
+
+<Section>
 
 ## Instalaciones y configuraciones necesarias
 
-Para empezar, es necesario inicializar un proyecto de **Node.js** ejecutando el siguiente comando dentro de una carpeta:
+Para empezar, es necesario inicializar un proyecto de `Node.js` ejecutando el siguiente comando dentro de una carpeta:
 
-```shell
+```sh
 npm init --y
 ```
 
-Ahora que tenemos un proyecto de **Node.js**, necesitaremos **instalar** todos los **_paquetes_ necesarios** para crear nuestro **servidor**. Algunos de los paquetes que necesitaremos son: **express**, **@types/express**, **typescript**, **ts-node-dev**, **dotenv**, **cors**, y **@types/cors**.
+Ahora que tenemos un proyecto de Node.js, necesitaremos instalar todos los paquetes necesarios para crear nuestro servidor. Algunos de los paquetes que necesitaremos son: `express`, `@types/express`, `typescript`, `ts-node-dev`, `dotenv`, `cors`, y `@types/cors`.
 
 Que los instalaremos con los siguientes comandos:
 
-```shell
+```sh
 npm i express dotenv cors
 ```
 
-```shell
+```sh
 npm i -D @types/express typescript ts-node-dev @types/cors
 ```
 
-Después de haber instalado todos los paquetes necesarios, debemos **inicializar TypeScript** en nuestro proyecto. Para hacerlo, utilizaremos el siguiente comando:
+Después de haber instalado todos los paquetes necesarios, debemos inicializar `TypeScript` en nuestro proyecto. Para hacerlo, utilizaremos el siguiente comando:
 
-```shell
+```sh
 tsc --init
 ```
 
-Al ejecutar el comando anterior, se generará un archivo llamado **"tsconfig.json"**. Este archivo debe ser abierto y debe agregarse la configuración **"outDir": "build"**. Esta configuración indica el nombre de la carpeta donde se ubicará el código transpilado de TypeScript a JavaScript.
+Al ejecutar el comando anterior, se generará un archivo llamado `tsconfig.json`. Este archivo debe ser abierto y debe agregarse la configuración `"outDir": "build"`. Esta configuración indica el nombre de la carpeta donde se ubicará el código transpilado de `TypeScript` a `JavaScript`.
 
 ```json
 "compilerOptions": {
@@ -55,7 +62,7 @@ Al ejecutar el comando anterior, se generará un archivo llamado **"tsconfig.jso
 }
 ```
 
-Por último, necesitamos configurar los **scripts** en nuestro archivo **"package.json"**. Los scripts deben quedar de la siguiente forma:
+Por último, necesitamos configurar los `scripts` en nuestro archivo `package.json`. Los scripts deben quedar de la siguiente forma:
 
 ```json
 "scripts": {
@@ -65,11 +72,17 @@ Por último, necesitamos configurar los **scripts** en nuestro archivo **"packag
 },
 ```
 
+</Section>
+
+<Section>
 ## Creando una sencilla API
 
-Vamos a crear una **API** que simule una calculadora sencilla. Esta API **contará con endpoints** para realizar operaciones de suma, resta, división y multiplicación, y cada uno de estos endpoints recibirá dos números como entrada.
+Vamos a crear una `API` que simule una calculadora sencilla. Esta `API` contará con endpoints para realizar operaciones de suma, resta, división y multiplicación, y cada uno de estos endpoints recibirá dos números como entrada.
 
-### Archivo _index.ts_
+</Section>
+
+<Section>
+### Archivo index.ts
 
 ```ts
 import express from "express";
@@ -94,7 +107,12 @@ app.listen(process.env.PORT, () => {
 });
 ```
 
-### Archivo _routes/calculadora.routes.ts_
+Este código configura un servidor web utilizando `Express`, define una ruta `/calculadora` y utiliza `middleware` para analizar las solicitudes JSON y habilitar el intercambio de recursos entre dominios. El servidor se inicia y comienza a escuchar en el puerto especificado en la `variable de entorno PORT`.
+
+</Section>
+
+<Section>
+### Archivo routes/calculadora.routes.ts
 
 ```ts
 import { Router } from "express";
@@ -136,17 +154,25 @@ router.post("/dividir", (req, res) => {
 export default router;
 ```
 
-### Archivo _.env_
+Este código define un enrutador que maneja las rutas relacionadas con operaciones matemáticas básicas. Cada ruta recibe dos números en el cuerpo de la solicitud y realiza la operación correspondiente `(suma, resta, multiplicación o división)` para luego enviar el resultado en una respuesta JSON.
 
-En este archivo, configuraremos las **variables de entorno** necesarias para nuestro proyecto. En este caso, solo estableceremos el **puerto**.
+</Section>
+
+<Section>
+### Archivo .env
+
+En este archivo, configuraremos las `variables de entorno` necesarias para nuestro proyecto. En este caso, solo estableceremos el puerto.
 
 ```md
 port=4000
 ```
 
+</Section>
+
+<Section>
 ### Estructura final de nuestro proyecto
 
-Tras todo lo anterior, la **estructura** de nuestro **proyecto** quedaría así:
+Tras todo lo anterior, la estructura de nuestro proyecto quedaría así:
 
 ```text
 ├─ 📁 node_modules
@@ -157,37 +183,45 @@ Tras todo lo anterior, la **estructura** de nuestro **proyecto** quedaría así:
 ├─ 🖇️ package-lock.json
 ├─ 🖇️ package.json
 ├─ 🖇️ tsconfig.json
+
+
 ```
 
+</Section>
+
+<Section>
 ### Iniciar y utilizar nuestra aplicación
 
-Ahora que **disponemos** de todo lo necesario para que nuestra **aplicación funcione**, es necesario **iniciarla**. Para ello, en la consola, debemos escribir el **siguiente comando**:
+Ahora que disponemos de todo lo necesario para que nuestra aplicación funcione, es necesario iniciarla. Para ello, en la consola, debemos escribir el siguiente comando:
 
-```shell
+```sh
 npm run dev
 ```
 
-l siguiente paso es utilizar un programa como **Postman** o similar, que nos permita realizar **peticiones HTTP** hacia nuestra aplicación. En Postman o en el programa de tu elección, debemos escribir la **URL** donde se aloja nuestra aplicación, **seguida del endpoint** que queramos utilizar y en este caso, debemos utilizar el **método POST**.
+El siguiente paso es utilizar un programa como `Postman` o similar, que nos permita realizar `peticiones HTTP` hacia nuestra aplicación. En Postman o en el programa de tu elección, debemos escribir la `URL` donde se aloja nuestra aplicación, seguida del endpoint que queramos utilizar y en este caso, debemos utilizar el `método POST`.
 
 ![image](https://user-images.githubusercontent.com/79057608/222206267-b78bf001-12ea-4c3b-bfe9-2cc294d09e41.png)
 
-En el **body** de la **petición**, debemos incluir las dos propiedades que todos nuestros endpoints esperan recibir para realizar la correspondiente operación. En **Postman**, para hacer esto, debemos seleccionar la pestaña **"Body"**, luego seleccionar **"raw"** y escribir allí el objeto JSON.
+En el `body` de la `petición`, debemos incluir las dos propiedades que todos nuestros endpoints esperan recibir para realizar la correspondiente operación. En Postman, para hacer esto, debemos seleccionar la pestaña 'Body', luego seleccionar 'raw' y escribir allí el `objeto JSON`.
 
 ![image](https://user-images.githubusercontent.com/79057608/222206375-57d52ae3-050c-42fd-ba3a-4a6cd4b1440a.png)
 
-**Para enviar la petición**, debemos presionar el botón **"Send"** y **recibiremos la respuesta** que retorna nuestro servidor. En este caso, como ejemplo, la suma de 40 + 60 devuelve un resultado de 100.
+Para enviar la petición, debemos presionar el botón 'Send' y recibiremos la respuesta que retorna nuestro servidor. En este caso, como ejemplo, la suma de 40 + 60 devuelve un resultado de 100.
 
 ![image](https://user-images.githubusercontent.com/79057608/222206561-24094a83-90f7-42e1-8d31-644df773cc7e.png)
 
+</Section>
+
+<Section>
 ## Desplegar nuestro servidor
 
-Para **desplegar nuestra aplicación**, utilizaremos el servicio [Render](https://dashboard.render.com/). Para acceder al servicio, podemos crear una cuenta o utilizar nuestra cuenta de GitHub o Google.
+Para desplegar nuestra aplicación, utilizaremos el servicio <Link url='https://dashboard.render.com/'>Render</Link>. Para acceder al servicio, podemos crear una cuenta o utilizar nuestra cuenta de `GitHub` o `Google`.
 
-Una vez dentro, debemos dirigirnos al botón **"New"** y seleccionar la opción de **"Web Service"**.
+Una vez dentro, debemos dirigirnos al botón 'New' y seleccionar la opción de 'Web Service'.
 
 ![image](https://user-images.githubusercontent.com/79057608/222221324-47bd26af-53e3-4972-9e61-7ce5e6cb4d7a.png)
 
-En esa sección, debemos conectar nuestra cuenta de Render con nuestra cuenta en GitHub o GitLab **donde se aloja el repositorio con nuestro proyecto**. Esto permitirá que Render pueda ubicar nuestros repositorios.
+En esa sección, debemos conectar nuestra cuenta de Render con nuestra cuenta en `GitHub` o `GitLab` donde se aloja el repositorio con nuestro proyecto. Esto permitirá que Render pueda ubicar nuestros repositorios.
 
 ![image](https://user-images.githubusercontent.com/79057608/222224138-02f3ce7b-2fc5-43ce-a238-c7ac569664a1.png)
 
@@ -195,14 +229,16 @@ Debemos seleccionar el repositorio donde se encuentra nuestro proyecto.
 
 ![image](https://user-images.githubusercontent.com/79057608/222224497-ab06d90c-a88b-44dc-9feb-f56efd17bdbc.png)
 
-Cuando hayamos seleccionado él repositorio, deberemos colocar un **nombre a nuestro proyecto**.
+Cuando hayamos seleccionado él repositorio, deberemos colocar un nombre a nuestro proyecto.
 
 ![image](https://user-images.githubusercontent.com/79057608/222225575-d9979561-5e19-46fb-ac71-5b866df03866.png)
 
-Además, **_debemos indicarle a Render los comandos_ que debe ejecutar** para desplegar nuestro proyecto. En el apartado **"Build Command"**, colocaremos **"npm install && npm run build"**, y en el apartado **"Start Command"**, colocaremos **"npm start"**.
+Además, debemos indicarle a Render los comandos que debe ejecutar para desplegar nuestro proyecto. En el apartado 'Build Command', colocaremos `npm install && npm run build`, y en el apartado 'Start Command', colocaremos `npm start`.
 
 ![image](https://user-images.githubusercontent.com/79057608/222228312-f8a2126b-47c4-4ad4-88a6-c067c0883473.png)
 
-Por último, bajamos hacia el fondo de la página y pulsamos el botón **"Create Web Service"** para iniciar el proceso de **deploy**. Una vez finalizado, tendremos una pantalla similar a la siguiente que indica que el deploy ha sido exitoso:
+Por último, bajamos hacia el fondo de la página y pulsamos el botón 'Create Web Service' para iniciar el proceso de `deploy`. Una vez finalizado, tendremos una pantalla similar a la siguiente que indica que el deploy ha sido exitoso:
 
 ![image](https://user-images.githubusercontent.com/79057608/222231375-60d9b9c9-f084-4e47-a88b-4cff67f85e6e.png)
+
+</Section>
