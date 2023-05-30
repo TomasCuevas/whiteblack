@@ -43,7 +43,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
       style={{ left: leftPosition }}
       className={`fixed top-[100px] hidden h-[calc(100vh_-_200px)] w-[200px] overflow-auto lg:block xl:w-[300px] ${Style.aside}`}
     >
-      <ul className="rounded-lg bg-light/20 p-4">
+      <ul className="rounded-lg bg-purple/5 p-4">
         {allH2.map((h2, index) => {
           const h3s = allH3[index];
 

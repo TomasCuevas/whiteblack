@@ -1,6 +1,6 @@
 export const MeCard: React.FC = () => {
   return (
-    <div className="mt-[59px] hidden lg:block">
+    <div className="mt-[60px] hidden w-full lg:block">
       <div className="flex max-w-xs flex-col gap-4 rounded-md border-l-2 border-b-4 border-purple/20 bg-purple/5 py-4 px-4 shadow-lg shadow-purple/5">
         <div className="h-[105px] w-[105px] overflow-hidden rounded-full">
           <img
@@ -13,7 +13,7 @@ export const MeCard: React.FC = () => {
           <h2 className="whitespace-nowrap font-merriweather text-lg text-white">
             Anselmo Tomás Cuevas
           </h2>
-          <p className="font-inter text-sm text-gray-400">
+          <p className="font-inter text-[15px] text-gray-400">
             Como programador FullStack, disfruto enseñar y compartir lo que voy
             aprendiendo en este emocionante camino del desarrollo de software.
           </p>
