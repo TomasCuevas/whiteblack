@@ -12,7 +12,8 @@ module.exports = {
       colors: {
         dark: "#07060e",
         light: "#1d1839",
-        purple: "#7c53bd",
+        purple: "#9f53fd",
+        darklight: "#141f27",
       },
       screens: {
         xs: "500px",
