@@ -1,0 +1,564 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Formik y Yup: La combinación perfecta para optimizar tus formularios en React"
+date: "2023-05-23"
+image: "/images/og/formik-yup-validations-react.jpg"
+description: "Descubre cómo utilizar Formik y Yup para realizar validaciones de formularios de manera eficiente en tu aplicación de ReactJS. Aprende los métodos de validación poderosos proporcionados por Yup y cómo integrarlos sin problemas con el customHook useFormik. Domina la gestión de errores, implementa validaciones personalizadas y mejora la experiencia del usuario al construir formularios robustos y fiables. Sigue esta guía completa para optimizar tus procesos de validación de formularios en ReactJS con Formik y Yup, mejorando la calidad y el rendimiento de tu aplicación."
+cardDescription: "Los __formularios__ son una parte esencial de muchas aplicaciones web, y en __ReactJS__, existen diversas opciones para manejar la validación y el estado de los formularios. Entre las herramientas más populares se encuentran __Formik__ y __Yup__, dos bibliotecas que combinadas ofrecen una solución poderosa y eficiente para el manejo de formularios en ReactJS."
+category: "react"
+tags:
+  - "react"
+  - "formularios"
+  - "formik"
+  - "yup"
+  - "validaciones"
+keywords: "Formik, Yup, ReactJS, Validación de formularios, Validación de datos en React, Gestión de formularios en React, Formularios interactivos en React, Bibliotecas de validación en React, Mejores prácticas de validación en React, Validación de campos en React, Formularios y validación con Formik y Yup, Integración de Formik y Yup en ReactJS, Validación de datos en tiempo real con Formik y Yup, Manejo de errores de formulario en React, Uso de schemas con Yup en React."
+---
+
+<Section>
+## Introducción
+
+Los `formularios` son una parte esencial de muchas aplicaciones web, y en `ReactJS`, existen diversas opciones para manejar la validación y el estado de los formularios. Entre las herramientas más populares se encuentran `Formik` y `Yup`, dos bibliotecas que combinadas ofrecen una solución poderosa y eficiente para el manejo de formularios en ReactJS.
+
+</Section>
+
+<Repository />
+
+<Section>
+## ¿Por qué utilizar Formik y Yup?
+
+</Section>
+
+<Section>
+### La facilidad de uso de Formik en la creación y manejo de formularios
+
+Una de las principales ventajas de utilizar `Formik` y `Yup` es la facilidad de uso que brindan. `Formik` proporciona una _sintaxis intuitiva y declarativa_ para crear y manejar formularios en `ReactJS`. Con solo unas pocas líneas de código, puedes definir tus `campos`, establecer las `validaciones` y controlar el `estado del formulario`. Además, Formik se integra sin problemas con el `ecosistema` de `ReactJS`, lo que hace que sea fácil de aprender y utilizar.
+
+</Section>
+
+<Section>
+### La potente validación de datos con Yup en la integración con Formik
+
+La `validación` de los datos ingresados en los `formularios` es crucial para garantizar la _integridad y consistencia_ de los datos enviados por los usuarios. Aquí es donde `Yup` entra en juego. `Yup` es una biblioteca de `validación de esquemas` que se integra perfectamente con `Formik`. Proporciona una _forma sencilla y declarativa_ de definir las `reglas de validación` para tus campos de formulario. Con `Yup`, puedes validar fácilmente el _tipo de datos_, _aplicar reglas personalizadas_, _validar campos dependientes_ y mucho más.
+
+</Section>
+
+<Section>
+## Instalaciónes
+
+Para instalar estas bibliotecas, simplemente debemos ejecutar el siguientes comandos en un proyecto de React:
+
+```sh
+npm install formik yup
+```
+
+Ambas bibliotecas están escritas en `TypeScript`, por lo que si se encuentran en un proyecto que utiliza TypeScript, no será necesario instalar los `archivos de definición`.
+
+</Section>
+
+<Section>
+## Configurar Formik para manejar nuestro formulario
+
+En este ejemplo, vamos a utilizar el custom hook `useFormik` proporcionado por `Formik`. Este hook es una herramienta poderosa y completa que ofrece una amplia gama de opciones y configuraciones para nuestros formularios.
+
+Al llamar a este `hook`, recibiremos un `objeto` que contiene varias propiedades útiles para diversas funcionalidades. Más adelante, exploraremos en detalle estas propiedades y su utilidad.
+
+</Section>
+
+<Section>
+### Utilizar useFormik
+
+Para lograrlo, necesitamos importar el `hook` `useFormik` de la biblioteca `formik` y luego utilizarlo en nuestro componente. A continuación, se presenta un ejemplo de cómo hacerlo:
+
+```jsx
+import { useFormik } from "formik";
+
+export const Form = () => {
+  const formik = useFormik();
+
+  return {
+    /* Renderizado del formulario... */
+  };
+};
+```
+
+</Section>
+
+<Section>
+### Estableciendo valores iniciales en useFormik
+
+Al utilizar `useFormik`, puedes pasar un objeto de opciones como argumento, donde una de las propiedades clave es `initialValues`. Esta propiedad se utiliza para establecer los `valores iniciales` de los campos del formulario.
+
+```jsx
+const formik = useFormik({
+  initialValues: {},
+});
+```
+
+En este ejemplo, implementaremos un formulario que simula la gestión de una lista de tareas _'(ToDo)'_ y tendrá las siguientes propiedades:
+
+- **title**: Titulo del 'ToDo'.
+- **description**: Descripcion del 'ToDo'.
+- **status**: Estado del 'ToDo'. El cual puede ser 'pending' _(pendiente)_, 'in-progress' _(en progreso)_ o 'completed' _(completado)_. Por defecto, se establecera 'pending'.
+- **labels**: Etiquetas de colores que podran tener los 'ToDo'. Por ejemplo: 'green', 'blue', etc
+
+```jsx
+const formik = useFormik({
+  initialValues: {
+    title: "",
+    description: "",
+    status: "pending",
+    labels: [],
+  },
+});
+```
+
+</Section>
+
+<Section>
+
+### Estableciendo valores iniciales en los campos del formulario
+
+Una vez que hemos establecido los `valores iniciales` de nuestro formulario, es necesario vincular esos valores a los diferentes `inputs` del formulario.
+
+Para lograrlo, en los `inputs` de tipo `text`, debemos establecer el atributo `name` del input con el nombre de la propiedad dentro de `initialValues`. Esto permite establecer una conexión entre los campos del formulario y los valores correspondientes en el `estado interno` de `useFormik`.
+
+En un formulario, el atributo `value` de los `inputs` se utiliza para mostrar el valor actual del campo del formulario. Cuando estamos utilizando `useFormik`, es fundamental vincular el atributo 'value' con el valor correspondiente en el `estado interno` de `useFormik`. Podemos obtener este valor utilizando la propiedad 'values' del objeto devuelto por `useFormik`.
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+  });
+
+  return (
+    <form>
+      <input
+        type="text"
+        name="title"
+        value={formik.values.title}
+        placeholder="Título"
+      />
+      <input
+        type="text"
+        name="description"
+        value={formik.values.description}
+        placeholder="Descripción"
+      />
+
+      {/* Resto del formulario... */}
+    </form>
+  );
+};
+```
+
+Para establecer los `campos` relacionados con la propiedad `status`, utilizaremos tres `inputs` de tipo `radio`. Todos estos inputs tendrán el mismo valor en el atributo `name`, que en este caso es 'status'.
+
+Cada `input` de tipo `radio` tendrá un atributo `value` que representará el valor correspondiente a la propiedad `status` cuando esté seleccionado. Es importante destacar que solo se puede seleccionar uno de los inputs de tipo 'radio'.
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+  });
+
+  return (
+    <form>
+      {/* Inputs de tipo text... */}
+
+      <input type="radio" name="status" value="pending" />
+      <input type="radio" name="status" value="in-progress" />
+      <input type="radio" name="status" value="completed" />
+
+      {/* Inputs de tipo checkbox... */}
+    </form>
+  );
+};
+```
+
+Por último, los `inputs` asociados a la propiedad `labels` serán de tipo `checkbox`. Estos inputs tendrán el valor `labels` en el atributo `name` y el valor correspondiente en el atributo `value`. Cuando un checkbox esté seleccionado, su valor se agregará al array de `labels`.
+
+En el siguiente ejemplo, contaremos con cinco opciones de colores para las etiquetas:
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+  });
+
+  return (
+    <form>
+      {/* Resto del formulario... */}
+
+      <input type="checkbox" name="labels" value="green" />
+      <input type="checkbox" name="labels" value="blue" />
+      <input type="checkbox" name="labels" value="red" />
+      <input type="checkbox" name="labels" value="yellow" />
+      <input type="checkbox" name="labels" value="violet" />
+    </form>
+  );
+};
+```
+
+</Section>
+
+<Section>
+
+### Actualizar los valores del formulario
+
+Para actualizar los valores de los `inputs`, simplemente debemos utilizar la propiedad `handleChange` proporcionada por el objeto retornado por `useFormik` y asignarla al atributo `onChange` de nuestros inputs.
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+  });
+
+  return (
+    <form>
+      <input
+        type="text"
+        name="title"
+        placeholder="Título"
+        value={formik.values.title}
+        onChange={formik.handleChange} ↗️  controlando el valor
+      />
+
+      {/* Resto del formulario... */}
+      <input
+        type="radio"
+        name="status"
+        value="pending"
+        onChange={formik.handleChange} ↗️ controlando el valor
+      />
+
+      {/* Resto del formulario... */}
+      <input
+        type="checkbox"
+        name="labels"
+        value="green"
+        onChange={formik.handleChange} ↗️ controlando el valor
+      />
+
+      {/* Resto del formulario... */}
+    </form>
+  );
+};
+```
+
+</Section>
+
+<Section>
+
+### Manejar el envío de nuestro formulario
+
+Dentro del objeto de configuración de `useFormik`, es necesario incluir una propiedad llamada `onSubmit`. Esta propiedad debe ser una `función` encargada de manejar la lógica del formulario cuando se realice el envío. La función `onSubmit` recibe como parámetro un `objeto` que contiene todos los valores establecidos en la propiedad `initialValues`.
+
+```jsx
+const formik = useFormik({
+  initialValues: {
+    title: "",
+    description: "",
+    status: "pending",
+    labels: [],
+  },
+  onSubmit: (formValues) => {
+    console.log(formValues);
+  },
+});
+```
+
+Una vez hayas declarado la función `onSubmit`, es necesario manejar el evento `submit` del formulario. Para lograr esto, asignaremos la propiedad `handleSubmit` proporcionada por `Formik` al atributo `onSubmit` del formulario.
+
+Para ejecutar esta función, debemos agregar un `botón` con el atributo `type="submit"`. Al hacer clic en este botón, el formulario se enviará y se ejecutará la función declarada en la propiedad `onSubmit` del formulario, en este caso, `formik.handleSubmit`.
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+    onSubmit: (formValues) => {
+      console.log(formValues);
+    },
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      {/* Resto del formulario... */}
+      <button type="submit">Enviar formulario</button>
+    </form>
+  );
+};
+```
+
+En este caso, al completar los campos del formulario y hacer clic en el `botón`, los datos del formulario se mostrarán en la `consola`.
+
+```sh
+{
+  title: "Realizar un articulo acerca de Formik y Yup";
+  description: "";
+  status: "in-progress";
+  labels: ["green"];
+}
+```
+
+</Section>
+
+<Section>
+## Validando eficientemente formularios con Yup
+
+`Formik` y `Yup` funcionan de manera excelente en conjunto. En este caso, `useFormik` acepta una propiedad llamada `validationSchema`, la cual permite definir un `esquema de validación` para el formulario. En dicho esquema se establecen reglas de validación para los campos del formulario.
+
+</Section>
+
+<Section>
+### Implementar Yup junto a useFormik
+
+Para utilizar `Yup` en nuestro componente, primero debemos `importarlo`.
+
+```jsx
+import * as Yup from "yup";
+```
+
+Dentro de la configuración de `useFormik`, es necesario definir la propiedad `validationSchema` y utilizar `Yup` junto con el método `object`:
+
+```jsx
+const formik = useFormik({
+  initialValues: {}, // Valores iniciales del formulario...
+  validationSchema: Yup.object(), // Esquema de validación del formulario...
+  onSubmit: (formValues) => {
+    console.log(formValues);
+  },
+});
+```
+
+El método `object` de `Yup` se utiliza para definir un `esquema de validación` para objetos. Mediante métodos encadenados, se pueden especificar las reglas de validación para cada campo del formulario. Algunos de los métodos comunes que se utilizan junto con object incluyen _'string'_, _'required'_, _'nullable'_, _'oneOf'_, _'min'_, _'max'_, entre otros.
+
+</Section>
+
+<Section>
+
+### Agregar validaciones para los diferentes campos del formulario
+
+Dentro del método `Yup.object()`, definiremos un objeto que contendrá todas las validaciones requeridas para nuestro formulario. Comenzaremos configurando las reglas de validación para el campo `title`:
+
+```jsx
+const formik = useFormik({
+  initialValues: {
+    title: "",
+  },
+  validationSchema: Yup.object({
+    title: Yup.string().min(1).max(20).required(), // Validaciones al campo 'title'
+    // Resto de validaciones...
+  }),
+  onSubmit: (formValues) => {
+    console.log(formValues);
+  },
+});
+```
+
+En esta primera validación, indicamos que el campo `title` debe ser de tipo _'string'_, tener como _mínimo 1 carácter_, como _máximo 20 caracteres_ y que el _campo sea obligatorio_.
+
+Ahora, procedamos a definir las reglas de validación para el resto de los campos:
+
+```jsx
+const formik = useFormik({
+  initialValues: {
+    title: "",
+    description: "",
+    status: "pending",
+    labels: [],
+  },
+  validationSchema: Yup.object({
+    title: Yup.string().min(1).max(20).required(),
+    description: Yup.string().min(1).max(300),
+    status: Yup.string()
+      .oneOf(["pending", "in-progress", "completed"])
+      .required(),
+    labels: Yup.array().of(Yup.string()),
+  }),
+  onSubmit: (formValues) => {
+    console.log(formValues);
+  },
+});
+```
+
+Continuando con las validaciones restantes, se requiere que el campo `description` sea de tipo _'string'_ y contenga como _máximo 300 caracteres_. Este campo _no es obligatorio_.
+
+Por otro lado, el campo `status` también debe ser de tipo _'string'_, pero solo se permiten los valores _'pending'_, _'in-progress'_ o _'completed'_. Esta restricción se especifica mediante el método `oneOf()`, que recibe como argumento un arreglo con los valores permitidos. Además, este campo _es obligatorio_ y su valor por defecto proporcionado en `initialValues` es `pending`.
+
+Finalmente, el campo `labels` se define como un _'array' de 'strings'_, pero _no es obligatorio_.
+
+</Section>
+
+<Section>
+
+### Mostrar errores de validación en nuestro formulario
+
+Para obtener los errores generados por las `validaciones de Yup`, podemos acceder a la propiedad `errors` dentro del objeto `formik`. Esta propiedad es un objeto que contiene todos los `errores de validación`. Por lo tanto, debemos utilizar esta propiedad para mostrar los mensajes de error en nuestro formulario, de modo que el usuario pueda verlos.
+
+```jsx
+export const Form = () => {
+  const formik = useFormik({
+    initialValues: {
+      title: "",
+      description: "",
+      status: "pending",
+      labels: [],
+    },
+    validationSchema: Yup.object({
+      title: Yup.string().min(1).max(20).required(),
+      description: Yup.string().min(1).max(300),
+      status: Yup.string()
+        .oneOf(["pending", "in-progress", "completed"])
+        .required(),
+      labels: Yup.array().of(Yup.string()),
+    }),
+    onSubmit: (formValues) => {
+      console.log(formValues);
+    },
+  });
+
+  return (
+    <form onSubmit={formik.handleSubmit}>
+      <label>
+        <input
+          type="text"
+          name="title"
+          placeholder="Título"
+          value={formik.values.title}
+          onChange={formik.handleChange}
+        />
+
+        {/* error relacionados al título */}
+        <span>{formik.errors.title}</span>
+      </label>
+
+      <label>
+        <input
+          type="text"
+          name="description"
+          placeholder="Descripción"
+          value={formik.values.description}
+          onChange={formik.handleChange}
+        />
+
+        {/* errores relaciones a la descripción */}
+        <span>{formik.errors.description}</span>
+      </label>
+
+      {/* Resto del formulario... */}
+
+      {/* Deshabilitar botón si hay algún error */}
+      <button type="submit" disabled={Object.keys(formik.errors).length > 0}>
+        Guardar
+      </button>
+    </form>
+  );
+};
+```
+
+Como se puede observar, todos los elementos `<input>` están envueltos en una etiqueta `<label>`. Junto con el `<input>`, se agrega un elemento `<span>` cuyo valor será el mensaje de error correspondiente a la propiedad `formik.errors.(propiedad)`.
+
+Por último, se establece el botón `<button type='submit'>` con el atributo `disabled`. Si el objeto `formik.errors` tiene alguna propiedad interna, el valor de 'disabled será `true`; de lo contrario, será `false`. Esto se logra utilizando el método `Object.keys()` para obtener un array con todas las claves del objeto `formik.errors`. Luego, se verifica si la longitud de este array es mayor a 0 para determinar si existe algún error. Si es así, el atributo 'disabled' se establece como 'true'; de lo contrario, se establece como 'false'.
+
+</Section>
+
+<Section>
+
+### Mensajes de error personalizados
+
+Por defecto, cada uno de los `métodos encadenados` de `Yup` proporciona un mensaje de error cuando no se cumple la validación correspondiente. Sin embargo, es posible modificar estos mensajes personalizándolos a través de `argumentos adicionales`. Estos argumentos deben ser cadenas de texto que contengan los nuevos mensajes de error a mostrar cuando la validación no se cumpla.
+
+En aquellos métodos que no requieran argumentos adicionales, el mensaje de error se establece como el primer argumento. En los métodos que sí requieran argumentos, simplemente se debe agregar una coma y, como segundo argumento, se debe proporcionar el nuevo mensaje de error.
+
+```jsx
+const formik = useFormik({
+  initialValues: {
+    title: "",
+    description: "",
+    status: "pending",
+    labels: [],
+  },
+  validationSchema: Yup.object({
+    title: Yup.string()
+      .max(20, "El título puede tener como máximo 20 carácteres.")
+      .required("El título es requerido."),
+    description: Yup.string().max(
+      300,
+      "La descripción puede tener como máximo 300 carácteres."
+    ),
+    status: Yup.string()
+      .oneOf(["pending", "in-progress", "completed"])
+      .required("El estado del 'ToDo' es obligatorio."),
+    labels: Yup.array().of(Yup.string()),
+  }),
+});
+```
+
+En el ejemplo anterior, se han agregado mensajes de error personalizados en los campos `title`, `description` y `status`.
+
+- **title**: Se ha proporcionado un mensaje de error personalizado en los métodos de validación `max` y `required`.
+- **description**: Se ha agregado un mensaje de error personalizado en el método de validación `max`.
+- **status**: Se ha agregado un mensaje de error personalizado en el método de validación `required`.
+
+De esta manera, es posible adaptar los mensajes de error a los requerimientos específicos del formulario.
+
+</Section>
+
+<Section>
+### Validar formulario cuando se monta
+
+Cuando se monta `(renderiza)` un formulario por primera vez, por defecto no se realiza la `validación`. Esto puede resultar inconveniente si queremos deshabilitar el botón `submit` del formulario o mostrar mensajes de error para aquellos `campos` que no cumplan con las validaciones.
+
+Para lograr esto, simplemente debemos agregar la propiedad `validateOnMount` con el valor `true`. De esta manera, el formulario se validará al ser renderizado por primera vez, por lo que si los valores iniciales no cumplen con las validaciones, los errores correspondientes se establecerán en el objeto `formik.error`.
+
+```jsx
+const formik = useFormik({
+  validateOnMount: true,
+  // Resto de las opciones de useFormik...
+});
+```
+
+</Section>
+
+<Section>
+### Validar formulario cuando se modifican los campos
+
+Al igual que la característica anterior mencionada, esta también viene desactivada por defecto. Para activarla, debemos establecer la propiedad `validateOnChange` con el valor `true`.
+
+```jsx
+const formik = useFormik({
+  validateOnMount: true,
+  // Resto de las opciones de useFormik...
+});
+```
+
+Al hacer esto, cada vez que el usuario modifique algún valor del formulario, este se volverá a validar y, por ende, mostrará los errores de validación correspondientes en ese momento, si los hay. Si no deseas esta característica y prefieres que los errores se muestren únicamente cuando el usuario intente enviar el formulario, simplemente no utilices esta propiedad.
+
+</Section>
