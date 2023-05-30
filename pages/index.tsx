@@ -22,6 +22,7 @@ const Home: NextPage<Props> = ({ allArticleFilesMetadata }) => {
     <MainLayout
       title="Whiteblack"
       description="Pagina principal del blog sobre programacion whiteblack"
+      image="/images/og/default-og-image.jpg"
     >
       <div className="flex gap-8">
         <ArticlesFeed

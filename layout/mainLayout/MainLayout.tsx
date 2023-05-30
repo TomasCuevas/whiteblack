@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
   keywords?: string;
-  image?: string;
+  image: string;
 }
 
 export const MainLayout: React.FC<Props> = ({

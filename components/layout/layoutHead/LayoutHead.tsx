@@ -3,7 +3,7 @@ import Head from "next/head";
 //* interface *//
 interface Props {
   description: string;
-  image?: string;
+  image: string;
   keywords?: string;
   title: string;
 }
@@ -14,8 +14,6 @@ export const LayoutHead: React.FC<Props> = ({
   keywords = "",
   title,
 }) => {
-  const IMAGE_DEFAULT =
-    "https://user-images.githubusercontent.com/79057608/238053378-cecb816d-22db-4f9e-ac2c-fff7771fd3cd.png";
   const DOMAIN = "https://whiteblack.vercel.app";
 
   return (
@@ -26,20 +24,14 @@ export const LayoutHead: React.FC<Props> = ({
       <meta property="og:url" content={DOMAIN} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
-      <meta
-        property="og:image"
-        content={image ? `${DOMAIN}${image}` : IMAGE_DEFAULT}
-      />
-      <meta
-        property="og:image:secure_url"
-        content={image ? image : IMAGE_DEFAULT}
-      />
+      <meta property="og:image" content={`${DOMAIN}${image}`} />
+      <meta property="og:image:secure_url" content={`${DOMAIN}${image}`} />
       <meta name="twitter:card" content="summary_large_image" />
       <meta property="twitter:domain" content={DOMAIN} />
       <meta property="twitter:url" content={DOMAIN} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
-      <meta name="twitter:image" content={image ? image : IMAGE_DEFAULT} />
+      <meta name="twitter:image" content={`${DOMAIN}${image}`} />
       <meta property="og:image:type" content="image/jpeg" />
       <meta property="og:image:width" content="1920" />
       <meta property="og:image:height" content="1080" />

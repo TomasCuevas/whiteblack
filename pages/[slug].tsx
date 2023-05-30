@@ -58,7 +58,7 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
       keywords={metadata.keywords}
       image={metadata.image}
     >
-      <article className="mx-auto max-w-[800px]">
+      <article className="max-w-[800px]">
         <ArticleHeader metadata={metadata} />
         <div id="article" className="font-merriweather">
           <MDXRemote {...source} components={MDXComponents} />

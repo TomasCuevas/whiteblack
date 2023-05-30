@@ -24,6 +24,7 @@ const Categorias: NextPage<Props> = ({ categoriesMetadata }) => {
     <MainLayout
       title="Categorías | Whiteblack"
       description="Página donde se listan todas las categorías existentes en el blog"
+      image="/images/og/categories-og-image.jpg"
     >
       <CategoriesFeed allCategoryFilesMetadata={categoriesMetadata} />
     </MainLayout>

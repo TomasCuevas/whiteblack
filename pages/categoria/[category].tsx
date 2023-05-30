@@ -33,6 +33,7 @@ const ArticlePage: NextPage<Props> = ({
     <MainLayout
       description={metadata.description}
       title={`${metadata.title} | Whiteblack`}
+      image={`/images/categories/${metadata.category}.svg`}
     >
       <CategoryHeader categoryMetadata={metadata} />
       <ArticlesFeedByCategory
