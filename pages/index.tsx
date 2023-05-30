@@ -24,7 +24,7 @@ const Home: NextPage<Props> = ({ allArticleFilesMetadata }) => {
       description="Pagina principal del blog sobre programacion whiteblack"
       image="/images/og/default-og-image.jpg"
     >
-      <div className="flex gap-8">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-[3fr_1fr]">
         <ArticlesFeed
           allArticleFilesMetadata={allArticleFilesMetadata}
           title="Últimos artículos"
