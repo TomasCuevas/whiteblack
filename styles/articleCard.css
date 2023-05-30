@@ -1,94 +1,9 @@
 #article__card p {
-  color: #9ca3af;
-}
-
-#article__card a {
-  padding-bottom: 1px;
-  border-bottom: 2px solid #fff;
-  font-weight: 500;
+  color: #ccc;
+  font-family: Inter;
 }
 
 #article__card strong {
-  font-weight: 900;
+  font-weight: 700;
   color: #fff;
-}
-
-#article__card code {
-  background-color: #fff;
-  color: #111;
-  padding: 0 4px;
-  border-radius: 6px;
-  font-size: 16px;
-}
-
-#article__card pre code {
-  background-color: #110f18;
-  color: #979daa;
-  padding: 1rem;
-  margin-bottom: 20px;
-}
-
-#article__card p + ul {
-  margin-top: -16px;
-}
-
-#article__card ul {
-  padding: 0 0 16px 16px;
-}
-
-#article__card ul li {
-  position: relative;
-  font-size: 18px;
-  line-height: 28px;
-  color: #fff;
-  margin-bottom: 3px;
-}
-
-#article__card ul li:before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  top: 12px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #e86d33;
-}
-
-#article__card ol {
-  padding: 0 0 16px 16px;
-}
-
-#article__card ol li {
-  position: relative;
-  font-size: 18px;
-  line-height: 28px;
-  color: #fff;
-  margin-bottom: 3px;
-}
-
-#article__card ol li:before {
-  content: "";
-  position: absolute;
-  left: -10px;
-  top: 12px;
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background-color: #e86d33;
-}
-
-#article__card pre {
-  position: relative;
-}
-
-#article__card pre code:before {
-  content: "";
-  position: absolute;
-  right: 10px;
-  top: -18px;
-  width: 30px;
-  height: 30px;
-  background-size: contain;
-  background-repeat: no-repeat;
 }
