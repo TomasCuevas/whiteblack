@@ -7,7 +7,7 @@ export const h2Observers = (h2: HTMLElement[]) => {
 
     const options = {
       rootMargin: "0px 0px -400px 0px",
-      threshold: 0.1, // Valor de intersección requerido para activar la función de devolución de llamada.
+      threshold: 0.15, // Valor de intersección requerido para activar la función de devolución de llamada.
     };
 
     // Observador de intersección para detectar cuando el elemento h2 es visible en la pantalla
@@ -34,7 +34,7 @@ export const H3Observers = (h3: HTMLElement[][]) => {
 
     const options = {
       rootMargin: "0px 0px -400px 0px",
-      threshold: 0.1, // Valor de intersección requerido para activar la función de devolución de llamada.
+      threshold: 0.15, // Valor de intersección requerido para activar la función de devolución de llamada.
     };
 
     // Observador de intersección para detectar cuando el elemento h2 es visible en la pantalla
