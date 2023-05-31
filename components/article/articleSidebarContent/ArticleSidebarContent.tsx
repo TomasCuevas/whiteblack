@@ -40,8 +40,8 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
 
   return (
     <aside
-      style={{ left: leftPosition }}
-      className={`fixed top-[100px] hidden h-[calc(100vh_-_200px)] w-[200px] overflow-auto lg:block xl:w-[300px] ${Style.aside}`}
+      style={{ left: leftPosition, transitionDuration: "0s" }}
+      className={`fixed top-[100px] hidden h-[calc(100vh_-_200px)] w-[200px] overflow-auto lg:block lgx:w-[250px] xl:w-[320px] ${Style.aside}`}
     >
       <ul className="rounded-lg bg-purple/5 p-4">
         {allH2.map((h2, index) => {

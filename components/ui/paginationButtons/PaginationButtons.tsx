@@ -18,21 +18,19 @@ export const PaginationButtons: React.FC<Props> = ({
   decrement,
 }) => {
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-3 [&>button]:flex [&>button]:items-center [&>button>svg]:text-4xl [&>button>svg]:text-purple/70 [&>button>span]:font-merriweather [&>button>span]:text-sm [&>button>span]:text-purple/70 [&>button>span]:xs:text-lg">
       {pagination > 1 ? (
-        <button onClick={decrement} className="group mr-auto flex items-center">
-          <RiArrowDropLeftFill className="text-4xl text-purple/70 group-hover:text-purple" />
-          <span className="font-merriweather text-xs text-purple/70 group-hover:text-purple xs:text-sm">
+        <button onClick={decrement} className="group mr-auto">
+          <RiArrowDropLeftFill className="group-hover:text-purple" />
+          <span className="group-hover:text-purple">
             artículos más recientes
           </span>
         </button>
       ) : null}
       {pagination * itemsPerPage < itemsLength ? (
-        <button onClick={increment} className="group ml-auto flex items-center">
-          <span className="font-merriweather text-xs text-purple/70 group-hover:text-purple xs:text-sm">
-            artículos anteriores
-          </span>
-          <RiArrowDropRightFill className="text-4xl text-purple/70 group-hover:text-purple" />
+        <button onClick={increment} className="group ml-auto">
+          <span className="group-hover:text-purple">artículos anteriores</span>
+          <RiArrowDropRightFill className="group-hover:text-purple" />
         </button>
       ) : null}
     </div>

@@ -1,5 +1,5 @@
 //* components *//
-import { ArticleCardWithImage } from "@/components/article";
+import { ArticleCard } from "@/components/article";
 import { SectionTitle } from "@/components/ui";
 
 //* interfaces *//
@@ -17,9 +17,9 @@ export const ArticlesFeedByCategory: React.FC<Props> = ({
   return (
     <div>
       <SectionTitle title={title} />
-      <section className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+      <section className="mt-3 grid w-full grid-cols-1 gap-2 sm:grid-cols-2">
         {allArticleFilesMetadata.map((article) => (
-          <ArticleCardWithImage key={article.slug} articleMetadata={article} />
+          <ArticleCard key={article.slug} articleMetadata={article} />
         ))}
       </section>
     </div>

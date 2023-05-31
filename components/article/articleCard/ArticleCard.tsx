@@ -16,11 +16,11 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
     <article className="group w-full">
       <Link
         href={`/${articleMetadata.slug}`}
-        className="flex items-center gap-4 rounded-md bg-light/50 p-4 hover:bg-light"
+        className="relative flex items-center gap-4 overflow-hidden rounded-md"
       >
-        <div className="flex w-full">
+        <div className="z-10 flex w-full bg-light/30 p-4 hover:bg-purple/20">
           <div className="flex w-full flex-col gap-1">
-            <time className="font-merriweather text-sm font-light text-gray-300">
+            <time className="mb-1 font-merriweather text-sm font-black text-gray-300">
               {new Date(articleMetadata.date).toLocaleDateString(undefined, {
                 day: "2-digit",
                 month: "short",
@@ -28,20 +28,20 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
                 timeZone: "UTC",
               })}
             </time>
-            <h3 className="font-merriweather text-sm font-black text-white xs:text-base sm:text-lg md:text-xl">
+            <h3 className="font-merriweather text-base font-black text-white xs:text-base sm:text-lg md:text-2xl">
               {articleMetadata.title}
             </h3>
             <div
               id="article__card"
-              className="hidden max-h-20 overflow-hidden text-ellipsis font-inter text-[15px] font-light leading-tight text-gray-400 group-hover:text-gray-300 sm:block"
+              className="mt-2 max-h-[80px] overflow-hidden font-inter text-base font-light leading-tight sm:max-h-[93px] sm:text-[15px] md:max-h-[77px] lg:max-h-[100px] lg:leading-5"
             >
               <MDXRemote {...(articleMetadata.cardDescription as any)} />
             </div>
-            <div className="mt-2 flex flex-wrap gap-[2px]">
+            <div className="mt-3 flex flex-wrap gap-3 xs:gap-4 md:gap-5">
               {articleMetadata.tags?.map((tag) => (
                 <span
                   key={`${articleMetadata.slug} ${tag}`}
-                  className="rounded-md bg-purple/10 px-2 py-2 font-roboto text-[14px] font-light text-gray-200 transition-all group-hover:bg-purple/20 group-hover:shadow-none sm:bg-transparent sm:py-1 sm:shadow-inner"
+                  className="font-inter text-[11px] font-black uppercase text-gray-300"
                 >
                   {tag}
                 </span>
@@ -49,7 +49,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
             </div>
           </div>
         </div>
-        <div className="ml-auto flex w-20 items-center justify-center md:w-24">
+        <div className="absolute right-0 z-0 flex w-[60%] rotate-[20deg] items-center justify-center opacity-30 sm:w-[70%] lg:w-[60%] xl:w-[30%]">
           <img
             src={`/images/categories/${articleMetadata.category}.svg`}
             alt={`${articleMetadata.category} logo`}

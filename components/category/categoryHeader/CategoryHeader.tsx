@@ -18,7 +18,7 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
         backgroundColor: categoryColors[category],
       }}
     >
-      <div className="flex max-w-[450px] flex-col gap-4">
+      <div className="flex max-w-[550px] flex-col gap-4">
         <div className="flex w-full gap-4 border-b border-white/10 pb-4">
           <div className="w-14 md:w-[72px]">
             <img
@@ -28,16 +28,16 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
             />
           </div>
           <div>
-            <h1 className="font-merriweather text-lg font-bold capitalize text-white md:text-2xl">
+            <h1 className="font-merriweather text-lg font-bold capitalize text-white md:text-3xl">
               {categoryMetadata.category}
             </h1>
-            <h2 className="font-inter text-sm text-gray-300">
+            <h2 className="text-md font-inter text-gray-300">
               {categoryMetadata.subtitle}
             </h2>
           </div>
         </div>
         <div>
-          <p className="font-inter text-sm text-gray-300">
+          <p className="text-md font-inter text-gray-300">
             {categoryMetadata.description}
           </p>
         </div>

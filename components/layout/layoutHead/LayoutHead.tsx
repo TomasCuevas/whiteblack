@@ -14,7 +14,7 @@ export const LayoutHead: React.FC<Props> = ({
   keywords = "",
   title,
 }) => {
-  const DOMAIN = "https://whiteblack.vercel.app";
+  const DOMAIN = process.env.NEXT_PUBLIC_URL;
 
   return (
     <Head>

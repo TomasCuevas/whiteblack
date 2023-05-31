@@ -22,7 +22,7 @@ export const ArticlesFeed: React.FC<Props> = ({
   return (
     <div>
       <SectionTitle title={title} />
-      <section className="mt-3 flex w-full flex-col gap-2">
+      <section className="mt-3 flex w-full flex-col gap-6">
         {allArticleFilesMetadata
           .slice(pagination === 1 ? 0 : (pagination - 1) * 4, pagination * 4)
           .map((article) => (

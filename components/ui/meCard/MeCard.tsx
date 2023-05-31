@@ -1,6 +1,6 @@
 export const MeCard: React.FC = () => {
   return (
-    <div className="mt-[60px] hidden w-full lg:block">
+    <div className="mt-[64px] hidden w-full mdx:block">
       <div className="flex max-w-xs flex-col gap-4 rounded-md border-l-2 border-b-4 border-purple/20 bg-purple/5 py-4 px-4 shadow-lg shadow-purple/5">
         <div className="h-[105px] w-[105px] overflow-hidden rounded-full">
           <img
