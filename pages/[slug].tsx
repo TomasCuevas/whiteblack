@@ -56,7 +56,11 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
       description={metadata.description}
       title={`${metadata.title} | Whiteblack`}
       keywords={metadata.keywords}
-      image={metadata.image}
+      image={`/api/og/?title=${metadata.title}&author=${
+        metadata.author
+      }&category=${metadata.category}&tags=${metadata.tags}&date=${
+        metadata.date
+      }&readingTime=${metadata.readingTime.minutes.toFixed(0)}`}
     >
       <article className="max-w-[800px]">
         <ArticleHeader metadata={metadata} />
