@@ -7,7 +7,6 @@ export interface IArticleMetadata {
   category: ICategories;
   date: string;
   description: string;
-  image: string;
   keywords: string;
   link: string;
   readingTime: IReadingTime;
