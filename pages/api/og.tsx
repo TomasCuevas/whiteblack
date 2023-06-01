@@ -16,12 +16,6 @@ const loadInter = async () => {
   ).then((res) => res.arrayBuffer());
 };
 
-const loadInterRegular = async () => {
-  return fetch(
-    new URL("../../public/fonts/Inter-Regular.ttf", import.meta.url)
-  ).then((res) => res.arrayBuffer());
-};
-
 const loadRoboto = async () => {
   return fetch(
     new URL("../../public/fonts/Roboto-Bold.ttf", import.meta.url)
@@ -39,7 +33,6 @@ export default async function handler(request: Request) {
 
   const merriweather = await loadMerriweather();
   const inter = await loadInter();
-  const interRegular = await loadInterRegular();
   const roboto = await loadRoboto();
 
   return new ImageResponse(
@@ -94,7 +87,6 @@ export default async function handler(request: Request) {
             <h1
               style={{
                 fontSize: 48,
-                fontWeight: 600,
                 color: "white",
                 fontFamily: "Merriweather",
               }}
@@ -114,7 +106,6 @@ export default async function handler(request: Request) {
                   style={{
                     fontSize: "12px",
                     textTransform: "uppercase",
-                    fontWeight: 900,
                     color: "#d1d5db",
                     fontFamily: "Inter",
                   }}
@@ -138,7 +129,6 @@ export default async function handler(request: Request) {
                 <h4
                   style={{
                     fontSize: "16px",
-                    fontWeight: "900",
                     color: "#9f53fd",
                     fontFamily: "Merriweather",
                   }}
@@ -147,7 +137,7 @@ export default async function handler(request: Request) {
                 </h4>
                 <span
                   style={{
-                    fontFamily: "InterRegular",
+                    fontFamily: "Inter",
                     fontSize: "16px",
                     color: "white",
                   }}
@@ -159,7 +149,6 @@ export default async function handler(request: Request) {
                     fontFamily: "Inter",
                     fontSize: "14px",
                     color: "white",
-                    fontWeight: 400,
                   }}
                 >
                   {new Date(date!).toLocaleString(undefined, {
@@ -189,7 +178,6 @@ export default async function handler(request: Request) {
                     style={{
                       color: "white",
                       fontSize: "14px",
-                      fontWeight: 700,
                       fontFamily: "Roboto",
                     }}
                   >
@@ -208,7 +196,6 @@ export default async function handler(request: Request) {
       fonts: [
         { name: "Merriweather", data: merriweather },
         { name: "Inter", data: inter },
-        { name: "InterRegular", data: interRegular },
         { name: "Roboto", data: roboto },
       ],
     }
