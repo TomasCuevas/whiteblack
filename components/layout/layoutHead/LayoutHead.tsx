@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 //* interface *//
 interface Props {
@@ -15,20 +16,21 @@ export const LayoutHead: React.FC<Props> = ({
   title,
 }) => {
   const DOMAIN = process.env.NEXT_PUBLIC_URL;
+  const router = useRouter();
 
   return (
     <Head>
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta property="og:url" content={DOMAIN} />
+      <meta property="og:url" content={`${DOMAIN}${router.asPath}`} />
       <meta property="og:type" content="website" />
       <meta property="og:title" content={title} />
       <meta property="og:image" content={`${DOMAIN}${image}`} />
       <meta property="og:image:secure_url" content={`${DOMAIN}${image}`} />
       <meta name="twitter:card" content="summary_large_image" />
-      <meta property="twitter:domain" content={DOMAIN} />
-      <meta property="twitter:url" content={DOMAIN} />
+      <meta property="twitter:domain" content={`${DOMAIN}${router.asPath}`} />
+      <meta property="twitter:url" content={`${DOMAIN}${router.asPath}`} />
       <meta name="twitter:title" content={title} />
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={`${DOMAIN}${image}`} />
