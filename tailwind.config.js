@@ -18,6 +18,7 @@ module.exports = {
       screens: {
         xs: "500px",
         mdx: "900px",
+        sidebar: "1080px",
         lgx: "1170px",
       },
       fontFamily: {
