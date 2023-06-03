@@ -38,7 +38,7 @@ export const Header: React.FC = () => {
   return (
     <header
       id="header"
-      className={`fixed top-0 left-0 z-30 flex h-16 w-screen items-end justify-center border-b border-purple/20  backdrop-blur-[6px] ${
+      className={`fixed top-0 left-0 z-30 flex h-[57px] w-screen items-end justify-center border-b border-purple/20  backdrop-blur-[6px] ${
         isVisible ? Styles.visible : Styles.scrolled
       }`}
     >
