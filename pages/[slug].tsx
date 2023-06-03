@@ -62,15 +62,18 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
         metadata.date
       }&readingTime=${metadata.readingTime.minutes.toFixed(0)}`}
     >
-      <article className="max-w-[800px]">
-        <ArticleHeader metadata={metadata} />
-        <div id="article" className="font-merriweather">
-          <MDXRemote {...source} components={MDXComponents} />
+      <div className="grid grid-cols-1 gap-5 sidebar:grid-cols-[800px_1fr] xl:gap-20">
+        <article className="max-w-[800px]">
+          <ArticleHeader metadata={metadata} />
+          <div id="article" className="font-merriweather">
+            <MDXRemote {...source} components={MDXComponents} />
+          </div>
+          <ArticleFooter metadata={metadata} />
+        </article>
+        <div>
+          <ArticleSidebarContent allH2={h2Sections} allH3={h3Sections} />
         </div>
-        <ArticleFooter metadata={metadata} />
-      </article>
-
-      <ArticleSidebarContent allH2={h2Sections} allH3={h3Sections} />
+      </div>
     </MainLayout>
   );
 };

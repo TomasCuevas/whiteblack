@@ -1,5 +1,3 @@
-import { useEffect, useState, useRef } from "react";
-
 //* style *//
 import Style from "./articleSidebarContent.module.css";
 
@@ -10,38 +8,13 @@ interface Props {
 }
 
 export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
-  const left = useRef(0);
-  const [leftPosition, setLeftPosition] = useState(0);
-
   const navigate = (id: string) => {
     document.getElementById(id)?.scrollIntoView();
   };
 
-  useEffect(() => {
-    const firstValue = document
-      .getElementById("article")
-      ?.getBoundingClientRect().right!;
-
-    left.current = firstValue;
-    setLeftPosition(firstValue >= 900 ? firstValue - -100 : firstValue - -50);
-
-    const responsive = () => {
-      const newValue = document
-        .getElementById("article")
-        ?.getBoundingClientRect().right!;
-
-      left.current = newValue;
-      setLeftPosition(newValue >= 900 ? newValue - -100 : newValue - -50);
-    };
-    window.addEventListener("resize", responsive);
-
-    return () => removeEventListener("resize", responsive);
-  }, [left]);
-
   return (
     <aside
-      style={{ left: leftPosition, transitionDuration: "0s" }}
-      className={`fixed top-[100px] hidden h-[calc(100vh_-_200px)] w-[200px] overflow-auto lg:block lgx:w-[250px] xl:w-[320px] ${Style.aside}`}
+      className={`sticky top-[57px] hidden h-[calc(100vh_-_57px)] w-full overflow-auto sidebar:block ${Style.aside}`}
     >
       <ul className="rounded-lg bg-purple/5 p-4">
         {allH2.map((h2, index) => {
