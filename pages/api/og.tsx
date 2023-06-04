@@ -63,7 +63,7 @@ export default async function handler(request: Request) {
           style={{
             position: "absolute",
             right: "20px",
-            top: "40px",
+            top: "80px",
             zIndex: "-10",
             height: "650px",
             opacity: 0.2,
