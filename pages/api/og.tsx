@@ -53,7 +53,7 @@ export default async function handler(request: Request) {
           src={`${process.env.NEXT_PUBLIC_URL}/wb.svg`}
           alt="whiteblack logo"
           style={{
-            width: 200,
+            width: 82,
             position: "absolute",
             top: "20px",
             left: "20px",
@@ -63,9 +63,9 @@ export default async function handler(request: Request) {
           style={{
             position: "absolute",
             right: "20px",
-            top: "80px",
+            top: "20px",
             zIndex: "-10",
-            height: "650px",
+            height: "267px",
             opacity: 0.2,
           }}
           src={`${process.env.NEXT_PUBLIC_URL}/images/categories/${category}.svg`}
@@ -75,7 +75,7 @@ export default async function handler(request: Request) {
           style={{
             display: "flex",
             flexDirection: "column",
-            gap: "4px",
+            gap: "2px",
           }}
         >
           <div
@@ -86,7 +86,7 @@ export default async function handler(request: Request) {
           >
             <h1
               style={{
-                fontSize: 96,
+                fontSize: 40,
                 color: "white",
                 fontFamily: "Merriweather",
               }}
@@ -97,15 +97,15 @@ export default async function handler(request: Request) {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "40px",
-                marginTop: 15,
+                gap: "16px",
+                marginTop: 2,
               }}
             >
               {tags?.map((tag) => (
                 <span
                   key={tag}
                   style={{
-                    fontSize: "24px",
+                    fontSize: "11px",
                     textTransform: "uppercase",
                     color: "#d1d5db",
                     fontFamily: "Inter",
@@ -121,8 +121,8 @@ export default async function handler(request: Request) {
                 flexWrap: "wrap",
                 alignItems: "center",
                 justifyContent: "space-between",
-                gap: "16px",
-                marginTop: 20,
+                gap: "6px",
+                marginTop: 8,
               }}
             >
               <div
@@ -130,7 +130,7 @@ export default async function handler(request: Request) {
               >
                 <h4
                   style={{
-                    fontSize: "32px",
+                    fontSize: "14px",
                     color: "#9f53fd",
                     fontFamily: "Merriweather",
                   }}
@@ -140,7 +140,7 @@ export default async function handler(request: Request) {
                 <span
                   style={{
                     fontFamily: "Inter",
-                    fontSize: "32px",
+                    fontSize: "14px",
                     color: "white",
                   }}
                 >
@@ -149,7 +149,7 @@ export default async function handler(request: Request) {
                 <time
                   style={{
                     fontFamily: "Inter",
-                    fontSize: "32px",
+                    fontSize: "14px",
                     color: "white",
                   }}
                 >
@@ -163,11 +163,11 @@ export default async function handler(request: Request) {
               </div>
               <div style={{ display: "flex" }}>
                 <time
-                  style={{ display: "flex", gap: "20px", alignItems: "center" }}
+                  style={{ display: "flex", gap: "8px", alignItems: "center" }}
                 >
                   <svg
-                    height={30}
-                    width={30}
+                    height={12}
+                    width={12}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                   >
@@ -179,7 +179,7 @@ export default async function handler(request: Request) {
                   <span
                     style={{
                       color: "white",
-                      fontSize: "28px",
+                      fontSize: "12px",
                       fontFamily: "Roboto",
                     }}
                   >
@@ -193,8 +193,8 @@ export default async function handler(request: Request) {
       </div>
     ),
     {
-      width: 1920,
-      height: 1080,
+      width: 800,
+      height: 450,
       fonts: [
         { name: "Merriweather", data: merriweather },
         { name: "Inter", data: inter },
