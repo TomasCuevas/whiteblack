@@ -53,7 +53,7 @@ export default async function handler(request: Request) {
           src={`${process.env.NEXT_PUBLIC_URL}/wb.svg`}
           alt="whiteblack logo"
           style={{
-            width: 100,
+            width: 200,
             position: "absolute",
             top: "20px",
             left: "20px",
@@ -65,7 +65,7 @@ export default async function handler(request: Request) {
             right: "20px",
             top: "40px",
             zIndex: "-10",
-            height: "350px",
+            height: "650px",
             opacity: 0.2,
           }}
           src={`${process.env.NEXT_PUBLIC_URL}/images/categories/${category}.svg`}
@@ -86,7 +86,7 @@ export default async function handler(request: Request) {
           >
             <h1
               style={{
-                fontSize: 48,
+                fontSize: 96,
                 color: "white",
                 fontFamily: "Merriweather",
               }}
@@ -97,14 +97,15 @@ export default async function handler(request: Request) {
               style={{
                 display: "flex",
                 flexWrap: "wrap",
-                gap: "20px",
+                gap: "40px",
+                marginTop: 15,
               }}
             >
               {tags?.map((tag) => (
                 <span
                   key={tag}
                   style={{
-                    fontSize: "12px",
+                    fontSize: "24px",
                     textTransform: "uppercase",
                     color: "#d1d5db",
                     fontFamily: "Inter",
@@ -120,15 +121,16 @@ export default async function handler(request: Request) {
                 flexWrap: "wrap",
                 alignItems: "center",
                 justifyContent: "space-between",
-                gap: "8px",
+                gap: "16px",
+                marginTop: 20,
               }}
             >
               <div
-                style={{ display: "flex", alignItems: "center", gap: "6px" }}
+                style={{ display: "flex", alignItems: "center", gap: "12px" }}
               >
                 <h4
                   style={{
-                    fontSize: "16px",
+                    fontSize: "32px",
                     color: "#9f53fd",
                     fontFamily: "Merriweather",
                   }}
@@ -138,7 +140,7 @@ export default async function handler(request: Request) {
                 <span
                   style={{
                     fontFamily: "Inter",
-                    fontSize: "16px",
+                    fontSize: "32px",
                     color: "white",
                   }}
                 >
@@ -147,7 +149,7 @@ export default async function handler(request: Request) {
                 <time
                   style={{
                     fontFamily: "Inter",
-                    fontSize: "14px",
+                    fontSize: "32px",
                     color: "white",
                   }}
                 >
@@ -161,11 +163,11 @@ export default async function handler(request: Request) {
               </div>
               <div style={{ display: "flex" }}>
                 <time
-                  style={{ display: "flex", gap: "10px", alignItems: "center" }}
+                  style={{ display: "flex", gap: "20px", alignItems: "center" }}
                 >
                   <svg
-                    height={15}
-                    width={15}
+                    height={30}
+                    width={30}
                     xmlns="http://www.w3.org/2000/svg"
                     viewBox="0 0 512 512"
                   >
@@ -177,7 +179,7 @@ export default async function handler(request: Request) {
                   <span
                     style={{
                       color: "white",
-                      fontSize: "14px",
+                      fontSize: "28px",
                       fontFamily: "Roboto",
                     }}
                   >
@@ -191,8 +193,8 @@ export default async function handler(request: Request) {
       </div>
     ),
     {
-      width: 1000,
-      height: 563,
+      width: 1920,
+      height: 1080,
       fonts: [
         { name: "Merriweather", data: merriweather },
         { name: "Inter", data: inter },
