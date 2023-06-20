@@ -16,7 +16,7 @@ export const ArticleFooter: React.FC<Props> = ({ metadata }) => {
   return (
     <footer
       style={{ borderColor: color }}
-      className="group mt-10 overflow-hidden rounded-xl border hover:scale-[102%]"
+      className="group my-8 overflow-hidden rounded-xl border hover:scale-[102%]"
     >
       <Link
         href={`/categoria/${metadata.category}`}

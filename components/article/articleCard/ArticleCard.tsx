@@ -16,7 +16,7 @@ export const ArticleCard: React.FC<Props> = ({ articleMetadata }) => {
     <article className="group w-full">
       <Link
         href={`/${articleMetadata.slug}`}
-        className="relative flex items-center gap-4 overflow-hidden rounded-md"
+        className="relative flex items-center gap-4 overflow-hidden rounded-md group-hover:outline-double group-hover:outline-white"
       >
         <div className="z-10 flex w-full bg-light/30 p-4 hover:bg-purple/20">
           <div className="flex w-full flex-col gap-1">

@@ -44,11 +44,7 @@ export const Header: React.FC = () => {
     >
       <div className="flex h-full w-full max-w-[1200px] items-center px-4 sm:px-6 xl:px-0">
         <Link href="/">
-          <img
-            src="/wb.svg"
-            alt="whiteblack logo"
-            className="h-10 hover:opacity-80"
-          />
+          <img src="/wb.svg" alt="whiteblack logo" className="h-10" />
         </Link>
         <button className="ml-auto sm:hidden">
           <RiMenu3Line
