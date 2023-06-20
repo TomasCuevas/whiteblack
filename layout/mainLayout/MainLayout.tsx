@@ -30,11 +30,12 @@ export const MainLayout: React.FC<Props> = ({
       <MobileSidebar />
 
       <div className="fixed top-0 left-0 -z-20 h-screen w-screen bg-dark" />
-      <main className="mx-auto mt-20 mb-8 w-full max-w-[1200px] px-4 pt-4 sm:px-6 xl:px-0">
-        {children}
+      <main className="fixed top-[57px] flex h-[calc(100vh_-_57px)] w-full flex-col overflow-y-auto">
+        <div className="mx-auto w-full max-w-[1200px] px-4 py-4 sm:px-6 xl:px-0">
+          {children}
+        </div>
+        <Footer />
       </main>
-
-      <Footer />
     </>
   );
 };
