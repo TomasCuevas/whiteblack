@@ -6,7 +6,6 @@ import "@/styles/article.css";
 import "@/styles/articleCard.css";
 import "@/styles/articleSidebar.css";
 import "@/styles/globals.css";
-import "@/styles/header.css";
 
 //* providers *//
 import { UIProvider } from "@/context";
