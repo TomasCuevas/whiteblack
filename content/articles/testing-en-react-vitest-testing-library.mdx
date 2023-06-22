@@ -1,0 +1,401 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Guía completa para configurar y realizar testing en una aplicación de React."
+date: "2023-06-10"
+description: "Descubre cómo configurar y realizar testing efectivos en aplicaciones de React utilizando Vitest y Testing Library. En este artículo, aprenderás las mejores prácticas para mejorar la calidad de tu código, asegurar la robustez y eficiencia de tus componentes React."
+cardDescription: "Los __tests__ son una parte fundamental en el desarrollo de aplicaciones en __React.js__ y en la construcción de componentes. Los tests son esenciales para garantizar la _calidad, confiabilidad y mantenibilidad_ de nuestras aplicaciones en React y los componentes que construimos. Nos ayudan a _identificar y corregir errores_, _mejorar el código_ y brindar una base sólida para el desarrollo y la colaboración en equipo."
+category: "react"
+tags:
+  - "react"
+  - "testing"
+  - "vitest"
+  - "testing-library"
+  - "jsdom"
+keywords: "React, Vitest, Testing Library, pruebas unitarias, testing, desarrollo de software, aplicaciones web, JavaScript, bibliotecas de pruebas, componentes React, Jest, jsdom, entorno de pruebas, configuración de pruebas, pruebas de rendimiento, mejores prácticas de pruebas, calidad de código,desarrollo web, frameworks JavaScript."
+---
+
+<Section>
+## Introducción
+
+El `testing` es una parte fundamental en el desarrollo de aplicaciones en `React.js` y en la construcción de componentes. Los `tests` son esenciales para garantizar la _calidad, confiabilidad y mantenibilidad_ de nuestras aplicaciones en React y los componentes que construimos. Nos ayudan a _identificar y corregir errores_, _mejorar el código_ y brindar una base sólida para el desarrollo y la colaboración en equipo.
+
+</Section>
+
+<Section>
+## Beneficios de realizar pruebas en nuestras aplicaciones
+
+- **Confianza en el código**: Los `tests` nos brindan confianza al asegurar que nuestro código funcione como se espera. Nos permiten validar el comportamiento de nuestros componentes y asegurarnos de que sigan funcionando correctamente incluso después de cambios o actualizaciones.
+- **Identificación de errores**: Los `tests` nos ayudan a detectar errores y `bugs` en nuestras aplicaciones y componentes de manera temprana. Al escribir pruebas exhaustivas, podemos identificar y corregir problemas antes de que lleguen a `producción`, lo que nos ahorra tiempo y evita posibles problemas para los usuarios.
+- **Mantenimiento del código**: Los `tests` actúan como una línea de defensa al `refactorizar` o modificar el código existente. Al tener pruebas en su lugar, podemos realizar cambios con mayor `seguridad`, ya que las pruebas nos alertarán si algo se ha roto durante el proceso de refactorización.
+- **Facilita la colaboración**: Los `tests` proporcionan un medio para `colaborar eficientemente` en el desarrollo de software. Al compartir pruebas, los miembros del equipo pueden entender rápidamente el comportamiento esperado y pueden realizar cambios o mejoras sin temor a romper la funcionalidad existente.
+
+</Section>
+
+<Section>
+## Instalaciones y configuraciones necesarias
+
+</Section>
+
+<Section>
+### Iniciar un proyecto de React con Vite
+
+Para empezar, es necesario tener una aplicación de `React`. Puedes crear una fácilmente utilizando el `siguiente comando` en tu terminal:
+
+```sh
+npm create vite
+```
+
+Se te pedirá que ingreses un `nombre` para tu proyecto y luego elijas el `framework/biblioteca` que deseas utilizar. En este caso, seleccionaremos `React`. También se te preguntará si deseas utilizar `TypeScript` o simplemente `JavaScript`. En este artículo, vamos a configurar un proyecto de React con `JavaScript`. Una vez hecho esto, debes navegar hacia la carpeta del proyecto y ejecutar el siguiente comando para instalar las dependencias necesarias:
+
+```sh
+npm install
+```
+
+</Section>
+
+<Section>
+### Instalar vitest, @testing-library/react y jsdom
+
+Para realizar `testing` en aplicaciones de `React`, es necesario instalar las siguientes bibliotecas como dependencias en nuestro proyecto: `vitest`, `testing-library/react` y `jsdom`. Estas bibliotecas combinadas ofrecen un conjunto de herramientas poderosas para llevar a cabo pruebas efectivas en nuestras aplicaciones React.
+
+- **Vitest**: Es una biblioteca de pruebas unitarias para JavaScript. Proporciona un conjunto de utilidades y funciones que permiten escribir pruebas concisas y efectivas para el código JavaScript
+- **Testing-Library/React**: Esta biblioteca se centra en las pruebas de componentes React. Proporciona una serie de utilidades para interactuar con componentes React y realizar aserciones sobre su comportamiento y apariencia.
+- **JSDOM**: Es una biblioteca que simula un entorno DOM (Document Object Model) en Node.js. Permite ejecutar y probar código JavaScript que interactúa con el DOM sin necesidad de un navegador real. JSDOM proporciona una API que imita la API del DOM en el navegador
+
+Todas estas `dependencias` son de `desarrollo`, lo que significa que no son necesarias para que nuestro proyecto se ejecute correctamente. Por lo tanto, al instalarlas, debemos utilizar el siguiente comando junto con la "bandera" `-D` para indicar que son dependencias de desarrollo:
+
+```sh
+npm install -D vitest testing-library/react jsdom
+```
+
+</Section>
+
+<Section>
+### Configurar jsdom
+
+Cuando creamos un proyecto de React con Vite, se genera automáticamente un archivo llamado `vite.config.js` donde se encuentran todas las configuraciones de `Vite`. En este archivo, debemos agregar una nueva propiedad para indicar que se debe utilizar la biblioteca `JSDOM` cuando se realicen las pruebas. Por lo tanto, el archivo `vite.config.js` debería tener la siguiente estructura:
+
+> vite.config.js
+
+```js
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react-swc";
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  test: {
+    environment: "jsdom",
+    globals: true,
+  },
+});
+```
+
+Agregamos la propiedad `test`, que contiene un objeto con las propiedades `environment` y `globals`. De esta manera, indicamos que se debe utilizar el entorno de `jsdom` y habilitar las `variables globales` en las pruebas, como `window` o `document`.
+
+</Section>
+
+<Section>
+### Agregar script en package.json para ejecutar los tests
+
+Para configurar la ejecución de todos los `tests` en nuestro proyecto, es necesario agregar un `script` en el archivo `package.json`. En la sección de `scripts`, podemos añadir la propiedad `"test"` con el valor `"vitest"` de la siguiente manera:
+
+> package.json
+
+```json
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview",
+    "test": "vitest" // nuevo script
+  },
+```
+
+Al incluir esta configuración, podemos ejecutar todos los tests de nuestro proyecto utilizando el comando `npm run test` en la terminal. Esto disparará la ejecución de los tests y mostrará los resultados correspondientes.
+
+Al utilizar `npm run test`, se ejecutará la herramienta `Vitest` y comenzará a ejecutar todos los `tests` disponibles en el proyecto. Esto proporciona una forma sencilla y conveniente de realizar pruebas automatizadas y verificar la integridad de nuestro código.
+
+</Section>
+
+<Section>
+## Configuraciones y explicaciones de Vitest
+
+</Section>
+
+<Section>
+
+### Componente al cual le haremos testing
+
+En este artículo, vamos a realizar pruebas en un componente de tipo "acordeón". Un `acordeón` es un `componente` común en el que se muestra un subtítulo y, al hacer clic en él, se revela el contenido oculto. Al hacer clic nuevamente, se vuelve a ocultar el contenido.
+
+Durante el `testing`, nos aseguraremos de verificar el comportamiento esperado del acordeón, es decir, que se muestre el contenido oculto al hacer clic en el subtítulo y que se oculte nuevamente al hacer clic una vez más.
+
+> Accordion.jsx
+
+```jsx
+import { useState } from "react";
+
+//* icons *//
+import { ArrowDown, ArrowUp } from "./icons";
+
+//* styles *//
+import Styles from "./Accordion.module.css";
+
+export const Accordion = ({ children, title }) => {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <article
+      role="accordion"
+      onClick={() => setOpen((prevValue) => !prevValue)}
+      className={Styles.accordion__card}
+    >
+      <div className={Styles.accordion__header}>
+        <h3 className={Styles.accordion__title}>{title}</h3>
+        {open ? <ArrowUp /> : <ArrowDown />}
+      </div>
+
+      {open ? (
+        <div role="content" className={Styles.accordion__content}>
+          <div className={Styles.accordion__more}>{children}</div>
+        </div>
+      ) : null}
+    </article>
+  );
+};
+```
+
+Este componente recibe dos propiedades: `children` y `title`. La propiedad children representa el contenido oculto del acordeón, mientras que title representa el subtítulo del acordeón. Además, dentro del componente, se utiliza un estado controlado por el hook `useState` para indicar si el acordeón está _abierto o cerrado_. Este estado cambia cuando se hace clic en el acordeón.
+
+Además, se asigna el atributo `role` a la etiqueta `article` y a la etiqueta `div` que envuelve la propiedad children. Cada uno de ellos tiene un valor diferente. Al utilizar el atributo `role` en los elementos, facilitamos la identificación y selección específica de los elementos durante el `testing`.
+
+</Section>
+
+<Section>
+### Convención de nombres para los archivos de testing
+
+Los archivos de testing, deben seguir una `convención de nomenclatura` similar al nombre del componente al que hacen referencia. En este caso, se debe anteponer el sufijo `.test` al nombre del componente y luego mantener la extensión de archivo correspondiente. Por lo tanto, el archivo de pruebas para `Accordion.jsx` se llamaría `Accordion.test.jsx`.
+
+```text
+├─ 📁 accordion
+|  ├─ 🖇️ Accordion.jsx
+|  ├─ 🖇️ Accordion.test.jsx
+```
+
+</Section>
+
+<Section>
+### Importaciones necesarias para realizar nuestros tests
+
+El archivo de prueba comienza importando las funciones necesarias para los tests, como `beforeEach`, `describe`, `expect` y `test`, de la biblioteca `Vitest`. También se importan las funciones `fireEvent`, `render` y `screen` de la biblioteca `Testing-Library/React`.
+
+> Accordion.test.jsx
+
+```jsx
+import { beforeEach, describe, expect, test } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+```
+
+</Section>
+
+<Section>
+### Función describe de Vitest
+
+Todos los `tests` estarán contenidos dentro de una función llamada `describe`. Esta función se utiliza para _agrupar y organizar_ los tests relacionados en bloques. Proporciona un _contexto y una descripción_ para los tests que se encuentran dentro de él. La función `describe` recibe dos argumentos: un `string` que se utiliza para _describir las pruebas_ que se encuentran dentro de él y una `función` que _contendrá todos los tests_.
+
+> Accordion.test.jsx
+
+```jsx
+import { beforeEach, describe, expect, test } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+describe("Testing sobre el componente Accordion.jsx", () => {
+  // Todos los tests van aquí
+});
+```
+
+</Section>
+
+<Section>
+### Función beforeEach y render de Vitest
+
+Antes de cada test, se utiliza la función `beforeEach` en combinación con la función `render` de `Vitest` para realizar configuraciones previas y renderizar el componente con valores predefinidos. En este caso, se establece la propiedad `title` con el valor `"Más información"` y se incluye un `párrafo (<p>)` dentro del componente, representando así la propiedad `children` del componente. Para todo ello, primero debemos importar el componente `Accordion` al archivo de test.
+
+Esta configuración previa nos permite establecer un `estado inicial` común para todos los tests, evitando la duplicación de código y simplificando el proceso de escritura de los tests.
+
+> Accordion.test.jsx
+
+```jsx
+import { beforeEach, describe, expect, test } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+import { Accordion } from "./Accordion";
+
+describe("Testing sobre el componente Accordion.jsx", () => {
+  beforeEach(() => {
+    render(
+      <Accordion title="Más información">
+        <p>
+          Duis velit pariatur labore reprehenderit velit nisi nostrud laboris
+          proident eu veniam sit in.
+        </p>
+      </Accordion>
+    );
+  });
+});
+```
+
+</Section>
+
+<Section>
+### Función test de Vitest
+
+La función `test` se utiliza para definir tests individuales dentro de un bloque `describe` y verificar el comportamiento esperado de un componente o una funcionalidad específica. Dentro de la función `test`, se puede escribir código para simular _interacciones_ o _eventos_, _invocar funciones_ y _realizar comprobaciones_ utilizando las funciones de aserción proporcionadas por `Vitest`, como `expect`.
+
+La función `test` recibe dos argumentos: una `string` que describe el test y una `función` que contiene la lógica de la prueba.
+
+> Accordion.test.jsx
+
+```jsx
+import { beforeEach, describe, expect, test } from "vitest";
+import { fireEvent, render, screen } from "@testing-library/react";
+
+import { Accordion } from "./Accordion";
+
+describe("Testing sobre el componente Accordion.jsx", () => {
+  beforeEach(() => {
+    render(
+      <Accordion title="Más información">
+        <p>
+          Duis velit pariatur labore reprehenderit velit nisi nostrud laboris
+          proident eu veniam sit in.
+        </p>
+      </Accordion>
+    );
+  });
+
+  test("Descripción acerca del test que se ejecuta aquí", () => {
+    // Logíca del test
+  });
+});
+```
+
+</Section>
+
+<Section> 
+## Ejemplos de pruebas usando Vitest
+
+</Section>
+
+<Section>
+### Test: Mostrar el título todo el tiempo
+
+El primer `test` se enfoca en verificar si el título del componente `Accordion.jsx` se muestra correctamente en todo momento. Para esto, se utiliza la función `expect` junto con la función `getByText` de la biblioteca `@testing-library/react` para buscar el texto _"Más información"_ en la interfaz.
+
+En este `test`, se utiliza la función `expect` para realizar una afirmación sobre el resultado esperado. La función `screen.getByText` se encarga de seleccionar el elemento que contiene el texto específico, en este caso, _"Más información"_, dentro del componente Accordion que ha sido renderizado previo al test en la función `beforeEach`. Luego, se utiliza la función `toBeDefined` para verificar que el elemento existe, confirmando así que el título se muestra correctamente.
+
+> Accordion.test.jsx
+
+```jsx
+describe("Testing sobre el componente Accordion.jsx", () => {
+  beforeEach(() => {
+    render(
+      <Accordion title="Más información">
+        <p>
+          Duis velit pariatur labore reprehenderit velit nisi nostrud laboris
+          proident eu veniam sit in.
+        </p>
+      </Accordion>
+    );
+  });
+
+  test("Debe mostrar el título todo el tiempo.", () => {
+    expect(screen.getByText("Más información")).toBeDefined();
+  });
+});
+```
+
+</Section>
+
+<Section>
+### Test: Mostrar el contenido cuando el acordeón es cliqueado
+
+Este `test` se encarga de verificar si el contenido del acordeón se muestra correctamente cuando se realiza un `clic` en él. Para lograr esto, se utilizan las funciones `fireEvent.click`, `screen.getByRole` y `screen.queryByRole`.
+
+En el `test`, se obtiene una referencia al acordeón utilizando `screen.getByRole` y el atributo _"accordion"_. A continuación, se dispara un evento de clic en el acordeón utilizando `fireEvent.click(accordion)`. Después, se busca el contenido del acordeón utilizando `screen.queryByRole` y el atributo _"content"_. Por último, se utiliza la función `expect` junto con `toBeTruthy` para verificar si el contenido del acordeón existe y es visible en la interfaz.
+
+> Accordion.test.jsx
+
+```jsx
+describe("Testing sobre el componente Accordion.jsx", () => {
+  beforeEach(() => {
+    render(
+      <Accordion title="Más información">
+        <p>
+          Duis velit pariatur labore reprehenderit velit nisi nostrud laboris
+          proident eu veniam sit in.
+        </p>
+      </Accordion>
+    );
+  });
+
+  test("Debe mostrar el contenido cuando el acordeón es cliqueado", () => {
+    const accordion = screen.getByRole("accordion");
+    fireEvent.click(accordion);
+
+    const accordionContent = screen.queryByRole("content");
+    expect(accordionContent).toBeTruthy();
+  });
+});
+```
+
+</Section>
+
+<Section>
+### Test: Ocultar contenido al hacer clic en el acordeón previamente clicado
+
+Tiene como objetivo verificar si el contenido del acordeón se oculta correctamente cuando se hace `clic` en el acordeón después de haber sido previamente clicado. Este test utiliza las funciones `fireEvent.click`, `screen.getByRole` y `screen.queryByRole`.
+
+En este `test`, se obtiene una referencia al acordeón utilizando `screen.getByRole` y el atributo _"accordion"_. Luego, se simulan dos `clics` consecutivos en el acordeón utilizando `fireEvent.click(accordion)`. Después de los clics, se busca el contenido del acordeón utilizando `screen.queryByRole` y el atributo _"content"_. Por último, se utiliza la función `expect` junto con `toBeNull` para verificar si el contenido del acordeón no está presente en la interfaz.
+
+> Accordion.test.jsx
+
+```jsx
+describe("Testing sobre el componente Accordion.jsx", () => {
+  beforeEach(() => {
+    render(
+      <Accordion title="Más información">
+        <p>
+          Duis velit pariatur labore reprehenderit velit nisi nostrud laboris
+          proident eu veniam sit in.
+        </p>
+      </Accordion>
+    );
+  });
+
+  test("Debe ocultar el contenido cuando se haga clic en el acordeón cuando este ya ha sido cliqueado previamente", () => {
+    const accordion = screen.getByRole("accordion");
+
+    fireEvent.click(accordion);
+    fireEvent.click(accordion);
+
+    const accordionContent = screen.queryByRole("content");
+    expect(accordionContent).toBeNull();
+  });
+});
+```
+
+</Section>
+
+<Section>
+## Conclusión
+
+El `testing` es una práctica fundamental en el desarrollo de aplicaciones en `React.js`. Proporciona una manera de garantizar la _calidad, confiabilidad y mantenibilidad_ de nuestras _aplicaciones y componentes_. A través de las pruebas, podemos `identificar` y `corregir errores`, mejorar el código y brindar una base sólida para el desarrollo y la colaboración en equipo.
+
+En este artículo, hemos explorado cómo `configurar` y realizar pruebas efectivas en una aplicación de React utilizando `Vitest` y `Testing Library`. Aprendimos cómo instalar y configurar las dependencias necesarias, cómo realizar pruebas sobre un componente de `React` y cómo utilizar las funciones y herramientas proporcionadas por `Vitest` y `Testing Library` para simular interacciones, invocar funciones y realizar comprobaciones.
+
+Es importante destacar que este artículo solo `raspa la superficie` del mundo del testing en `React`. Hay muchas más `técnicas` y `estrategias` avanzadas que se pueden explorar para lograr una cobertura de pruebas más completa y eficaz. Recomiendo encarecidamente seguir aprendiendo y explorando más sobre el tema, ya que el `testing` es una habilidad _valiosa y altamente demandada_ en el desarrollo de software.
+
+</Section>
