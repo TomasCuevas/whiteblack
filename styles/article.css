@@ -1,8 +1,8 @@
 #article p {
-  color: #eee;
+  color: #fff;
   font-family: Inter;
   font-size: 20px;
-  line-height: 35px;
+  line-height: 36px;
   padding-bottom: 30px;
   font-weight: 300 !important;
 }
@@ -16,14 +16,13 @@
 }
 
 #article img {
-  padding: 12px;
-  border-radius: 30px;
-  background-color: #29292977;
+  padding: 5px;
+  background-color: #9f53fd;
 }
 
 #article strong {
   font-weight: 900;
-  font-size: 22px;
+  font-size: 20px;
   color: #fff;
   font-family: Inter;
 }
@@ -34,10 +33,11 @@
   font-size: 30px;
   font-weight: 600;
   color: #fff;
-  padding-top: 40px;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
   border-bottom: 5px solid #fff;
+  margin-bottom: 20px;
+  margin-top: 30px;
+  padding-bottom: 10px;
+  padding-top: 8px;
 }
 
 #article h2:before {
@@ -53,21 +53,33 @@
   border-top: 10px solid #0000;
 }
 
-#article section:nth-child(1) h2 {
-  padding-top: 20px;
-}
-
 #article h3 {
   font-family: merriweather;
   position: relative;
   font-size: 24px;
   font-weight: 500;
   color: #fff;
-  padding-top: 20px;
-  padding-left: 10px;
-  padding-bottom: 5px;
-  margin-bottom: 20px;
   border-bottom: 4px solid #9f53fd;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-top: 8px;
+}
+
+#article blockquote {
+  border-left: 20px solid #7c53bd;
+  background-color: #7c53bd0a;
+  padding: 10px 0 !important;
+  margin-bottom: 5px;
+}
+
+#article blockquote p {
+  font-size: 18px;
+  color: #ccc;
+  padding: 0;
+  margin-left: 15px;
+  line-height: 28px;
 }
 
 #article code {
@@ -101,12 +113,12 @@
   border-left: 3px solid #7c53bd;
   color: #eee;
   font-family: Inter;
-  font-size: 20px;
-  line-height: 33px;
+  font-size: 18px;
+  line-height: 30px;
   margin-bottom: 10px;
-  padding-bottom: 8px;
   padding-left: 8px;
   position: relative;
+  font-weight: 300;
 }
 
 #article ul li:before {
@@ -166,6 +178,7 @@
 
 #article pre {
   position: relative;
+  margin-bottom: 30px;
 }
 
 #article pre code:before {

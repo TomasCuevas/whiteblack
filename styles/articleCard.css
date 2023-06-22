@@ -1,6 +1,7 @@
 #article__card p {
   color: #ccc;
   font-family: Inter;
+  line-height: 25px;
 }
 
 #article__card strong {

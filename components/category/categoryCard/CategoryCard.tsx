@@ -12,7 +12,7 @@ export const CategoryCard: React.FC<Props> = ({ categoryMetadata }) => {
     <article>
       <Link
         href={`/categoria/${categoryMetadata.category.toLowerCase()}`}
-        className="group flex h-full items-center gap-2 rounded-md bg-light/50 p-4 hover:bg-light"
+        className="group flex h-full items-center gap-2 rounded-md bg-light/50 p-4 hover:bg-light hover:outline-double hover:outline-white"
       >
         <div className="flex max-h-[50px] max-w-[50px] items-center">
           <img
