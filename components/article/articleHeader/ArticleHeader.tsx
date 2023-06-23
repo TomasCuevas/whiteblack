@@ -12,7 +12,7 @@ interface Props {
 
 export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
   return (
-    <header className="relative mb-10 w-full sm:mt-5">
+    <header className="relative mb-10 mt-5 w-full">
       <picture>
         <img
           src={`/images/categories/${metadata.category}.svg`}

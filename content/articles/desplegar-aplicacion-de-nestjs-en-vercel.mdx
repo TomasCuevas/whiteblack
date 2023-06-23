@@ -1,0 +1,244 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Despliega tu aplicación de NestJs en Vercel: Una guía paso a paso"
+date: "2023-06-19"
+description: "Descubre cómo configurar y realizar testing efectivos en aplicaciones de React utilizando Vitest y Testing Library. En este artículo, aprenderás las mejores prácticas para mejorar la calidad de tu código, asegurar la robustez y eficiencia de tus componentes React."
+cardDescription: "Cuando trabajamos con __NestJs__, nos enfrentamos al desafío de elegir un servicio de __despliegue__ adecuado. Aunque __Vercel__ es reconocido por desplegar aplicaciones frontend, también ofrece soporte para aplicaciones backend basadas en NodeJs. Vercel ofrece un __plan gratuito__ que permite a los desarrolladores desplegar aplicaciones sin incurrir en costos adicionales. Esto significa que podemos experimentar y probar nuestras aplicaciones, lo cual brinda una oportunidad ideal para desarrolladores independientes o aquellos en las primeras etapas de desarrollo."
+category: "nestjs"
+tags:
+  - "nestjs"
+  - "vercel"
+  - "deploy"
+  - "cors"
+keywords: "Despliegue de aplicaciones, NestJs, Vercel, Aplicaciones web, Backend, Desarrollo web, Hosting en la nube, Despliegue en la nube, Node.js, Frameworks JavaScript, JavaScript, API REST, Microservicios, Desarrollo de aplicaciones escalables, Automatización de despliegue, Configuración de aplicaciones web, Mejores prácticas de despliegue"
+---
+
+<Section>
+## Introducción
+
+Cuando trabajamos con `NestJs`, nos enfrentamos al desafío de elegir un servicio de `despliegue` adecuado. Aunque `Vercel` es reconocido por desplegar aplicaciones frontend, también ofrece soporte para aplicaciones backend basadas en NodeJs.
+
+Vercel ofrece un `plan gratuito` que permite a los desarrolladores desplegar aplicaciones sin incurrir en costos adicionales. Esto significa que podemos experimentar y probar nuestras aplicaciones, lo cual brinda una oportunidad ideal para desarrolladores independientes o aquellos en las primeras etapas de desarrollo.
+
+<Repository url="https://github.com/TomasCuevas/Articulos-Proyectos/tree/main/deploy-nestjs-vercel-test" />
+
+</Section>
+
+<Section>
+## Configuración de nuestra aplicación de NestJs
+
+</Section>
+
+<Section>
+### Instalaciones
+
+Para comenzar a trabajar con una aplicación de `NestJs`, es necesario instalar globalmente la biblioteca `@nestjs/cli` en nuestra máquina. Podemos hacerlo ejecutando el siguiente comando en nuestra terminal:
+
+```sh
+npm install -g @nestjs/cli
+```
+
+Una vez completada la instalación, nos dirigimos al directorio donde deseamos crear nuestro proyecto de `NestJs` y ejecutamos el siguiente comando en la terminal:
+
+```sh
+nest new project-name
+```
+
+- En este comando, reemplazamos **"project-name"** por el nombre de nuestro proyecto.
+
+</Section>
+
+<Section>
+### Configurando el endpoint de prueba
+
+En este artículo, vamos a crear un único `endpoint` que devuelva un array de usuarios con sus nombres, edades y correos electrónicos. Para ello, necesitaremos los siguientes fragmentos de código en los archivos `app.controller.ts` y `app.service.ts`:
+
+> **app.controller.ts**
+
+```ts
+import { Controller, Get } from "@nestjs/common";
+import { AppService } from "./app.service";
+
+@Controller()
+export class AppController {
+  constructor(private readonly appService: AppService) {}
+
+  @Get("users")
+  getUsers() {
+    return this.appService.getUsers();
+  }
+}
+```
+
+> **app.service.ts**
+
+```ts
+import { Injectable } from "@nestjs/common";
+
+@Injectable()
+export class AppService {
+  getUsers() {
+    return [
+      { nombre: "Juan", edad: 25, correo: "juan@example.com" },
+      { nombre: "María", edad: 30, correo: "maria@example.com" },
+      { nombre: "Carlos", edad: 28, correo: "carlos@example.com" },
+      { nombre: "Ana", edad: 32, correo: "ana@example.com" },
+      { nombre: "Pedro", edad: 27, correo: "pedro@example.com" },
+      { nombre: "Laura", edad: 29, correo: "laura@example.com" },
+    ];
+  }
+}
+```
+
+Una vez que hayamos configurado todo lo anterior, podemos iniciar nuestra aplicación en modo de desarrollo ejecutando el comando `npm run start:dev`. Una vez que la aplicación esté en ejecución, podremos obtener todos los usuarios realizando una petición `GET` al siguiente endpoint: `http://localhost:3000/users`.
+
+![nest response with users](/images/articles/response-nest-users.jpg)
+
+</Section>
+
+<Section>
+### Habilitar CORS
+
+Cuando necesitamos conectar una aplicación backend con una aplicación frontend u otra aplicación, es necesario configurar los `CORS` (Cross-Origin Resource Sharing). Los CORS son un `mecanismo de seguridad` implementado en los navegadores web para controlar las peticiones HTTP realizadas desde un origen hacia otro origen diferente.
+
+En `NestJs`, podemos habilitar los `CORS` en el archivo `main.ts` utilizando el método `enableCors()` de la instancia app. Este método acepta diferentes propiedades de configuración:
+
+> **main.ts**
+
+```ts
+app.enableCors({
+  origin: true,
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  allowedHeaders: "Content-Type,Authorization,X-Requested-With,Accept-Language",
+  optionsSuccessStatus: 204,
+  credentials: true,
+});
+```
+
+- **origin**: Especifica los orígenes (dominios) permitidos para realizar solicitudes CORS. Puede tomar diferentes valores. En este caso, tiene el valor de `true` el cual permite solicitudes desde cualquier origen.
+- **methods**: Especifica los `métodos HTTP` permitidos en las solicitudes `CORS`. Puede ser una cadena que enumere los métodos separados por comas, como 'GET, POST, PUT', o puede ser una matriz de cadenas.
+- **allowedHeaders**: Define los `encabezados HTTP` permitidos en las solicitudes `CORS`. Puede ser una cadena que enumere los encabezados separados por comas, como 'Content-Type, Authorization', o puede ser una matriz de cadenas.
+- **optionsSuccessStatus**: Establece el código de estado de respuesta para las solicitudes `CORS OPTIONS`. El valor predeterminado es `204` (No Content). La solicitud CORS OPTIONS es una solicitud HTTP que se envía de forma previa (preflight) antes de una solicitud HTTP real.
+- **credentials**: Indica si se permiten las `credenciales` en las solicitudes `CORS`, como `cookies` o encabezados de autenticación. Puede ser true o false.
+
+Al habilitar los `CORS` en `NestJs`, permitimos el intercambio de recursos entre diferentes orígenes, lo que facilita la comunicación segura entre la aplicación backend y otras aplicaciones.
+
+</Section>
+
+<Section>
+## Desplegar nuestra aplicación en Vercel
+
+Para desplegar nuestro backend desarrollado en `NestJs` en `Vercel`, necesitamos agregar un archivo llamado `vercel.json` a nuestro proyecto.
+
+</Section>
+
+<Section>
+### Archivo vercel.json
+
+El archivo `vercel.json` es un archivo de configuración específico de `Vercel`. Se utiliza para definir cómo Vercel debe construir y desplegar nuestra aplicación, así como configurar ciertos aspectos del entorno de ejecución.
+
+En nuestro caso, para indicar cómo `Vercel` debe desplegar nuestra `aplicación NestJs`, debemos incluir lo siguiente en este archivo:
+
+> vercel.json
+
+```json
+{
+  "version": 2,
+  "buildCommand": "npm start",
+  "installCommand": "npm install",
+  "builds": [
+    {
+      "src": "src/main.ts",
+      "use": "@vercel/node"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "headers": {
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+        "Access-Control-Allow-Headers": "Content-Type,Authorization,X-Requested-With,Accept-Language",
+        "Access-Control-Allow-Credentials": "true"
+      },
+      "dest": "src/main.ts",
+      "methods": ["GET", "HEAD", "PUT", "PATCH", "POST", "DELETE"]
+    }
+  ]
+}
+```
+
+- **version**: Indica la `versión de la configuración`. Actualmente, se utiliza la versión 2.
+- **buildCommand**: Especifica el `comando` que se debe ejecutar durante el proceso de compilación o `construcción` de la aplicación.
+- **installCommand**: Define el `comando` que se debe ejecutar para `instalar` las dependencias del proyecto.
+- **builds**: Aquí se especifica cómo se debe construir la aplicación. Indicamos que el archivo principal de la aplicación se encuentra en `src/main.ts` y Vercel utilizará el runtime de Node.js proporcionado por `@vercel/node` para ejecutarla.
+- **routes**: Este bloque define cómo se deben manejar las `rutas` y las `solicitudes HTTP` entrantes en la aplicación. Se define una única ruta que coincide con cualquier ruta `/(.*)`. Luego, se especifican los `métodos HTTP` permitidos y los `encabezados` permitidos. La propiedad `"dest"` especifica el archivo de destino que se debe ejecutar cuando se recibe una solicitud que coincide con la ruta.
+
+Es necesario `duplicar` la configuración de `CORS` tanto en el archivo `main.ts` de la aplicación NestJS como en el archivo `vercel.json`, debido a que son dos entornos diferentes y cada uno requiere su propia configuración de CORS.
+
+El archivo `main.ts` es el punto de entrada de la aplicación NestJS y se ejecuta cuando lanzamos la aplicación localmente. Por otro lado, el archivo `vercel.json` es específico de Vercel y se utiliza para configurar cómo se despliega la aplicación en la plataforma Vercel.
+
+Duplicar la configuración de `CORS` en ambos lugares garantiza que la `aplicación funcione correctamente` tanto en el entorno local como en Vercel. Además, al configurar CORS en el archivo vercel.json, podemos personalizar las `reglas de CORS` específicas para el despliegue en Vercel, si es necesario.
+
+</Section>
+
+<Section>
+### Publicar nuestro proyecto en un repositorio de GitHub
+
+La forma más sencilla de `desplegar` un proyecto en Vercel es conectar nuestra cuenta de `GitHub` con nuestra cuenta en `Vercel`. Esto permitirá que Vercel acceda a nuestros `repositorios` y podremos elegir fácilmente cuál de ellos deseamos desplegar.
+
+</Section>
+
+<Section>
+### Desplegar nuestro proyecto
+
+Una vez que hayamos `vinculado` nuestra cuenta de `Vercel con GitHub` y hayamos publicado nuestro `proyecto` en un repositorio de `GitHub`, debemos ir a la página principal de Vercel y buscar el siguiente botón.
+
+![Boton para crear nuevo proyecto en Vercel](/images/articles/vercel-new-project.jpg)
+
+Al hacer clic en este botón, nos llevará a la siguiente sección donde debemos elegir el `repositorio` que contiene nuestro proyecto y hacer clic en el botón `"import"`. En mi caso, el repositorio se llama "Articulos-Proyectos".
+
+![Imagen donde se muestra como seleccionar un repositorio](/images/articles/import-project-vercel.jpg)
+
+Después de seleccionar el repositorio que aloja nuestro proyecto, nos llevará a la última sección donde podemos `configurar` el nombre de nuestro proyecto en Vercel, elegir el framework en el que construimos nuestro proyecto y seleccionar el directorio raíz que deseamos desplegar de todo nuestro proyecto.
+
+![Dashboard de nuevo proyecto en Vercel](/images/articles/vercel-newproject-dashboard.jpg)
+
+Por último, hay dos secciones de `configuración` con `menús desplegables`. En la primera sección, podemos indicar los `comandos` que Vercel debe ejecutar para construir y desplegar nuestro proyecto correctamente. En el segundo menú, podemos incluir `variables de entorno` con sus respectivas claves y valores. En nuestro caso, no necesitaremos ninguna de estas configuraciones, pero ten en cuenta que están disponibles si las necesitas.
+
+![Configuraciones de deploy y variables de entorno](/images/articles/last-config-vercel.jpg)
+
+Para `desplegar` nuestro proyecto, simplemente debemos hacer clic en el botón `"Deploy"` y Vercel comenzará el proceso de despliegue.
+
+</Section>
+
+<Section>
+### Visitar nuestro dominio
+
+Una vez finalizado el despliegue de nuestro proyecto, `Vercel` nos proporcionará una `URL` a la cual podremos acceder. Podemos hacer clic en el botón `"Visit"` o dirigirnos directamente a la URL que nos han proporcionado.
+
+![Visitar nuestro proyecto](/images/articles/visit-our-project.jpg)
+
+Una vez en nuestro proyecto, recibiremos la siguiente respuesta. En este ejemplo, en la ruta de entrada `"/"` no devolvemos nada, por lo que debemos dirigirnos al endpoint `"/users"` para obtener una respuesta.
+
+> Respuesta de endpoint de entrada: "https://nuestro-dominio.vercel.app"
+
+![Respuesta de nuestro endpoint de entrada "/"](/images/articles/response-project.jpg)
+
+> Respuesta de endpoint de usuarios: "https://nuestro-dominio.vercel.app/users"
+
+![Respuesta de nuestro endpoint de usuarios "/users"](/images/articles/response-project-users.jpg)
+
+</Section>
+
+<Section>
+## Conclusiones
+
+`Vercel` es una excelente opción para desplegar aplicaciones `backend` basadas en `NestJs`. Aunque es conocido principalmente por desplegar aplicaciones `frontend`, ofrece soporte para aplicaciones backend basadas en `NodeJs` y cuenta con un plan gratuito que permite a los desarrolladores desplegar aplicaciones sin costos adicionales.
+
+En este artículo, aprendimos cómo configurar nuestra aplicación de `NestJs` y habilitar `CORS` para permitir la comunicación segura con otras aplicaciones. Además, vimos cómo `desplegar` nuestra aplicación en `Vercel` mediante la creación de un archivo de configuración `vercel.json` y la vinculación de nuestra cuenta de GitHub con Vercel.
+
+En resumen, desplegar una aplicación de `NestJs` en `Vercel` es una opción viable, fácil de configurar y accesible.
+
+</Section>
