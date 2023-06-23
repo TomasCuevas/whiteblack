@@ -54,6 +54,8 @@ tsc --init
 
 Al ejecutar el comando anterior, se generará un archivo llamado `tsconfig.json`. Este archivo debe ser abierto y debe agregarse la configuración `"outDir": "build"`. Esta configuración indica el nombre de la carpeta donde se ubicará el código transpilado de `TypeScript` a `JavaScript`.
 
+> tsconfig.json
+
 ```json
 "compilerOptions": {
   ...
@@ -62,6 +64,8 @@ Al ejecutar el comando anterior, se generará un archivo llamado `tsconfig.json`
 ```
 
 Por último, necesitamos configurar los `scripts` en nuestro archivo `package.json`. Los scripts deben quedar de la siguiente forma:
+
+> package.json
 
 ```json
 "scripts": {
@@ -82,6 +86,8 @@ Vamos a crear una `API` que simule una calculadora sencilla. Esta `API` contará
 
 <Section>
 ### Archivo index.ts
+
+> index.ts
 
 ```ts
 import express from "express";
@@ -112,6 +118,8 @@ Este código configura un servidor web utilizando `Express`, define una ruta `/c
 
 <Section>
 ### Archivo routes/calculadora.routes.ts
+
+> calculadora.routes.ts
 
 ```ts
 import { Router } from "express";
@@ -161,6 +169,8 @@ Este código define un enrutador que maneja las rutas relacionadas con operacion
 ### Archivo .env
 
 En este archivo, configuraremos las `variables de entorno` necesarias para nuestro proyecto. En este caso, solo estableceremos el puerto.
+
+> .env
 
 ```md
 port=4000
@@ -239,5 +249,14 @@ Además, debemos indicarle a Render los comandos que debe ejecutar para desplega
 Por último, bajamos hacia el fondo de la página y pulsamos el botón 'Create Web Service' para iniciar el proceso de `deploy`. Una vez finalizado, tendremos una pantalla similar a la siguiente que indica que el deploy ha sido exitoso:
 
 ![image](https://user-images.githubusercontent.com/79057608/222231375-60d9b9c9-f084-4e47-a88b-4cff67f85e6e.png)
+
+</Section>
+
+<Section>
+## Conclusiones
+
+En este artículo, hemos aprendido cómo crear un servidor de `Node.js` utilizando `Express` y `Typescript` en muy pocos minutos. A través de ejemplos de código y explicaciones detalladas, hemos explorado los pasos necesarios para configurar el proyecto, instalar los paquetes requeridos y desarrollar una sencilla `API`.
+
+Crear un servidor de `Node.js` con `Express` y `Typescript` puede ser un desafío, especialmente para aquellos que están comenzando en el desarrollo web. Sin embargo, con la guía adecuada y un enfoque paso a paso, es posible lograrlo de manera rápida y efectiva.
 
 </Section>
