@@ -66,7 +66,7 @@ export default async function handler(request: Request) {
             top: "20px",
             zIndex: "-10",
             height: "267px",
-            opacity: 0.2,
+            opacity: 0.5,
           }}
           src={`${process.env.NEXT_PUBLIC_URL}/images/categories/${category}.svg`}
           alt="category logo"
@@ -89,6 +89,7 @@ export default async function handler(request: Request) {
                 fontSize: 40,
                 color: "white",
                 fontFamily: "Merriweather",
+                textShadow: "5px 3px 3px #000",
               }}
             >
               {title}
