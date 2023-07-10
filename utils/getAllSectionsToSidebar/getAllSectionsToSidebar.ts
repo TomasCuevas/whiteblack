@@ -19,7 +19,10 @@ export const getAllSectionsToSidebar = () => {
     if (firstElementOfSection?.tagName === "H2") {
       const h2section = allSections[i];
       h2section.setAttribute("id", `${uuid()}`);
-      h2section.setAttribute("content", firstElementOfSection.innerHTML);
+      h2section.setAttribute(
+        "content",
+        firstElementOfSection.textContent || ""
+      );
       allH2Sections.push(h2section);
       h2Length = allH2Sections.length - 1;
     }
@@ -27,7 +30,10 @@ export const getAllSectionsToSidebar = () => {
     if (firstElementOfSection?.tagName === "H3") {
       const h3section = allSections[i];
       h3section.setAttribute("id", `${uuid()}`);
-      h3section.setAttribute("content", firstElementOfSection.innerHTML);
+      h3section.setAttribute(
+        "content",
+        firstElementOfSection.textContent || ""
+      );
 
       allH3Sections[h2Length] = allH3Sections[h2Length]
         ? [...allH3Sections[h2Length], h3section]
