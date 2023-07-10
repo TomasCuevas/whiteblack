@@ -1,0 +1,165 @@
+---
+author: "Tomás Cuevas"
+link: "https://www.linkedin.com/in/tomás-cuevas-dev/"
+title: "Los Utility Types en TypeScript: Simplificando la manipulación de tipos"
+date: "2023-07-05"
+description: "Descubre cómo los Utility Types en TypeScript te permiten manipular y transformar los tipos de datos de forma eficiente. Aprende sobre los Utility Types más comunes, como Partial, Required, Readonly, y Pick, y cómo utilizarlos para mejorar la flexibilidad y legibilidad de tu código TypeScript."
+cardDescription: "Cuando trabajas con __TypeScript__, es posible que te encuentres con la necesidad de manipular los tipos de datos de una manera más flexible y conveniente. Aquí es donde entran en juego los __'Utility Types'__ (tipos de utilidad). Los __Utility Types__ son un conjunto de tipos predefinidos proporcionados por __TypeScript__ que nos permiten transformar y manipular otros tipos de datos de forma sencilla y eficiente."
+category: "typescript"
+tags:
+  - "typescript"
+  - "types"
+  - "interfaces"
+  - "utility types"
+keywords: "Utility Types, TypeScript, Manipulación de tipos, TypeScript Partial, TypeScript Required, TypeScript Readonly, TypeScript Pick, Simplificar código TypeScript, Flexibilidad en TypeScript, Partial<Type>, Required<Type>, Readonly<Type>, Pick<Type, Keys>"
+---
+
+<Section>
+## Introducción
+
+Cuando trabajas con `TypeScript`, es posible que te encuentres con la necesidad de manipular los tipos de datos de una manera más flexible y conveniente. Aquí es donde entran en juego los `"Utility Types"` (tipos de utilidad). Los `Utility Types` son un conjunto de tipos predefinidos proporcionados por `TypeScript` que nos permiten transformar y manipular otros tipos de datos de forma sencilla y eficiente.
+
+Los `Utility Types` son herramientas muy útiles para trabajar con tipos de datos en `TypeScript`, ya que nos ayudan a evitar la _duplicación de código y a escribir de manera más concisa y legible_. Estos tipos nos permiten realizar operaciones comunes, como agregar o eliminar propiedades de un tipo, crear uniones o intersecciones, obtener las claves de un objeto, entre otras muchas posibilidades.
+
+A continuación, exploraremos algunos de los `Utility Types` más utilizados en `TypeScript`:
+
+</Section>
+
+<Section>
+## Utility Types más utilizados en TypeScript
+
+</Section>
+
+<Section>
+### Partial\<Type>
+
+El tipo `Partial<Type>` nos permite crear un nuevo tipo a partir de Type, pero con todas sus propiedades marcadas como `opcionales`. Esto es útil cuando queremos definir un objeto que puede tener algunas propiedades faltantes. Veamos un ejemplo:
+
+```ts
+interface User {
+  name: string;
+  age: number;
+  email: string;
+}
+
+const partialUser: Partial<User> = {
+  name: "John",
+  age: 25,
+};
+```
+
+En este caso, `Partial<User>` nos permite crear un nuevo tipo `partialUser` en el que todas las propiedades de User son `opcionales`. Esto significa que podemos _asignar valores solo a algunas de ellas_ y `TypeScript` no nos mostrará ningún error.
+
+</Section>
+
+<Section>
+### Required\<Type>
+
+Por otro lado, el tipo `Required<Type>` nos permite crear un nuevo tipo a partir de Type, pero con todas sus propiedades marcadas como `requeridas`. Veamos un ejemplo:
+
+```ts
+interface Book {
+  title?: string;
+  author?: string;
+  year?: number;
+}
+
+const requiredBook: Required<Book> = {
+  title: "The Catcher in the Rye",
+  author: "J.D. Salinger",
+  year: 1951,
+};
+```
+
+En este caso, `Required<Book>` nos permite crear un nuevo tipo `requiredBook` en el que todas las propiedades de Book son `requeridas`. Esto significa que debemos _asignar valores a todas las propiedades_ para que el tipo sea válido.
+
+</Section>
+
+<Section>
+### Readonly\<Type>
+
+El tipo `Readonly<Type>` nos permite crear un nuevo tipo a partir de Type, pero con todas sus propiedades marcadas como de `solo lectura`. Esto significa que no podemos modificar las propiedades del objeto una vez que se ha creado. Veamos un ejemplo:
+
+```ts
+interface Point {
+  x: number;
+  y: number;
+}
+
+const readonlyPoint: Readonly<Point> = {
+  x: 10,
+  y: 20,
+};
+
+// No se permite modificar las propiedades
+readonlyPoint.x = 5; // Error
+readonlyPoint.y = 15; // Error
+```
+
+En este caso, `Readonly<Point>` nos permite crear un nuevo tipo readonlyPoint en el que `no podemos modificar` las propiedades x e y. Esto es útil cuando queremos _garantizar que un objeto sea inmutable_.
+
+</Section>
+
+<Section>
+### Pick\<Type, Keys>
+
+El tipo `Pick<Type, Keys>` nos permite crear un nuevo tipo a partir de Type, seleccionando solo las propiedades especificadas por `Keys`. Veamos un ejemplo:
+
+```ts
+interface Car {
+  brand: string;
+  model: string;
+  year: number;
+  color: string;
+}
+
+const pickedCar: Pick<Car, "brand" | "model"> = {
+  brand: "Ford",
+  model: "Mustang",
+};
+```
+
+En este caso, `Pick<Car, "brand" | "model">` nos permite crear un nuevo tipo pickedCar que solo contiene las propiedades `"brand" y "model" de Car`. El resto de las propiedades se omiten.
+
+</Section>
+
+<Section>
+### Record\<Keys, Type>
+
+El tipo `Record<Keys, Type>` nos permite crear un nuevo tipo que representa un diccionario o mapeo de valores con claves específicas. Las `Keys` indican las claves del diccionario y `Type` define el tipo de valor asociado a cada clave.
+
+```ts
+type Fruit = "apple" | "banana" | "orange";
+type FruitInventory = Record<Fruit, number>;
+
+const inventory: FruitInventory = {
+  apple: 10,
+  banana: 5,
+  orange: 3,
+};
+```
+
+En este caso, definimos el tipo Fruit como una unión de cadenas literales que representan diferentes tipos de frutas. Luego, utilizando `Record<Fruit, number>`, creamos el tipo `FruitInventory`, que es un objeto con las _frutas como claves y números como valores_.
+
+`Record` nos permite tener un control estático sobre las claves y los tipos de valores en el objeto resultante, evitando errores comunes al trabajar con diccionarios.
+
+</Section>
+
+<Section>
+## Otros Utility Types que pueden ser útiles
+
+Además de los ejemplos mencionados anteriormente, `TypeScript` proporciona otros `Utility Types` que pueden ser útiles en diferentes situaciones:
+
+- **Exclude\<Type, ExcludedUnion>**: Crea un nuevo tipo excluyendo las propiedades de `ExcludedUnion` del tipo `Type`.
+- **Extract\<Type, Union>**: Crea un nuevo tipo seleccionando las propiedades de `Type` que son también miembros de `Union`.
+- **Omit\<Type, Keys>**: Crea un nuevo tipo omitiendo las propiedades especificadas por `Keys` del tipo `Type`.
+- **NonNullable\<Type>**: Crea un nuevo tipo excluyendo los valores `null` y `undefined` de `Type`.
+
+</Section>
+
+<Section>
+## Conclusión
+
+En resumen, los `Utility Types` son una _característica poderosa_ de `TypeScript` que nos permite manipular y transformar tipos de datos de una manera conveniente y eficiente. Al utilizar estos tipos, podemos _mejorar la legibilidad y el mantenimiento de nuestro código_, evitando la duplicación y facilitando la adaptación de nuestros tipos a diferentes escenarios.
+
+</Section>

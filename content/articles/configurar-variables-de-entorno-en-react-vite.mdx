@@ -59,6 +59,8 @@ VITE_LASTNAME=Cuevas
 VITE_SECRET_PASSWORD=ABC123
 ```
 
+> App.jsx
+
 ```jsx
 export const App = () => {
   return (
@@ -76,6 +78,8 @@ Podríamos crear una `función` que nos devuelva todas las variables de entorno 
 
 La función que cumpliría esta tarea podría tener el siguiente aspecto:
 
+> getEnvironments.js
+
 ```js
 export const getEnvironments = () => {
   return {
@@ -92,6 +96,8 @@ Y en nuestro componente, podríamos obtener las variables que esta exporte de la
 
 <Section>
 ### Ejecutando la funcion donde queramos utilizar una variable de entorno
+
+> App.jsx
 
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
@@ -117,6 +123,8 @@ Es importante señalar que esta forma de importar no es tan eficiente, ya que si
 <Section>
 ### Desestructuración de variables de entorno
 
+> App.jsx
+
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
 
@@ -135,5 +143,14 @@ export const App = () => {
 ```
 
 Primero importamos la `función` y luego aplicamos la técnica de `desestructuración` para obtener únicamente las variables que necesitamos utilizar. De esta forma, evitamos tener que llamar la `función` cada vez que queremos obtener una variable, así como también reducimos la cantidad de veces que necesitamos escribir `import.meta.env.`
+
+</Section>
+
+<Section>
+## Conclusión
+
+En resumen, configurar `variables de entorno` en `React` utilizando `Vite` nos brinda una forma sencilla y eficiente de centralizar valores y evitar escribirlos directamente en el código. Esto nos permite _acceder y modificar_ fácilmente esos valores sin tener que buscarlos en todos los lugares donde se utilizan.
+
+Al utilizar el objeto `import.meta.env` y crear funciones o aplicar la desestructuración, podemos `optimizar` la forma de `obtener` y `utilizar` estas variables. En definitiva, el uso de variables de entorno en React con Vite mejora la _configuración_, la _seguridad_ y la _legibilidad_ de nuestro código.
 
 </Section>
