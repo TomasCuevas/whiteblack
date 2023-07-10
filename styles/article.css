@@ -105,6 +105,10 @@
   margin-top: -10px;
 }
 
+#article p em {
+  font-weight: 600;
+}
+
 #article ul {
   padding: 0 0 16px 35px;
 }
