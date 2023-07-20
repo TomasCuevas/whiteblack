@@ -54,7 +54,7 @@ tsc --init
 
 Al ejecutar el comando anterior, se generará un archivo llamado `tsconfig.json`. Este archivo debe ser abierto y debe agregarse la configuración `"outDir": "build"`. Esta configuración indica el nombre de la carpeta donde se ubicará el código transpilado de `TypeScript` a `JavaScript`.
 
-> tsconfig.json
+> **tsconfig.json**
 
 ```json
 "compilerOptions": {
@@ -65,7 +65,7 @@ Al ejecutar el comando anterior, se generará un archivo llamado `tsconfig.json`
 
 Por último, necesitamos configurar los `scripts` en nuestro archivo `package.json`. Los scripts deben quedar de la siguiente forma:
 
-> package.json
+> **package.json**
 
 ```json
 "scripts": {
@@ -87,7 +87,7 @@ Vamos a crear una `API` que simule una calculadora sencilla. Esta `API` contará
 <Section>
 ### Archivo index.ts
 
-> index.ts
+> **index.ts**
 
 ```ts
 import express from "express";
@@ -119,7 +119,7 @@ Este código configura un servidor web utilizando `Express`, define una ruta `/c
 <Section>
 ### Archivo routes/calculadora.routes.ts
 
-> calculadora.routes.ts
+> **calculadora.routes.ts**
 
 ```ts
 import { Router } from "express";
@@ -170,7 +170,7 @@ Este código define un enrutador que maneja las rutas relacionadas con operacion
 
 En este archivo, configuraremos las `variables de entorno` necesarias para nuestro proyecto. En este caso, solo estableceremos el puerto.
 
-> .env
+> **.env**
 
 ```md
 port=4000

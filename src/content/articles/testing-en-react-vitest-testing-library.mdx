@@ -78,7 +78,7 @@ npm install -D vitest testing-library/react jsdom
 
 Cuando creamos un proyecto de React con Vite, se genera automáticamente un archivo llamado `vite.config.js` donde se encuentran todas las configuraciones de `Vite`. En este archivo, debemos agregar una nueva propiedad para indicar que se debe utilizar la biblioteca `JSDOM` cuando se realicen las pruebas. Por lo tanto, el archivo `vite.config.js` debería tener la siguiente estructura:
 
-> vite.config.js
+> **vite.config.js**
 
 ```js
 import { defineConfig } from "vite";
@@ -103,7 +103,7 @@ Agregamos la propiedad `test`, que contiene un objeto con las propiedades `envir
 
 Para configurar la ejecución de todos los `tests` en nuestro proyecto, es necesario agregar un `script` en el archivo `package.json`. En la sección de `scripts`, podemos añadir la propiedad `"test"` con el valor `"vitest"` de la siguiente manera:
 
-> package.json
+> **package.json**
 
 ```json
   "scripts": {
@@ -134,7 +134,7 @@ En este artículo, vamos a realizar pruebas en un componente de tipo "acordeón"
 
 Durante el `testing`, nos aseguraremos de verificar el comportamiento esperado del acordeón, es decir, que se muestre el contenido oculto al hacer clic en el subtítulo y que se oculte nuevamente al hacer clic una vez más.
 
-> Accordion.jsx
+> **Accordion.jsx**
 
 ```jsx
 import { useState } from "react";
@@ -193,7 +193,7 @@ Los archivos de testing, deben seguir una `convención de nomenclatura` similar 
 
 El archivo de prueba comienza importando las funciones necesarias para los tests, como `beforeEach`, `describe`, `expect` y `test`, de la biblioteca `Vitest`. También se importan las funciones `fireEvent`, `render` y `screen` de la biblioteca `Testing-Library/React`.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 import { beforeEach, describe, expect, test } from "vitest";
@@ -207,7 +207,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 
 Todos los `tests` estarán contenidos dentro de una función llamada `describe`. Esta función se utiliza para _agrupar y organizar_ los tests relacionados en bloques. Proporciona un _contexto y una descripción_ para los tests que se encuentran dentro de él. La función `describe` recibe dos argumentos: un `string` que se utiliza para _describir las pruebas_ que se encuentran dentro de él y una `función` que _contendrá todos los tests_.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 import { beforeEach, describe, expect, test } from "vitest";
@@ -227,7 +227,7 @@ Antes de cada test, se utiliza la función `beforeEach` en combinación con la f
 
 Esta configuración previa nos permite establecer un `estado inicial` común para todos los tests, evitando la duplicación de código y simplificando el proceso de escritura de los tests.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 import { beforeEach, describe, expect, test } from "vitest";
@@ -258,7 +258,7 @@ La función `test` se utiliza para definir tests individuales dentro de un bloqu
 
 La función `test` recibe dos argumentos: una `string` que describe el test y una `función` que contiene la lógica de la prueba.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 import { beforeEach, describe, expect, test } from "vitest";
@@ -298,7 +298,7 @@ El primer `test` se enfoca en verificar si el título del componente `Accordion.
 
 En este `test`, se utiliza la función `expect` para realizar una afirmación sobre el resultado esperado. La función `screen.getByText` se encarga de seleccionar el elemento que contiene el texto específico, en este caso, _"Más información"_, dentro del componente Accordion que ha sido renderizado previo al test en la función `beforeEach`. Luego, se utiliza la función `toBeDefined` para verificar que el elemento existe, confirmando así que el título se muestra correctamente.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 describe("Testing sobre el componente Accordion.jsx", () => {
@@ -328,7 +328,7 @@ Este `test` se encarga de verificar si el contenido del acordeón se muestra cor
 
 En el `test`, se obtiene una referencia al acordeón utilizando `screen.getByRole` y el atributo _"accordion"_. A continuación, se dispara un evento de clic en el acordeón utilizando `fireEvent.click(accordion)`. Después, se busca el contenido del acordeón utilizando `screen.queryByRole` y el atributo _"content"_. Por último, se utiliza la función `expect` junto con `toBeTruthy` para verificar si el contenido del acordeón existe y es visible en la interfaz.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 describe("Testing sobre el componente Accordion.jsx", () => {
@@ -362,7 +362,7 @@ Tiene como objetivo verificar si el contenido del acordeón se oculta correctame
 
 En este `test`, se obtiene una referencia al acordeón utilizando `screen.getByRole` y el atributo _"accordion"_. Luego, se simulan dos `clics` consecutivos en el acordeón utilizando `fireEvent.click(accordion)`. Después de los clics, se busca el contenido del acordeón utilizando `screen.queryByRole` y el atributo _"content"_. Por último, se utiliza la función `expect` junto con `toBeNull` para verificar si el contenido del acordeón no está presente en la interfaz.
 
-> Accordion.test.jsx
+> **Accordion.test.jsx**
 
 ```jsx
 describe("Testing sobre el componente Accordion.jsx", () => {

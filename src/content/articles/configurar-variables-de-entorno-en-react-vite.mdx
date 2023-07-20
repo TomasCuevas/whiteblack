@@ -59,7 +59,7 @@ VITE_LASTNAME=Cuevas
 VITE_SECRET_PASSWORD=ABC123
 ```
 
-> App.jsx
+> **App.jsx**
 
 ```jsx
 export const App = () => {
@@ -78,7 +78,7 @@ Podríamos crear una `función` que nos devuelva todas las variables de entorno 
 
 La función que cumpliría esta tarea podría tener el siguiente aspecto:
 
-> getEnvironments.js
+> **getEnvironments.js**
 
 ```js
 export const getEnvironments = () => {
@@ -97,7 +97,7 @@ Y en nuestro componente, podríamos obtener las variables que esta exporte de la
 <Section>
 ### Ejecutando la funcion donde queramos utilizar una variable de entorno
 
-> App.jsx
+> **App.jsx**
 
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
@@ -123,7 +123,7 @@ Es importante señalar que esta forma de importar no es tan eficiente, ya que si
 <Section>
 ### Desestructuración de variables de entorno
 
-> App.jsx
+> **App.jsx**
 
 ```jsx
 import { getEnvironments } from "./helpers/getEnvironments";
