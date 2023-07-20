@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { GetStaticProps, GetStaticPaths, NextPage } from "next";
 import { MDXRemote } from "next-mdx-remote";
+import { useTheme } from "next-themes";
 
 //* UTILS *//
 import { getArticleFileBySlug, getAllArticleFiles } from "@/utils";
@@ -33,6 +34,8 @@ interface Props {
 const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
   const [h2Sections, setH2Sections] = useState<HTMLElement[]>([]);
   const [h3Sections, setH3Sections] = useState<HTMLElement[][]>([[]]);
+  const { theme } = useTheme();
+  const [currentTheme, setCurrentTheme] = useState<any>("light");
 
   useEffect(() => {
     setH2Sections(getAllSectionsToSidebar().allH2Sections);
@@ -51,6 +54,10 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
     if (h3Sections) H3Observers(h3Sections);
   }, [h3Sections]);
 
+  useEffect(() => {
+    setCurrentTheme(theme);
+  }, [theme]);
+
   return (
     <MainLayout
       description={metadata.description}
@@ -65,7 +72,10 @@ const ArticlePage: NextPage<Props> = ({ metadata, source }) => {
       <div className="grid grid-cols-1 gap-5 sidebar:grid-cols-[800px_1fr] xl:gap-20">
         <article className="max-w-[800px]">
           <ArticleHeader metadata={metadata} />
-          <div id="article" className="font-merriweather">
+          <div
+            id={currentTheme === "light" ? "article" : "article__dark"}
+            className="font-merriweather"
+          >
             <MDXRemote {...source} components={MDXComponents} />
           </div>
           <ArticleFooter metadata={metadata} />

@@ -15,8 +15,8 @@ export const MobileSidebar: React.FC = () => {
   if (!isSidebarOpen) return <></>;
 
   return (
-    <aside className="fixed top-0 left-0 z-50 h-screen w-screen bg-dark/90 backdrop-blur-sm sm:hidden">
-      <div className="flex h-16 w-full items-end justify-center px-4">
+    <aside className="fixed top-0 left-0 z-50 h-screen w-screen bg-slate-200/80 dark:bg-dark/90 backdrop-blur-sm sm:hidden">
+      <div className="flex h-[57px] w-full items-end justify-center px-4">
         <div className="flex h-14 w-full items-center">
           <RiCloseFill
             onClick={toggleSidebar}

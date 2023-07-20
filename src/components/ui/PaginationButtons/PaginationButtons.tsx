@@ -18,7 +18,7 @@ export const PaginationButtons: React.FC<Props> = ({
   decrement,
 }) => {
   return (
-    <div className="flex gap-3 [&>button]:flex [&>button]:items-center [&>button>svg]:text-4xl [&>button>svg]:text-purple/70 [&>button>span]:font-merriweather [&>button>span]:text-sm [&>button>span]:text-purple/70 [&>button>span]:xs:text-lg">
+    <div className="flex gap-3 [&>button]:flex [&>button]:items-center [&>button>svg]:text-4xl [&>button>svg]:text-purple dark:[&>button>svg]:text-purple/70 [&>button>span]:font-merriweather [&>button>span]:text-sm [&>button>span]:text-purple dark:[&>button>span]:text-purple/70 [&>button>span]:xs:text-lg">
       {pagination > 1 ? (
         <button onClick={decrement} className="group mr-auto">
           <RiArrowDropLeftFill className="group-hover:text-purple" />

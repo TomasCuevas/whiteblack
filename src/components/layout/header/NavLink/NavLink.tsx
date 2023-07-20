@@ -22,8 +22,10 @@ export const NavLink: React.FC<Props> = ({ link, text }) => {
       >
         <span
           className={`font-merriweather text-lg font-extralight ${
-            pathname === link ? "text-white" : "text-white/50"
-          } group-hover:text-white`}
+            pathname === link
+              ? "text-dark dark:text-white"
+              : "text-dark/60 dark:text-white/50"
+          } group-hover:text-dark dark:group-hover:text-white`}
         >
           {text}
         </span>

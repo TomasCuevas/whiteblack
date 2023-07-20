@@ -14,9 +14,9 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
 
   return (
     <aside
-      className={`sticky top-[10px] hidden h-[calc(100vh_-_67px)] w-full overflow-auto sidebar:block ${Style.aside}`}
+      className={`sticky top-[10px] hidden h-[calc(100vh_-_100px)] w-full overflow-auto sidebar:block ${Style.aside}`}
     >
-      <ul className="rounded-lg bg-purple/5 p-4">
+      <ul className="rounded-lg bg-purple/10 dark:bg-purple/5 p-4">
         {allH2.map((h2, index) => {
           const h3s = allH3[index];
 
@@ -24,12 +24,12 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
             <>
               <li
                 key={h2.getAttribute("id")}
-                className="my-2 rounded-md text-sm text-white"
+                className="my-2 rounded-md text-sm text-dark dark:text-white"
               >
                 <span
                   id={`${h2.getAttribute("id")}-sidebar`}
                   onClick={() => navigate(h2.getAttribute("id")!)}
-                  className="cursor-pointer rounded-sm font-medium hover:bg-gray-400/10"
+                  className="cursor-pointer rounded-sm font-medium hover:bg-gray-200/70 dark:hover:bg-gray-300/10"
                 >
                   {h2.getAttribute("content")}
                 </span>
@@ -38,10 +38,10 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
                     <li
                       id={`${h3.getAttribute("id")}-sidebar`}
                       key={h3.getAttribute("id")}
-                      className="item group cursor-pointer border-l border-purple/20 py-1 pl-5 text-gray-300"
+                      className="item group cursor-pointer border-l border-purple/20 py-1 pl-5 text-gray-700 dark:text-gray-300"
                       onClick={() => navigate(h3.getAttribute("id")!)}
                     >
-                      <span className="rounded-sm hover:bg-gray-400/10">
+                      <span className="rounded-sm hover:bg-gray-200/70 dark:hover:bg-gray-400/10">
                         {h3.getAttribute("content")}
                       </span>
                     </li>

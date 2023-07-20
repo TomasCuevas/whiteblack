@@ -17,19 +17,19 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
         <img
           src={`/images/categories/${metadata.category}.svg`}
           alt={`${metadata.category} logo`}
-          className="absolute right-0 -z-10 w-[220px] opacity-20"
+          className="absolute right-0 -z-10 w-[220px] opacity-60 dark:opacity-20"
         />
       </picture>
       <div className="flex flex-col gap-1">
         <div className="flex flex-col gap-3">
-          <h1 className="font-merriweather text-3xl font-semibold text-white md:text-5xl">
+          <h1 className="font-merriweather text-3xl font-semibold text-black dark:text-white md:text-5xl">
             {metadata.title}
           </h1>
           <div className="flex flex-wrap gap-4">
             {metadata.tags?.map((tag) => (
               <span
                 key={`${metadata.slug} ${tag}`}
-                className="rounded-md font-inter text-[10px] font-black uppercase text-gray-300 sm:text-[11px]"
+                className="rounded-md font-inter text-[10px] font-black uppercase text-gray-800 dark:text-gray-300 sm:text-[11px]"
               >
                 {tag}
               </span>
@@ -47,8 +47,10 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
                 {metadata.author}
               </h4>
             </Link>
-            <span className="font-inter text-xs text-white">/</span>
-            <time className="font-inter text-sm text-white">
+            <span className="font-inter text-xs text-dark dark:text-white">
+              /
+            </span>
+            <time className="font-inter text-sm text-dark dark:text-white">
               {new Date(metadata.date).toLocaleString(undefined, {
                 day: "2-digit",
                 month: "long",
@@ -58,7 +60,7 @@ export const ArticleHeader: React.FC<Props> = ({ metadata }) => {
             </time>
           </div>
           <div>
-            <time className="flex items-center gap-1 font-roboto text-white">
+            <time className="flex items-center gap-1 font-roboto text-dark dark:text-white">
               <RiTimeLine className="mb-[2px]" />
               <span className="text-sm font-bold">
                 {metadata.readingTime.minutes.toFixed(0)} minutos de lectura

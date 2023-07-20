@@ -1,10 +1,21 @@
-#article__card p {
+.article__card p {
+  color: #333;
+  font-family: Inter;
+  line-height: 25px;
+}
+
+.article__card strong {
+  font-weight: 700;
+  color: #000;
+}
+
+.article__card-dark p {
   color: #ccc;
   font-family: Inter;
   line-height: 25px;
 }
 
-#article__card strong {
+.article__card-dark strong {
   font-weight: 700;
   color: #fff;
 }
