@@ -12,13 +12,6 @@ export const ThemeSwitch: React.FC = () => {
     setCurrentTheme(() => (theme === "system" ? systemTheme : theme));
   }, [theme]);
 
-  useEffect(() => {
-    document.documentElement.style.setProperty(
-      "--scrollbar-track-color",
-      theme === "dark" ? "#04030c" : "#f1f5f9"
-    );
-  }, [theme]);
-
   return (
     <button
       onClick={() =>

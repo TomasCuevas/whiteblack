@@ -31,13 +31,13 @@ export const CategoryHeader: React.FC<Props> = ({ categoryMetadata }) => {
             <h1 className="font-merriweather text-lg font-bold capitalize text-dark dark:text-white md:text-3xl">
               {categoryMetadata.category}
             </h1>
-            <h2 className="text-md font-inter text-gray-700 dark:text-gray-300">
+            <h2 className="text-md font-inter text-gray-900 dark:text-gray-300">
               {categoryMetadata.subtitle}
             </h2>
           </div>
         </div>
         <div>
-          <p className="text-md font-inter text-gray-700 dark:text-gray-300">
+          <p className="text-md font-inter text-gray-900 dark:text-gray-300">
             {categoryMetadata.description}
           </p>
         </div>
