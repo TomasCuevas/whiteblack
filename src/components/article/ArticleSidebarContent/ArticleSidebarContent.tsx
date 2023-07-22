@@ -14,7 +14,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
 
   return (
     <aside
-      className={`sticky top-[10px] hidden h-[calc(100vh_-_100px)] w-full overflow-auto sidebar:block ${Style.aside}`}
+      className={`sticky top-[67px] hidden h-[calc(100vh_-_100px)] w-full overflow-auto sidebar:block ${Style.aside}`}
     >
       <ul className="rounded-lg bg-purple/10 dark:bg-purple/5 p-4">
         {allH2.map((h2, index) => {

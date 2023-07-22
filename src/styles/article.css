@@ -1,3 +1,7 @@
+#article section {
+  scroll-margin-top: 67px;
+}
+
 #article p {
   color: #000;
   font-family: Inter;
@@ -28,6 +32,7 @@
 }
 
 #article h2 {
+  scroll-margin-top: 67px;
   font-family: merriweather;
   position: relative;
   font-size: 30px;
@@ -201,6 +206,9 @@
 /* DARK */
 /* DARK */
 /* DARK */
+#article__dark section {
+  scroll-margin-top: 67px;
+}
 
 #article__dark p {
   color: #fff;
