@@ -17,12 +17,12 @@ export const ThemeSwitch: React.FC = () => {
       onClick={() =>
         currentTheme === "dark" ? setTheme("light") : setTheme("dark")
       }
-      className="p-2 border-slate-800 dark:border-slate-200 border rounded-md"
+      className="py-2 px-[10px] group shadow-inner rounded-md shadow-black/20 dark:shadow-slate-400/20"
     >
       {currentTheme == "dark" ? (
-        <BsSun className="text-lg text-slate-200" />
+        <BsSun className="text-lg text-slate-200 group-hover:text-white" />
       ) : (
-        <BsMoon className="text-lg text-slate-800" />
+        <BsMoon className="text-lg text-slate-800 group-hover:text-dark" />
       )}
     </button>
   );
