@@ -29,7 +29,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
                 <span
                   id={`${h2.getAttribute("id")}-sidebar`}
                   onClick={() => navigate(h2.getAttribute("id")!)}
-                  className="cursor-pointer rounded-sm font-medium hover:bg-gray-200/70 dark:hover:bg-gray-300/10"
+                  className="cursor-pointer rounded-sm font-medium hover:bg-white/80 dark:hover:bg-gray-300/10"
                 >
                   {h2.getAttribute("content")}
                 </span>
@@ -41,7 +41,7 @@ export const ArticleSidebarContent: React.FC<Props> = ({ allH2, allH3 }) => {
                       className="item group cursor-pointer border-l border-purple/20 py-1 pl-5 text-gray-700 dark:text-gray-300"
                       onClick={() => navigate(h3.getAttribute("id")!)}
                     >
-                      <span className="rounded-sm hover:bg-gray-200/70 dark:hover:bg-gray-400/10">
+                      <span className="rounded-sm hover:bg-white/60 dark:hover:bg-gray-300/10">
                         {h3.getAttribute("content")}
                       </span>
                     </li>

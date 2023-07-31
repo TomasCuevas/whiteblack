@@ -16,7 +16,7 @@ export const Header: React.FC = () => {
   return (
     <header
       id="header"
-      className="sticky top-0 bg-slate-200 left-0 z-30 h-[57px] flex w-full items-end justify-center border-b border-purple/50 dark:border-purple/20 backdrop-blur-[6px] dark:bg-dark/80"
+      className="sticky top-0 bg-slate-100/80 left-0 z-30 h-[57px] flex w-full items-end justify-center border-b border-purple/50 dark:border-purple/20 backdrop-blur-[6px] dark:bg-dark/80"
     >
       <div className="flex h-full w-full max-w-[1200px] items-center px-4 sm:px-6 xl:px-0">
         <Link href="/" className="h-12">
